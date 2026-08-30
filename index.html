@@ -302,20 +302,26 @@ footer p{color:#aaa;line-height:1.7}
       <textarea id="cAddress" rows="3" placeholder="Complete Delivery Address *"></textarea>
       <input id="cPincode" placeholder="Pincode *" inputmode="numeric">
 
-      <div class="payment-note">
-        <b>Payment Instructions</b><br><br>
-        1. Scan either QR code below.<br>
-        2. Complete the payment.<br>
-        3. Place your order.<br>
-        4. Send payment proof on WhatsApp.
-      </div>
+      <button id="confirmDetailsBtn" class="checkout-btn" type="button" onclick="showPayment()">
+        Confirm Details & Continue
+      </button>
 
-      <div class="qr-wrap">
-        <img class="qr" src="qr1.jpg" alt="Payment QR 1" onerror="this.src='assets/qr1.jpg'">
-        <img class="qr" src="qr2.png" alt="Payment QR 2" onerror="this.src='assets/qr2.png'">
-      </div>
+      <div id="paymentStep" style="display:none;">
+        <div class="payment-note">
+          <b>Payment Instructions</b><br><br>
+          1. Scan either QR code below.<br>
+          2. Complete the payment.<br>
+          3. Place your order.<br>
+          4. Send payment proof on WhatsApp.
+        </div>
 
-      <button class="checkout-btn" onclick="placeOrder()">Place Order & WhatsApp</button>
+        <div class="qr-wrap">
+          <img class="qr" src="qr1.jpg" alt="Payment QR 1" onerror="this.src='assets/qr1.jpg'">
+          <img class="qr" src="qr2.png" alt="Payment QR 2" onerror="this.src='assets/qr2.png'">
+        </div>
+
+        <button class="checkout-btn" type="button" onclick="placeOrder()">Place Order & WhatsApp</button>
+      </div>
     </div>
   </div>
 </div>
@@ -476,259 +482,4 @@ function renderGrid(category){
     : products.filter(p => p.category === category);
 
   document.getElementById("allGrid").innerHTML =
-    list.length ? list.map(card).join("") :
-    '<div class="empty">No products in this category.</div>';
-}
-
-function filterCat(category, button){
-  document.querySelectorAll(".filter").forEach(x => x.classList.remove("active"));
-  button.classList.add("active");
-  renderGrid(category);
-}
-
-function addCart(id){
-  const product = products.find(p => String(p.id) === String(id));
-
-  if(!product){
-    toast("Product not found.");
-    return;
-  }
-
-  const existing = cart.find(item => String(item.id) === String(id));
-
-  if(existing) existing.qty += 1;
-  else cart.push({id:String(id), qty:1});
-
-  saveCart();
-  toast("Added to cart.");
-  openCart();
-}
-
-function buyNow(id){
-  const product = products.find(p => String(p.id) === String(id));
-
-  if(!product){
-    toast("Product not found.");
-    return;
-  }
-
-  const existing = cart.find(item => String(item.id) === String(id));
-
-  if(existing) existing.qty += 1;
-  else cart.push({id:String(id), qty:1});
-
-  saveCart();
-  openCheckout();
-}
-
-function saveCart(){
-  localStorage.setItem("bb_cart", JSON.stringify(cart));
-  updateCart();
-}
-
-function updateCart(){
-  document.getElementById("cartCount").textContent =
-    cart.reduce((sum, item) => sum + Number(item.qty || 0), 0);
-}
-
-function openCart(){
-  document.getElementById("cartDrawer").classList.add("open");
-  renderCart();
-}
-
-function closeCart(){
-  document.getElementById("cartDrawer").classList.remove("open");
-}
-
-function renderCart(){
-  const box = document.getElementById("cartItems");
-
-  if(!cart.length){
-    box.innerHTML = "<p>Your cart is empty.</p>";
-    document.getElementById("cartTotal").textContent = "Total: ₹0";
-    return;
-  }
-
-  let total = 0;
-
-  box.innerHTML = cart.map(item => {
-    const product = products.find(p => String(p.id) === String(item.id));
-
-    if(!product) return "";
-
-    const qty = Number(item.qty || 1);
-    total += product.price * qty;
-
-    return `
-      <div class="cart-item">
-        <img src="${esc(product.image)}" alt="${esc(product.name)}">
-
-        <div class="cart-details">
-          <div class="cart-name">${esc(product.name)}</div>
-          <div>${money(product.price)} × ${qty}</div>
-
-          <div class="qty">
-            <button onclick="changeQty('${esc(product.id)}', -1)">−</button>
-            <span>${qty}</span>
-            <button onclick="changeQty('${esc(product.id)}', 1)">+</button>
-            <button class="remove" onclick="removeItem('${esc(product.id)}')">Remove</button>
-          </div>
-        </div>
-      </div>
-    `;
-  }).join("");
-
-  document.getElementById("cartTotal").textContent = "Total: " + money(total);
-}
-
-function changeQty(id, delta){
-  const item = cart.find(x => String(x.id) === String(id));
-  if(!item) return;
-
-  item.qty += delta;
-
-  if(item.qty < 1){
-    cart = cart.filter(x => String(x.id) !== String(id));
-  }
-
-  saveCart();
-  renderCart();
-}
-
-function removeItem(id){
-  cart = cart.filter(x => String(x.id) !== String(id));
-  saveCart();
-  renderCart();
-  toast("Product removed.");
-}
-
-function openLogin(){
-  document.getElementById("loginModal").classList.add("open");
-
-  const saved = JSON.parse(localStorage.getItem("bb_account") || "null");
-
-  if(saved){
-    document.getElementById("loginName").value = saved.name || "";
-    document.getElementById("loginEmail").value = saved.email || "";
-    document.getElementById("loginPhone").value = saved.phone || "";
-  }
-}
-
-function closeLogin(){
-  document.getElementById("loginModal").classList.remove("open");
-}
-
-function saveAccount(){
-  const name = document.getElementById("loginName").value.trim();
-  const email = document.getElementById("loginEmail").value.trim();
-  const phone = document.getElementById("loginPhone").value.trim();
-
-  if(!name || !phone){
-    toast("Please enter name and mobile number.");
-    return;
-  }
-
-  localStorage.setItem("bb_account", JSON.stringify({
-    name,email,phone
-  }));
-
-  toast("Account details saved.");
-  closeLogin();
-}
-
-function openCheckout(){
-  if(!cart.length){
-    toast("Please add a product first.");
-    return;
-  }
-
-  closeCart();
-
-  const saved = JSON.parse(localStorage.getItem("bb_account") || "null");
-
-  if(saved){
-    document.getElementById("cName").value = saved.name || "";
-    document.getElementById("cPhone").value = saved.phone || "";
-  }
-
-  document.getElementById("checkoutModal").classList.add("open");
-}
-
-function closeCheckout(){
-  document.getElementById("checkoutModal").classList.remove("open");
-}
-
-function placeOrder(){
-  const name = document.getElementById("cName").value.trim();
-  const phone = document.getElementById("cPhone").value.trim();
-  const address = document.getElementById("cAddress").value.trim();
-  const pincode = document.getElementById("cPincode").value.trim();
-
-  if(!name || !phone || !address || !pincode){
-    toast("Please fill all delivery details.");
-    return;
-  }
-
-  let total = 0;
-
-  const itemLines = cart.map(item => {
-    const product = products.find(p => String(p.id) === String(item.id));
-    if(!product) return "";
-
-    const qty = Number(item.qty || 1);
-    total += product.price * qty;
-
-    return `${product.name} x${qty} = ${money(product.price * qty)}`;
-  }).filter(Boolean).join("\n");
-
-  const message =
-`Hello Branded Bags, I want to place an order.
-
-Name: ${name}
-Phone: ${phone}
-Address: ${address}
-Pincode: ${pincode}
-
-Items:
-${itemLines}
-
-Total: ${money(total)}
-
-I have completed the online payment and will send payment proof here.`;
-
-  const url =
-    "https://wa.me/" + WHATSAPP_NUMBER +
-    "?text=" + encodeURIComponent(message);
-
-  window.open(url, "_blank");
-
-  cart = [];
-  saveCart();
-  closeCheckout();
-
-  toast("Order details opened on WhatsApp.");
-}
-
-function whatsappSupport(){
-  const message = "Hello Branded Bags, I need customer support.";
-  window.open(
-    "https://wa.me/" + WHATSAPP_NUMBER +
-    "?text=" + encodeURIComponent(message),
-    "_blank"
-  );
-}
-
-function contactSupport(){
-  const message = "Hello Branded Bags, I need customer support.";
-  window.open(
-    "https://wa.me/" + SUPPORT_NUMBER +
-    "?text=" + encodeURIComponent(message),
-    "_blank"
-  );
-}
-
-document.addEventListener("DOMContentLoaded", loadProducts);
-</script>
-
-</body>
-</html>
+    list.length ? l
