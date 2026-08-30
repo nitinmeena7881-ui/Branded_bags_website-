@@ -117,9 +117,15 @@ footer p{color:#aaa;line-height:1.7}
 .form{display:grid;gap:12px}
 .form input,.form textarea{width:100%;padding:13px;border:1px solid var(--line);border-radius:10px;outline:none}
 .form input:focus,.form textarea:focus{border-color:var(--gold)}
-.qr-wrap{display:flex;flex-wrap:wrap;gap:15px;margin:10px 0}
+.qr-wrap{display:flex;flex-wrap:wrap;gap:15px;margin:10px 0;justify-content:center}
 .qr{width:180px;height:180px;object-fit:contain;border:1px solid var(--line);border-radius:12px}
 .payment-note{padding:13px;border-radius:10px;background:#faf8f3;color:#666;font-size:13px;line-height:1.6}
+.payment-step{padding:15px;border-radius:12px;background:#f7f3eb;border:1px solid var(--line);text-align:center;color:#555}
+.payment-step strong{display:block;color:var(--black);font-size:15px;margin-bottom:5px}
+.timer-box{text-align:center;padding:18px;border-radius:12px;background:#151515;color:#fff}
+.timer-number{font-size:38px;font-weight:900;color:var(--gold)}
+.confirm-note{padding:13px;border-radius:10px;background:#eef8f1;color:#176a39;font-size:13px;line-height:1.6}
+.hidden{display:none!important}
 
 .toast{position:fixed;left:50%;bottom:25px;z-index:1000;transform:translate(-50%,120px);background:var(--black);color:#fff;padding:13px 18px;border-radius:999px;font-size:13px;transition:.3s}
 .toast.show{transform:translate(-50%,0)}
@@ -291,35 +297,63 @@ footer p{color:#aaa;line-height:1.7}
   </div>
 </div>
 
+<!-- PAYMENT FLOW:
+     Step 1 = Customer details
+     Step 2 = Continue
+     Step 3 = 2-second timer
+     Step 4 = QR codes appear
+     Step 5 = Confirm Order & WhatsApp
+-->
 <div class="modal" id="checkoutModal">
   <div class="modalbox">
     <button class="pill modal-close" onclick="closeCheckout()">Close</button>
     <h2>Secure Checkout</h2>
-    <p>Online payment only • No COD</p>
-    <div class="form">
-      <input id="cName" placeholder="Full Name *">
-      <input id="cPhone" placeholder="Mobile Number *" inputmode="numeric">
-      <textarea id="cAddress" rows="3" placeholder="Complete Delivery Address *"></textarea>
-      <input id="cPincode" placeholder="Pincode *" inputmode="numeric">
+    <p id="checkoutSubtitle">First enter your delivery details.</p>
 
-      <button type="button" class="checkout-btn" id="confirmPaymentDetails" onclick="showPaymentQR()">Confirm Details & Continue</button>
+    <div id="detailsStep">
+      <div class="form">
+        <input id="cName" placeholder="Full Name *">
+        <input id="cPhone" placeholder="Mobile Number *" inputmode="numeric">
+        <textarea id="cAddress" rows="3" placeholder="Complete Delivery Address *"></textarea>
+        <input id="cPincode" placeholder="Pincode *" inputmode="numeric">
 
-      <div id="paymentStep" style="display:none">
-        <div class="payment-note">
-          <b>Payment Instructions</b><br><br>
-          1. Scan either QR code below.<br>
-          2. Complete the payment for your cart total.<br>
-          3. After payment, tap “Place Order & WhatsApp”.<br>
-          4. Send the payment proof on WhatsApp.
+        <div class="payment-step">
+          <strong>Step 1 of 3</strong>
+          Enter your details and tap Continue.
         </div>
 
-        <div class="qr-wrap">
-          <img class="qr" src="qr1.jpg" alt="Payment QR 1" onerror="this.src='assets/qr1.jpg'">
-          <img class="qr" src="qr2.png" alt="Payment QR 2" onerror="this.src='assets/qr2.png'">
-        </div>
-
-        <button type="button" class="checkout-btn" onclick="placeOrder()">Place Order & WhatsApp</button>
+        <button class="checkout-btn" onclick="continueToPayment()">Continue</button>
       </div>
+    </div>
+
+    <div id="timerStep" class="hidden">
+      <div class="timer-box">
+        <div>Preparing secure payment...</div>
+        <div class="timer-number" id="paymentTimer">2</div>
+        <div>Please wait 2 seconds.</div>
+      </div>
+    </div>
+
+    <div id="paymentStep" class="hidden">
+      <div class="confirm-note">
+        <b>Details saved.</b><br>
+        Now scan either QR code and complete your online payment.
+      </div>
+
+      <div class="payment-note" style="margin-top:12px">
+        <b>Payment Instructions</b><br><br>
+        1. Scan either QR code below.<br>
+        2. Complete the payment.<br>
+        3. After payment, tap Confirm Order & WhatsApp.<br>
+        4. Send payment proof on WhatsApp.
+      </div>
+
+      <div class="qr-wrap">
+        <img class="qr" src="qr1.jpg" alt="Payment QR 1" onerror="this.src='assets/qr1.jpg'">
+        <img class="qr" src="qr2.png" alt="Payment QR 2" onerror="this.src='assets/qr2.png'">
+      </div>
+
+      <button class="checkout-btn" onclick="placeOrder()">Confirm Order & WhatsApp</button>
     </div>
   </div>
 </div>
@@ -327,156 +361,9 @@ footer p{color:#aaa;line-height:1.7}
 <div class="toast" id="toast"></div>
 
 <script>
-/*
-  IMPORTANT:
-  This version reads the original catalog ONLY from products.json.
-  It does NOT use bb_catalog/localStorage as the product source.
-  This prevents an old empty local catalog from hiding your products.
-*/
-
 const WHATSAPP_NUMBER = "917658868426";   // 7658868426
 const SUPPORT_NUMBER  = "918764373020";   // 8764373020
 
-let products = [];
-let cart = JSON.parse(localStorage.getItem("bb_cart") || "[]");
-
-function money(value){
-  return "₹" + Number(value || 0).toLocaleString("en-IN");
-}
-
-function toast(message){
-  const box = document.getElementById("toast");
-  box.textContent = message;
-  box.classList.add("show");
-  clearTimeout(window.__toastTimer);
-  window.__toastTimer = setTimeout(() => box.classList.remove("show"), 2200);
-}
-
-function esc(value){
-  return String(value ?? "").replace(/[&<>"']/g, m => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-  }[m]));
-}
-
-function normalizeProduct(p, index){
-  const id = String(p.id ?? p.product_id ?? ("product-" + index));
-  const name = p.name ?? p.title ?? ("Product " + (index + 1));
-  const category = p.category ?? p.cat ?? "Bags";
-  const image = p.image ?? p.image_url ?? p.photo ?? "";
-  const originalPrice = Number(p.originalPrice ?? p.original_price ?? p.mrp ?? p.price ?? 0);
-  const sellingPrice = Number(p.price ?? p.selling_price ?? p.sellingPrice ?? originalPrice);
-  let type = String(p.type ?? "").toLowerCase();
-
-  if(type !== "combo") type = "sale";
-
-  return {
-    ...p,
-    id,
-    name,
-    category,
-    image,
-    originalPrice,
-    price: sellingPrice,
-    type,
-    badge: p.badge ?? (type === "combo" ? "COMBO" : "50% OFF")
-  };
-}
-
-async function loadProducts(){
-  try{
-    const response = await fetch("products.json", {cache:"no-store"});
-    if(!response.ok) throw new Error("products.json not found");
-    const data = await response.json();
-
-    if(!Array.isArray(data)) throw new Error("products.json must contain an array");
-
-    products = data.map(normalizeProduct);
-
-    renderAll();
-  }catch(error){
-    console.error(error);
-
-    document.getElementById("saleGrid").innerHTML =
-      '<div class="empty">Products could not be loaded. Please make sure <b>products.json</b> is in the same folder as index.html.</div>';
-
-    document.getElementById("comboGrid").innerHTML =
-      '<div class="empty">Products could not be loaded.</div>';
-
-    document.getElementById("allGrid").innerHTML =
-      '<div class="empty">Products could not be loaded.</div>';
-  }
-}
-
-function card(p){
-  const isCombo = p.type === "combo";
-  const discount = (!isCombo && p.originalPrice > 0 && p.originalPrice > p.price)
-    ? Math.round((1 - p.price / p.originalPrice) * 100)
-    : 0;
-
-  return `
-    <article class="card">
-      <div class="photo">
-        <img src="${esc(p.image)}"
-             alt="${esc(p.name)}"
-             loading="lazy"
-             onerror="this.style.opacity='.35'">
-        <span class="badge ${isCombo ? "combo" : ""}">
-          ${esc(p.badge)}
-        </span>
-      </div>
-
-      <div class="info">
-        <div class="cat">${esc(p.category)}</div>
-        <div class="name">${esc(p.name)}</div>
-
-        <div class="price">
-          <strong>${money(p.price)}</strong>
-          ${p.originalPrice > p.price ? `<del>${money(p.originalPrice)}</del>` : ""}
-        </div>
-
-        ${discount > 0 ? `<div class="saving">You save ${discount}%</div>` : ""}
-
-        <div class="card-actions">
-          <button class="smallbtn" onclick="addCart('${esc(p.id)}')">
-            Add to Cart
-          </button>
-          <button class="smallbtn buy" onclick="buyNow('${esc(p.id)}')">
-            Buy Now
-          </button>
-        </div>
-      </div>
-    </article>
-  `;
-}
-
-function renderAll(){
-  const sale = products.filter(p => p.type === "sale");
-  const combos = products.filter(p => p.type === "combo");
-
-  document.getElementById("saleGrid").innerHTML =
-    sale.length ? sale.map(card).join("") :
-    '<div class="empty">No sale products available.</div>';
-
-  document.getElementById("comboGrid").innerHTML =
-    combos.length ? combos.map(card).join("") :
-    '<div class="empty">No combo products available.</div>';
-
-  const categories = ["All", ...new Set(products.map(p => p.category).filter(Boolean))];
-
-  document.getElementById("filters").innerHTML = categories.map((cat, index) =>
-    `<button class="filter ${index === 0 ? "active" : ""}"
-      onclick="filterCat(${JSON.stringify(cat)}, this)">
-      ${esc(cat)}
-    </button>`
-  ).join("");
-
-  renderGrid("All");
-  updateCart();
-}
-
-function renderGrid(category){
-  const list = category === "All"
-    ? products
-    : products.filter(p => p.category === category);
-
-  document.getElementById("a
+// Built-in fallback catalog: used only if products.json cannot be loaded
+// or contains fewer than 40 products. Product images still use the existing assets/products files.
+const FALLBACK_PRODUCTS = [{"id":"sale1","name":"Classic Beige Tote Bag","category":"Tote Bags","image":"assets/products/1636.jpg","originalPrice":999,"price":500,"badge":"50% OFF","type":"sale"},{"id":"sale2","name":"Signature Beige Tote Bag","category":"Shoulder Bags","image":"assets/products/1645.jpg","originalPrice":1099,"price":550,"badge":"50% OFF","type":"sale"},{"id":"sale3","name":"Classic Brown Tote Bag","category":"Crossbody Bags","image":"assets/products/1642.jpg","originalPrice":1199,"price":600,"badge":"50% OFF","type":"sale"},{"id":"sale4","name":"Elegant Mini Shoulder Bag","category":"Handbags","image":"assets/products/1654.jpg","originalPrice":1299,"price":650,"badge":"50% OFF","type":"sale"},{"id":"sale5","name":"Classic Black Tote Bag","category":"Tote Bags","image":"assets/products/1651.jpg","originalPrice":1399,"price":700,"badge":"50% OFF","type":"sale"},{"id":"sale6","name":"Emerald Shoulder Bag","category":"Shoulder Bags","image":"assets/products/1648.jpg","originalPrice":1499,"price":750,"badge":"50% OFF","type":"sale"},{"id":"sale7","name":"Black Mini Shoulder Bag","category":"Crossbody Bags","image":"assets/products/1660.jpg","originalPrice":999,"price":500,"badge":"50% OFF","type":"sale"},{"id":"sale8","name":"Ivory Logo Shoulder Bag","category":"Handbags","image":"assets/products/1711.jpg","originalPrice":1199,"price":600,"badge":"50% OFF","type":"sale"},{"id":"sale9","name":"Black Pattern Shoulder Bag","category":"Tote Bags","image":"assets/products/1729.jpg","originalPrice":1299,"price":650,"badge":"50% OFF","type":"sale"},{"id":"sale10","name":"Brown Crossbody Bag","category":"Shoulder Bags","image":"assets/products/1754.jpg","originalPrice":1499,"price":750,"badge":"50% OFF","type":"sale"},{"id":"combo1","name":"Monogram Envelope Bag Combo","category":"Combo Bags","image":"assets/products/1750.jpg","originalPrice":1799,"price":1299,"badge":"COMBO","type":"combo"},{"id":"combo2","name":"Croc Texture Bag Combo","category":"Handbag Combos","image":"assets/products/1741.jpg","originalPrice":1899,"price":1399,"badge":"COMBO","type":"combo"},{"id":"combo3","name":"Quilted Shoulder Bag Combo","category":"Shoulder Combos","image":"assets/products/1720.jpg","originalPrice":1999,"price":1499,"badge":"COMBO","type":"combo"},{"id":"combo4","name":"Classic Mini Bag Combo","category":"Gift Combos","image":"assets/products/1723.jpg","originalPrice":1799,"price":1599,"badge":"COMBO","type":"combo"},{"id":"combo5","name":"Everyday Shoulder Bag Combo","category":"Combo Bags","image":"assets/products/1639.jpg","originalPrice":1899,"price":1399,"badge":"COMBO","type":"combo"},{"id":"combo6","name":"Color Pop Mini Bag Combo","category":"Handbag Combos","image":"assets/products/1690.jpg","originalPrice":1999,"price":1499,"badge":"COMBO","type":"combo"},{"id":"combo7","name":"Structured Handbag Combo","category":"Shoulder Combos","image":"assets/products/1669.jpg","originalPrice":1899,"price":1599,"badge":"COMBO","type":"combo"},{"id":"combo8","name":"Gift Box Handbag Combo","category":"Gift Combos","image":"assets/products/1657.jpg","originalPrice":1999,"price":1699,"badge":"COMBO","type":"combo"},{"id":"sale19","name":"
