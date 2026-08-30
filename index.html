@@ -1,0 +1,921 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Branded Bags | Luxury Fashion</title>
+<meta name="description" content="Branded Bags - premium handbags, 50% OFF collection and exclusive combo bags.">
+
+<style>
+:root{
+  --gold:#b58a3a;
+  --gold2:#8b6a2e;
+  --black:#151515;
+  --text:#222;
+  --muted:#777;
+  --line:#e8e2d7;
+  --cream:#faf8f3;
+  --white:#fff;
+  --green:#168a45;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,Arial,system-ui,sans-serif;color:var(--text);background:#fff}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+
+.topbar{background:var(--black);color:#fff;text-align:center;padding:9px 15px;font-size:11px;letter-spacing:.12em}
+.nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:10px 5vw;background:rgba(255,255,255,.96);backdrop-filter:blur(15px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:12px;min-width:max-content}
+.brand img{width:52px;height:52px;border-radius:50%;object-fit:contain}
+.brand-name{font-size:20px;font-weight:800;letter-spacing:.05em}
+.navlinks{display:flex;gap:24px;align-items:center;font-size:14px}
+.navlinks a:hover{color:var(--gold2)}
+.actions{display:flex;gap:8px}
+.pill{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 15px;transition:.2s}
+.pill:hover{border-color:var(--gold)}
+
+.hero{min-height:590px;padding:65px 5vw;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;background:radial-gradient(circle at 90% 20%,#f3e8d4 0,transparent 30%),linear-gradient(120deg,#fff 50%,#faf5eb)}
+.eyebrow{color:var(--gold);font-size:12px;font-weight:900;letter-spacing:.22em}
+.hero h1{margin:16px 0;font-family:Georgia,serif;font-size:clamp(48px,7vw,86px);line-height:.94}
+.hero p{max-width:550px;color:var(--muted);line-height:1.8;font-size:17px}
+.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--black);background:var(--black);color:#fff;padding:13px 21px;border-radius:999px;font-weight:800;margin:8px 7px 0 0}
+.btn.light{background:#fff;color:var(--black);border-color:var(--line)}
+.hero-card{height:480px;border-radius:30px;overflow:hidden;background:#eee;box-shadow:0 25px 70px rgba(0,0,0,.12)}
+.hero-card img{width:100%;height:100%;object-fit:cover}
+
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:20px 5vw;background:var(--cream);border-bottom:1px solid var(--line)}
+.trust-box{text-align:center;padding:14px}
+.trust-icon{font-size:25px;margin-bottom:7px}
+.trust-box b{display:block;font-size:14px}
+.trust-box span{display:block;margin-top:4px;color:#888;font-size:12px}
+
+.section{padding:70px 5vw}
+.section.cream{background:var(--cream)}
+.section-head{margin-bottom:28px}
+.section-head h2{margin:8px 0 10px;font-family:Georgia,serif;font-size:clamp(38px,5vw,58px)}
+.section-head p{margin:0;color:var(--muted);font-size:17px;line-height:1.6}
+
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.filter{padding:9px 15px;border:1px solid var(--line);background:#fff;border-radius:999px}
+.filter.active{background:var(--black);color:#fff;border-color:var(--black)}
+
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.25s}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 45px rgba(0,0,0,.09)}
+.photo{position:relative;aspect-ratio:1/1.13;background:#f4f2ee;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover;display:block;transition:.35s}
+.card:hover .photo img{transform:scale(1.03)}
+.badge{position:absolute;left:11px;top:11px;background:var(--black);color:#fff;border-radius:999px;padding:7px 10px;font-size:10px;font-weight:900;letter-spacing:.05em}
+.badge.combo{background:var(--gold2)}
+.info{padding:15px}
+.cat{color:var(--gold2);text-transform:uppercase;letter-spacing:.12em;font-size:10px;font-weight:800}
+.name{min-height:42px;margin:7px 0;font-size:15px;font-weight:800}
+.price{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.price strong{font-size:19px}
+.price del{color:#999;font-size:13px}
+.saving{color:var(--green);font-size:11px;font-weight:800;margin-top:4px}
+.card-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:13px}
+.smallbtn{border:1px solid var(--line);background:#fff;padding:10px 6px;border-radius:10px;font-size:12px;font-weight:800}
+.smallbtn.buy{color:#fff;background:var(--black);border-color:var(--black)}
+.loading{grid-column:1/-1;padding:60px 20px;text-align:center;border:1px dashed var(--line);border-radius:20px;color:#888}
+.empty{grid-column:1/-1;text-align:center;padding:40px;color:#888}
+
+.policy-card{padding:24px}
+.policy-card h3{margin-top:0}
+.policy-card p{color:var(--muted);line-height:1.7}
+
+footer{padding:50px 5vw 25px;background:var(--black);color:#fff;display:grid;grid-template-columns:2fr 1fr 1fr;gap:35px}
+.footer-logo{width:62px;height:62px;object-fit:contain;border-radius:50%}
+footer p{color:#aaa;line-height:1.7}
+.footer-links{display:grid;align-content:start;gap:10px;color:#ccc;font-size:13px}
+.footer-links b{color:#fff;margin-bottom:5px}
+.copyright{grid-column:1/-1;border-top:1px solid #333;padding-top:20px;color:#888;font-size:12px}
+
+.drawer{position:fixed;inset:0;z-index:500;display:none}
+.drawer.open{display:block}
+.shade{position:absolute;inset:0;background:rgba(0,0,0,.48)}
+.panel{position:absolute;right:0;top:0;width:min(450px,94vw);height:100%;padding:22px;background:#fff;overflow:auto;box-shadow:-15px 0 50px rgba(0,0,0,.15)}
+.panel h2{font-family:Georgia,serif;font-size:32px}
+.close{float:right}
+.cart-item{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.cart-item img{width:75px;height:85px;border-radius:10px;object-fit:cover}
+.cart-details{flex:1}
+.cart-name{font-weight:800}
+.qty{display:flex;align-items:center;gap:7px;margin-top:9px}
+.qty button{border:1px solid var(--line);background:#fff;border-radius:7px;padding:5px 9px}
+.remove{color:#b00020;border:0!important;background:none!important}
+.total{margin:20px 0;font-size:21px;font-weight:900}
+.checkout-btn{width:100%;padding:15px;border:0;border-radius:12px;background:var(--black);color:#fff;font-weight:900}
+
+.modal{position:fixed;inset:0;z-index:600;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(0,0,0,.5)}
+.modal.open{display:flex}
+.modalbox{width:min(700px,100%);max-height:92vh;overflow:auto;background:#fff;border-radius:22px;padding:25px}
+.modalbox h2{font-family:Georgia,serif;font-size:32px}
+.modal-close{float:right}
+.form{display:grid;gap:12px}
+.form input,.form textarea{width:100%;padding:13px;border:1px solid var(--line);border-radius:10px;outline:none}
+.form input:focus,.form textarea:focus{border-color:var(--gold)}
+.qr-wrap{display:flex;flex-wrap:wrap;gap:15px;margin:10px 0;justify-content:center}
+.qr{width:180px;height:180px;object-fit:contain;border:1px solid var(--line);border-radius:12px}
+.payment-note{padding:13px;border-radius:10px;background:#faf8f3;color:#666;font-size:13px;line-height:1.6}
+.payment-step{padding:15px;border-radius:12px;background:#f7f3eb;border:1px solid var(--line);text-align:center;color:#555}
+.payment-step strong{display:block;color:var(--black);font-size:15px;margin-bottom:5px}
+.timer-box{text-align:center;padding:18px;border-radius:12px;background:#151515;color:#fff}
+.timer-number{font-size:38px;font-weight:900;color:var(--gold)}
+.confirm-note{padding:13px;border-radius:10px;background:#eef8f1;color:#176a39;font-size:13px;line-height:1.6}
+.hidden{display:none!important}
+
+.toast{position:fixed;left:50%;bottom:25px;z-index:1000;transform:translate(-50%,120px);background:var(--black);color:#fff;padding:13px 18px;border-radius:999px;font-size:13px;transition:.3s}
+.toast.show{transform:translate(-50%,0)}
+
+@media(max-width:1000px){
+  .navlinks{display:none}
+  .hero{grid-template-columns:1fr}
+  .hero-card{height:420px}
+  .grid{grid-template-columns:repeat(3,1fr)}
+  .trust{grid-template-columns:repeat(2,1fr)}
+  footer{grid-template-columns:1fr 1fr}
+}
+@media(max-width:650px){
+  .topbar{font-size:9px}
+  .nav{padding:9px 4vw}
+  .brand img{width:48px;height:48px}
+  .brand-name{font-size:16px}
+  .pill{padding:9px 11px;font-size:12px}
+  .hero{padding:45px 4vw;min-height:auto}
+  .hero h1{font-size:56px}
+  .hero p{font-size:15px}
+  .hero-card{height:360px}
+  .section{padding:50px 4vw}
+  .section-head h2{font-size:42px}
+  .grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .info{padding:11px}
+  .name{font-size:13px}
+  .price strong{font-size:16px}
+  .smallbtn{font-size:10px;padding:9px 4px}
+  .trust{padding:12px 4vw}
+  .trust-box{padding:10px 4px}
+  .trust-box b{font-size:12px}
+  .trust-box span{font-size:10px}
+  footer{grid-template-columns:1fr}
+  .copyright{grid-column:auto}
+  .qr{width:145px;height:145px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">LUXURY COLLECTION • 50% OFF • ALL INDIA DELIVERY • ONLINE PAYMENT ONLY</div>
+
+<nav class="nav">
+  <a class="brand" href="#">
+    <img src="logo.png" alt="Branded Bags Logo" onerror="this.src='assets/logo.png'">
+    <span class="brand-name">BRANDED BAGS</span>
+  </a>
+  <div class="navlinks">
+    <a href="#sale">50% OFF</a>
+    <a href="#combos">Combos</a>
+    <a href="#shop">Shop</a>
+    <a href="#policy">Policies</a>
+  </div>
+  <div class="actions">
+    <button class="pill" onclick="openLogin()">Account</button>
+    <button class="pill" onclick="openCart()">Cart <span id="cartCount">0</span></button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div>
+    <div class="eyebrow">FASHION • STYLE • ELEGANCE</div>
+    <h1>Carry<br>Your Style.</h1>
+    <p>Discover our curated collection of luxury-inspired handbags, totes, shoulder bags, crossbody bags and exclusive combo bags.</p>
+    <a class="btn" href="#sale">Shop 50% OFF</a>
+    <a class="btn light" href="#combos">View Combos</a>
+  </div>
+  <div class="hero-card">
+    <img src="assets/products/1639.jpg" alt="Featured Branded Bag" onerror="this.src='assets/products/1636.jpg'">
+  </div>
+</header>
+
+<div class="trust">
+  <div class="trust-box"><div class="trust-icon">🚚</div><b>Fast Delivery</b><span>All India</span></div>
+  <div class="trust-box"><div class="trust-icon">↩️</div><b>7-Day Returns</b><span>Easy return window</span></div>
+  <div class="trust-box"><div class="trust-icon">🔒</div><b>Secure Payment</b><span>Online payment only</span></div>
+  <div class="trust-box"><div class="trust-icon">💬</div><b>WhatsApp Support</b><span>Customer assistance</span></div>
+</div>
+
+<section class="section" id="sale">
+  <div class="section-head">
+    <div class="eyebrow">LIMITED COLLECTION</div>
+    <h2>50% OFF Bags</h2>
+    <p>Enjoy special prices on our selected bag collection.</p>
+  </div>
+  <div id="saleGrid" class="grid"><div class="loading">Loading sale collection...</div></div>
+</section>
+
+<section class="section cream" id="combos">
+  <div class="section-head">
+    <div class="eyebrow">CURATED SETS</div>
+    <h2>Combo Bags</h2>
+    <p>Exclusive combo prices. Combo products are not included in the 50% OFF sale.</p>
+  </div>
+  <div id="comboGrid" class="grid"><div class="loading">Loading combo collection...</div></div>
+</section>
+
+<section class="section" id="shop">
+  <div class="section-head">
+    <div class="eyebrow">SHOP BY STYLE</div>
+    <h2>All Bags</h2>
+    <p>Choose your favourite style and add it to your cart.</p>
+  </div>
+  <div id="filters" class="filters"></div>
+  <div id="allGrid" class="grid"><div class="loading">Loading products...</div></div>
+</section>
+
+<section class="section cream" id="policy">
+  <div class="section-head">
+    <div class="eyebrow">SHOP WITH CONFIDENCE</div>
+    <h2>Our Policies</h2>
+    <p>Simple and transparent shopping experience.</p>
+  </div>
+  <div class="grid">
+    <div class="card policy-card"><h3>🔒 Online Payment</h3><p>COD is not available. Payment is accepted online only through the provided payment QR codes.</p></div>
+    <div class="card policy-card"><h3>↩️ 7-Day Returns</h3><p>Eligible products can be returned within 7 days of delivery, subject to the applicable return conditions.</p></div>
+    <div class="card policy-card"><h3>🚚 Delivery</h3><p>We provide All India delivery. Delivery time may vary depending on location and courier service.</p></div>
+    <div class="card policy-card"><h3>💬 Customer Support</h3><p>Need help with an order? Contact our support team.</p><button class="btn" onclick="contactSupport()">Contact Support</button></div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <img class="footer-logo" src="logo.png" alt="Branded Bags" onerror="this.src='assets/logo.png'">
+    <h3>Branded Bags</h3>
+    <p>Luxury-inspired fashion, modern style and curated collections for everyday elegance.</p>
+  </div>
+  <div class="footer-links">
+    <b>Quick Links</b>
+    <a href="#sale">50% OFF</a>
+    <a href="#combos">Combo Bags</a>
+    <a href="#shop">All Bags</a>
+    <a href="#policy">Policies</a>
+  </div>
+  <div class="footer-links">
+    <b>Customer Support</b>
+    <span>Online Payment Only</span>
+    <span>7-Day Returns</span>
+    <span>All India Delivery</span>
+    <button class="btn" onclick="whatsappSupport()" style="margin-top:8px">WhatsApp</button>
+  </div>
+  <div class="copyright">© 2026 Branded Bags. All rights reserved.</div>
+</footer>
+
+<div class="drawer" id="cartDrawer">
+  <div class="shade" onclick="closeCart()"></div>
+  <div class="panel">
+    <button class="pill close" onclick="closeCart()">Close</button>
+    <h2>Your Cart</h2>
+    <div id="cartItems"></div>
+    <div id="cartTotal" class="total">Total: ₹0</div>
+    <button class="checkout-btn" onclick="openCheckout()">Proceed to Checkout</button>
+  </div>
+</div>
+
+<div class="modal" id="loginModal">
+  <div class="modalbox">
+    <button class="pill modal-close" onclick="closeLogin()">Close</button>
+    <h2>Customer Account</h2>
+    <p>Save your details for faster checkout.</p>
+    <div class="form">
+      <input id="loginName" placeholder="Full Name">
+      <input id="loginEmail" type="email" placeholder="Email Address">
+      <input id="loginPhone" placeholder="Mobile Number">
+      <button class="checkout-btn" onclick="saveAccount()">Save Account</button>
+    </div>
+  </div>
+</div>
+
+<!-- PAYMENT FLOW:
+     Step 1 = Customer details
+     Step 2 = Continue
+     Step 3 = 2-second timer
+     Step 4 = QR codes appear
+     Step 5 = Confirm Order & WhatsApp
+-->
+<div class="modal" id="checkoutModal">
+  <div class="modalbox">
+    <button class="pill modal-close" onclick="closeCheckout()">Close</button>
+    <h2>Secure Checkout</h2>
+    <p id="checkoutSubtitle">First enter your delivery details.</p>
+
+    <div id="detailsStep">
+      <div class="form">
+        <input id="cName" placeholder="Full Name *">
+        <input id="cPhone" placeholder="Mobile Number *" inputmode="numeric">
+        <textarea id="cAddress" rows="3" placeholder="Complete Delivery Address *"></textarea>
+        <input id="cPincode" placeholder="Pincode *" inputmode="numeric">
+
+        <div class="payment-step">
+          <strong>Step 1 of 3</strong>
+          Enter your details and tap Continue.
+        </div>
+
+        <button class="checkout-btn" onclick="continueToPayment()">Continue</button>
+      </div>
+    </div>
+
+    <div id="timerStep" class="hidden">
+      <div class="timer-box">
+        <div>Preparing secure payment...</div>
+        <div class="timer-number" id="paymentTimer">2</div>
+        <div>Please wait 2 seconds.</div>
+      </div>
+    </div>
+
+    <div id="paymentStep" class="hidden">
+      <div class="confirm-note">
+        <b>Details saved.</b><br>
+        Now scan either QR code and complete your online payment.
+      </div>
+
+      <div class="payment-note" style="margin-top:12px">
+        <b>Payment Instructions</b><br><br>
+        1. Scan either QR code below.<br>
+        2. Complete the payment.<br>
+        3. After payment, tap Confirm Order & WhatsApp.<br>
+        4. Send payment proof on WhatsApp.
+      </div>
+
+      <div class="qr-wrap">
+        <img class="qr" src="qr1.jpg" alt="Payment QR 1" onerror="this.src='assets/qr1.jpg'">
+        <img class="qr" src="qr2.png" alt="Payment QR 2" onerror="this.src='assets/qr2.png'">
+      </div>
+
+      <button class="checkout-btn" onclick="placeOrder()">Confirm Order & WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const WHATSAPP_NUMBER = "917658868426";   // 7658868426
+const SUPPORT_NUMBER  = "918764373020";   // 8764373020
+
+// Built-in fallback catalog: used only if products.json cannot be loaded
+// or contains fewer than 40 products. Product images still use the existing assets/products files.
+const FALLBACK_PRODUCTS = [{"id":"sale1","name":"Classic Beige Tote Bag","category":"Tote Bags","image":"assets/products/1636.jpg","originalPrice":999,"price":500,"badge":"50% OFF","type":"sale"},{"id":"sale2","name":"Signature Beige Tote Bag","category":"Shoulder Bags","image":"assets/products/1645.jpg","originalPrice":1099,"price":550,"badge":"50% OFF","type":"sale"},{"id":"sale3","name":"Classic Brown Tote Bag","category":"Crossbody Bags","image":"assets/products/1642.jpg","originalPrice":1199,"price":600,"badge":"50% OFF","type":"sale"},{"id":"sale4","name":"Elegant Mini Shoulder Bag","category":"Handbags","image":"assets/products/1654.jpg","originalPrice":1299,"price":650,"badge":"50% OFF","type":"sale"},{"id":"sale5","name":"Classic Black Tote Bag","category":"Tote Bags","image":"assets/products/1651.jpg","originalPrice":1399,"price":700,"badge":"50% OFF","type":"sale"},{"id":"sale6","name":"Emerald Shoulder Bag","category":"Shoulder Bags","image":"assets/products/1648.jpg","originalPrice":1499,"price":750,"badge":"50% OFF","type":"sale"},{"id":"sale7","name":"Black Mini Shoulder Bag","category":"Crossbody Bags","image":"assets/products/1660.jpg","originalPrice":999,"price":500,"badge":"50% OFF","type":"sale"},{"id":"sale8","name":"Ivory Logo Shoulder Bag","category":"Handbags","image":"assets/products/1711.jpg","originalPrice":1199,"price":600,"badge":"50% OFF","type":"sale"},{"id":"sale9","name":"Black Pattern Shoulder Bag","category":"Tote Bags","image":"assets/products/1729.jpg","originalPrice":1299,"price":650,"badge":"50% OFF","type":"sale"},{"id":"sale10","name":"Brown Crossbody Bag","category":"Shoulder Bags","image":"assets/products/1754.jpg","originalPrice":1499,"price":750,"badge":"50% OFF","type":"sale"},{"id":"combo1","name":"Monogram Envelope Bag Combo","category":"Combo Bags","image":"assets/products/1750.jpg","originalPrice":1799,"price":1299,"badge":"COMBO","type":"combo"},{"id":"combo2","name":"Croc Texture Bag Combo","category":"Handbag Combos","image":"assets/products/1741.jpg","originalPrice":1899,"price":1399,"badge":"COMBO","type":"combo"},{"id":"combo3","name":"Quilted Shoulder Bag Combo","category":"Shoulder Combos","image":"assets/products/1720.jpg","originalPrice":1999,"price":1499,"badge":"COMBO","type":"combo"},{"id":"combo4","name":"Classic Mini Bag Combo","category":"Gift Combos","image":"assets/products/1723.jpg","originalPrice":1799,"price":1599,"badge":"COMBO","type":"combo"},{"id":"combo5","name":"Everyday Shoulder Bag Combo","category":"Combo Bags","image":"assets/products/1639.jpg","originalPrice":1899,"price":1399,"badge":"COMBO","type":"combo"},{"id":"combo6","name":"Color Pop Mini Bag Combo","category":"Handbag Combos","image":"assets/products/1690.jpg","originalPrice":1999,"price":1499,"badge":"COMBO","type":"combo"},{"id":"combo7","name":"Structured Handbag Combo","category":"Shoulder Combos","image":"assets/products/1669.jpg","originalPrice":1899,"price":1599,"badge":"COMBO","type":"combo"},{"id":"combo8","name":"Gift Box Handbag Combo","category":"Gift Combos","image":"assets/products/1657.jpg","originalPrice":1999,"price":1699,"badge":"COMBO","type":"combo"},{"id":"sale19","name":"Elegant Beige Tote Bag","category":"Tote Bags","image":"assets/products/IMG-20260830-WA0010.jpg","originalPrice":1499,"price":750,"badge":"50% OFF","type":"sale"},{"id":"sale20","name":"Classic Brown Shoulder Tote","category":"Tote Bags","image":"assets/products/IMG-20260830-WA0011.jpg","originalPrice":1599,"price":800,"badge":"50% OFF","type":"sale"},{"id":"sale21","name":"White Signature Tote Bag","category":"Tote Bags","image":"assets/products/IMG-20260830-WA0013.jpg","originalPrice":1699,"price":850,"badge":"50% OFF","type":"sale"},{"id":"sale22","name":"Green Chain Shoulder Bag","category":"Shoulder Bags","image":"assets/products/IMG-20260830-WA0014.jpg","originalPrice":1799,"price":900,"badge":"50% OFF","type":"sale"},{"id":"sale23","name":"Duo-Tone Pattern Shoulder Bag","category":"Shoulder Bags","image":"assets/products/IMG-20260830-WA0015.jpg","originalPrice":1899,"price":950,"badge":"50% OFF","type":"sale"},{"id":"sale24","name":"Monogram Structured Tote","category":"Tote Bags","image":"assets/products/IMG-20260830-WA0016.jpg","originalPrice":1999,"price":1000,"badge":"50% OFF","type":"sale"},{"id":"sale25","name":"Dior-Style Flap Handbag","category":"Handbags","image":"assets/products/IMG-20260830-WA0017.jpg","originalPrice":2099,"price":1050,"badge":"50% OFF","type":"sale"},{"id":"sale26","name":"Luxury Black Chain Bag","category":"Shoulder Bags","image":"assets/products/IMG-20260830-WA0018.jpg","originalPrice":2199,"price":1100,"badge":"50% OFF","type":"sale"},{"id":"sale27","name":"Minimal White Tote Bag","category":"Tote Bags","image":"assets/products/IMG-20260830-WA0020.jpg","originalPrice":2299,"price":1150,"badge":"50% OFF","type":"sale"},{"id":"sale28","name":"Monogram Shopper Tote","category":"Tote Bags","image":"assets/products/IMG-20260830-WA0021.jpg","originalPrice":2399,"price":1200,"badge":"50% OFF","type":"sale"},{"id":"sale29","name":"Classic Logo Shoulder Bag","category":"Shoulder Bags","image":"assets/products/IMG-20260830-WA0022.jpg","originalPrice":2499,"price":1250,"badge":"50% OFF","type":"sale"},{"id":"sale30","name":"Monogram Mini Shoulder Bag","category":"Crossbody Bags","image":"assets/products/IMG-20260830-WA0023.jpg","originalPrice":1499,"price":750,"badge":"50% OFF","type":"sale"},{"id":"sale31","name":"Black Structured Mini Bag","category":"Handbags","image":"assets/products/IMG-20260830-WA0024.jpg","originalPrice":1599,"price":800,"badge":"50% OFF","type":"sale"},{"id":"sale32","name":"White Quilted Tote Bag","category":"Tote Bags","image":"assets/products/IMG-20260830-WA0025.jpg","originalPrice":1699,"price":850,"badge":"50% OFF","type":"sale"},{"id":"sale33","name":"Patterned Canvas Tote","category":"Tote Bags","image":"assets/products/IMG-20260830-WA0027.jpg","originalPrice":1799,"price":900,"badge":"50% OFF","type":"sale"},{"id":"sale34","name":"Black Mini Handbag","category":"Handbags","image":"assets/products/IMG-20260830-WA0028.jpg","originalPrice":1899,"price":950,"badge":"50% OFF","type":"sale"},{"id":"sale35","name":"Monogram Box Shoulder Bag","category":"Shoulder Bags","image":"assets/products/IMG-20260830-WA0031.jpg","originalPrice":1999,"price":1000,"badge":"50% OFF","type":"sale"},{"id":"sale36","name":"Black & Gold Flap Bag","category":"Shoulder Bags","image":"assets/products/IMG-20260830-WA0033.jpg","originalPrice":2099,"price":1050,"badge":"50% OFF","type":"sale"},{"id":"sale37","name":"Classic Brown Satchel","category":"Handbags","image":"assets/products/IMG-20260830-WA0034.jpg","originalPrice":2199,"price":1100,"badge":"50% OFF","type":"sale"},{"id":"sale38","name":"Brown Monogram Tote","category":"Tote Bags","image":"assets/products/IMG-20260830-WA0035.jpg","originalPrice":2299,"price":1150,"badge":"50% OFF","type":"sale"},{"id":"sale39","name":"White Logo Clutch","category":"Clutches","image":"assets/products/IMG-20260830-WA0037.jpg","originalPrice":2399,"price":1200,"badge":"50% OFF","type":"sale"},{"id":"sale40","name":"Cream Monogram Tote","category":"Tote Bags","image":"assets/products/IMG-20260830-WA0038.jpg","originalPrice":2499,"price":1250,"badge":"50% OFF","type":"sale"},{"id":"sale41","name":"Luxury Pattern Handbag","category":"Handbags","image":"assets/products/IMG-20260830-WA0040.jpg","originalPrice":1499,"price":750,"badge":"50% OFF","type":"sale"},{"id":"sale42","name":"Classic Brown Tote","category":"Tote Bags","image":"assets/products/IMG-20260830-WA0041.jpg","originalPrice":1599,"price":800,"badge":"50% OFF","type":"sale"},{"id":"sale43","name":"White Chain Flap Bag","category":"Shoulder Bags","image":"assets/products/IMG-20260830-WA0043.jpg","originalPrice":1699,"price":850,"badge":"50% OFF","type":"sale"},{"id":"sale44","name":"Brown Monogram Handbag","category":"Handbags","image":"assets/products/IMG-20260830-WA0044.jpg","originalPrice":1799,"price":900,"badge":"50% OFF","type":"sale"},{"id":"sale45","name":"Structured Brown Tote","category":"Tote Bags","image":"assets/products/IMG-20260830-WA0045.jpg","originalPrice":1899,"price":950,"badge":"50% OFF","type":"sale"},{"id":"sale46","name":"Dark Monogram Shoulder Bag","category":"Shoulder Bags","image":"assets/products/IMG-20260830-WA0046.jpg","originalPrice":1999,"price":1000,"badge":"50% OFF","type":"sale"},{"id":"sale47","name":"White Signature Shopper","category":"Tote Bags","image":"assets/products/IMG-20260830-WA0047.jpg","originalPrice":2099,"price":1050,"badge":"50% OFF","type":"sale"},{"id":"sale48","name":"Classic Monogram Satchel","category":"Handbags","image":"assets/products/IMG-20260830-WA0048.jpg","originalPrice":2199,"price":1100,"badge":"50% OFF","type":"sale"},{"id":"sale49","name":"Black Monogram Tote","category":"Tote Bags","image":"assets/products/IMG-20260830-WA0049.jpg","originalPrice":2299,"price":1150,"badge":"50% OFF","type":"sale"},{"id":"sale50","name":"Gold-Detail Flap Handbag","category":"Shoulder Bags","image":"assets/products/IMG-20260830-WA0050.jpg","originalPrice":2399,"price":1200,"badge":"50% OFF","type":"sale"},{"id":"sale51","name":"Classic Brown Shoulder Bag","category":"Shoulder Bags","image":"assets/products/IMG-20260830-WA0051.jpg","originalPrice":2499,"price":1250,"badge":"50% OFF","type":"sale"},{"id":"sale52","name":"White Monogram Tote","category":"Tote Bags","image":"assets/products/IMG-20260830-WA0052.jpg","originalPrice":1499,"price":750,"badge":"50% OFF","type":"sale"},{"id":"sale53","name":"Dark Pattern Shopper Tote","category":"Tote Bags","image":"assets/products/IMG-20260830-WA0053.jpg","originalPrice":1599,"price":800,"badge":"50% OFF","type":"sale"}];
+
+let products = [];
+let cart = JSON.parse(localStorage.getItem("bb_cart") || "[]");
+
+function money(value){
+  return "₹" + Number(value || 0).toLocaleString("en-IN");
+}
+
+function toast(message){
+  const box = document.getElementById("toast");
+  box.textContent = message;
+  box.classList.add("show");
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer = setTimeout(() => box.classList.remove("show"), 2200);
+}
+
+function esc(value){
+  return String(value ?? "").replace(/[&<>"']/g, m => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[m]));
+}
+
+function normalizeProduct(p, index){
+  const id = String(p.id ?? p.product_id ?? ("product-" + index));
+  const name = p.name ?? p.title ?? ("Product " + (index + 1));
+  const category = p.category ?? p.cat ?? "Bags";
+  const image = p.image ?? p.image_url ?? p.photo ?? "";
+  const originalPrice = Number(
+    p.originalPrice ?? p.original_price ?? p.mrp ?? p.price ?? 0
+  );
+  const sellingPrice = Number(
+    p.price ?? p.selling_price ?? p.sellingPrice ?? originalPrice
+  );
+
+  let type = String(p.type ?? "").toLowerCase();
+  if(type !== "combo") type = "sale";
+
+  return {
+    ...p,
+    id,
+    name,
+    category,
+    image,
+    originalPrice,
+    price: sellingPrice,
+    type,
+    badge: p.badge ?? (type === "combo" ? "COMBO" : "50% OFF")
+  };
+}
+
+async function getProductData(){
+  const files = ["products.json", "products_updated_50off.json"];
+
+  // Always keep the existing catalog visible immediately.
+  // This prevents the page from getting stuck on "Loading products...".
+  const fallback = Array.isArray(FALLBACK_PRODUCTS) ? FALLBACK_PRODUCTS : [];
+
+  for(const file of files){
+    try{
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 2500);
+
+      const response = await fetch(file + "?v=" + Date.now(), {
+        cache:"no-store",
+        signal: controller.signal
+      });
+
+      clearTimeout(timeout);
+
+      if(!response.ok) continue;
+
+      const data = await response.json();
+      if(!Array.isArray(data) || !data.length) continue;
+
+      // If the uploaded catalog is complete, use it.
+      if(data.length >= fallback.length) return data;
+
+      // If it is partial, keep every existing fallback product and add/update
+      // products from the uploaded file by id. Nothing disappears.
+      const merged = [...fallback];
+      const indexById = new Map(merged.map((p,i) => [String(p.id), i]));
+
+      data.forEach((p, i) => {
+        const key = String(p.id ?? p.product_id ?? ("product-" + i));
+        if(indexById.has(key)) merged[indexById.get(key)] = p;
+        else merged.push(p);
+      });
+
+      return merged;
+    }catch(error){
+      console.warn("Could not load " + file + "; keeping fallback catalog.", error);
+    }
+  }
+
+  return fallback;
+}
+
+async function loadProducts(){
+  // Render the built-in full catalog FIRST so the shop never stays on Loading.
+  // products.json is only used as an optional update afterwards.
+  products = (Array.isArray(FALLBACK_PRODUCTS) ? FALLBACK_PRODUCTS : []).map(normalizeProduct);
+  renderAll();
+
+  try{
+    const data = await getProductData();
+    if(Array.isArray(data) && data.length){
+      products = data.map(normalizeProduct);
+      renderAll();
+    }
+  }catch(error){
+    console.error(error);
+
+    document.getElementById("saleGrid").innerHTML =
+      '<div class="empty">Products could not be loaded. Please make sure <b>products.json</b> is uploaded in the same main folder as index.html.</div>';
+
+    document.getElementById("comboGrid").innerHTML =
+      '<div class="empty">Products could not be loaded.</div>';
+
+    document.getElementById("allGrid").innerHTML =
+      '<div class="empty">Products could not be loaded.</div>';
+
+    document.getElementById("filters").innerHTML = "";
+  }
+}
+
+function card(p){
+  const isCombo = p.type === "combo";
+
+  const discount = (!isCombo && p.originalPrice > 0 && p.originalPrice > p.price)
+    ? Math.round((1 - p.price / p.originalPrice) * 100)
+    : 0;
+
+  return `
+    <article class="card">
+      <div class="photo">
+        <img src="${esc(p.image)}"
+             alt="${esc(p.name)}"
+             loading="lazy"
+             onerror="this.style.opacity='.35'">
+        <span class="badge ${isCombo ? "combo" : ""}">
+          ${esc(p.badge)}
+        </span>
+      </div>
+
+      <div class="info">
+        <div class="cat">${esc(p.category)}</div>
+        <div class="name">${esc(p.name)}</div>
+
+        <div class="price">
+          <strong>${money(p.price)}</strong>
+          ${p.originalPrice > p.price ? `<del>${money(p.originalPrice)}</del>` : ""}
+        </div>
+
+        ${discount > 0 ? `<div class="saving">You save ${discount}%</div>` : ""}
+
+        <div class="card-actions">
+          <button class="smallbtn" onclick="addCart('${esc(p.id)}')">
+            Add to Cart
+          </button>
+          <button class="smallbtn buy" onclick="buyNow('${esc(p.id)}')">
+            Buy Now
+          </button>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+function renderAll(){
+  const sale = products.filter(p => p.type === "sale");
+  const combos = products.filter(p => p.type === "combo");
+
+  document.getElementById("saleGrid").innerHTML =
+    sale.length ? sale.map(card).join("") :
+    '<div class="empty">No sale products available.</div>';
+
+  document.getElementById("comboGrid").innerHTML =
+    combos.length ? combos.map(card).join("") :
+    '<div class="empty">No combo products available.</div>';
+
+  const categories = [
+    "All",
+    ...new Set(products.map(p => p.category).filter(Boolean))
+  ];
+
+  document.getElementById("filters").innerHTML = categories.map((cat, index) =>
+    `<button class="filter ${index === 0 ? "active" : ""}"
+      onclick="filterCat(${JSON.stringify(cat)}, this)">
+      ${esc(cat)}
+    </button>`
+  ).join("");
+
+  renderGrid("All");
+  updateCart();
+}
+
+function renderGrid(category){
+  const list = category === "All"
+    ? products
+    : products.filter(p => p.category === category);
+
+  document.getElementById("allGrid").innerHTML =
+    list.length ? list.map(card).join("") :
+    '<div class="empty">No products in this category.</div>';
+}
+
+function filterCat(category, button){
+  document.querySelectorAll(".filter").forEach(x => x.classList.remove("active"));
+  button.classList.add("active");
+  renderGrid(category);
+}
+
+function addCart(id){
+  const product = products.find(p => p.id === id);
+
+  if(!product){
+    toast("Product not found");
+    return;
+  }
+
+  const existing = cart.find(i => i.id === id);
+
+  if(existing){
+    existing.qty += 1;
+  }else{
+    cart.push({id, qty:1});
+  }
+
+  saveCart();
+  updateCart();
+  toast("Added to cart");
+}
+
+function buyNow(id){
+  const product = products.find(p => p.id === id);
+
+  if(!product){
+    toast("Product not found");
+    return;
+  }
+
+  cart = [{id, qty:1}];
+  saveCart();
+  updateCart();
+  openCheckout();
+}
+
+function saveCart(){
+  localStorage.setItem("bb_cart", JSON.stringify(cart));
+}
+
+function updateCart(){
+  const count = cart.reduce((sum, item) => sum + Number(item.qty || 0), 0);
+  document.getElementById("cartCount").textContent = count;
+
+  const itemsBox = document.getElementById("cartItems");
+  const totalBox = document.getElementById("cartTotal");
+
+  if(!cart.length){
+    itemsBox.innerHTML = '<div class="empty">Your cart is empty.</div>';
+    totalBox.textContent = "Total: ₹0";
+    return;
+  }
+
+  let total = 0;
+
+  itemsBox.innerHTML = cart.map(item => {
+    const p = products.find(x => x.id === item.id);
+
+    if(!p) return "";
+
+    const qty = Number(item.qty || 1);
+    total += p.price * qty;
+
+    return `
+      <div class="cart-item">
+        <img src="${esc(p.image)}" alt="${esc(p.name)}">
+        <div class="cart-details">
+          <div class="cart-name">${esc(p.name)}</div>
+          <div>${money(p.price)}</div>
+          <div class="qty">
+            <button onclick="changeQty('${esc(p.id)}',-1)">−</button>
+            <b>${qty}</b>
+            <button onclick="changeQty('${esc(p.id)}',1)">+</button>
+            <button class="remove" onclick="removeCart('${esc(p.id)}')">Remove</button>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join("");
+
+  totalBox.textContent = "Total: " + money(total);
+}
+
+function changeQty(id, change){
+  const item = cart.find(i => i.id === id);
+
+  if(!item) return;
+
+  item.qty += change;
+
+  if(item.qty <= 0){
+    cart = cart.filter(i => i.id !== id);
+  }
+
+  saveCart();
+  updateCart();
+}
+
+function removeCart(id){
+  cart = cart.filter(i => i.id !== id);
+  saveCart();
+  updateCart();
+}
+
+function openCart(){
+  document.getElementById("cartDrawer").classList.add("open");
+}
+
+function closeCart(){
+  document.getElementById("cartDrawer").classList.remove("open");
+}
+
+function openLogin(){
+  const saved = JSON.parse(localStorage.getItem("bb_account") || "null");
+
+  if(saved){
+    document.getElementById("loginName").value = saved.name || "";
+    document.getElementById("loginEmail").value = saved.email || "";
+    document.getElementById("loginPhone").value = saved.phone || "";
+  }
+
+  document.getElementById("loginModal").classList.add("open");
+}
+
+function closeLogin(){
+  document.getElementById("loginModal").classList.remove("open");
+}
+
+function saveAccount(){
+  const name = document.getElementById("loginName").value.trim();
+  const email = document.getElementById("loginEmail").value.trim();
+  const phone = document.getElementById("loginPhone").value.trim();
+
+  if(!name || !phone){
+    toast("Please enter name and mobile");
+    return;
+  }
+
+  localStorage.setItem("bb_account", JSON.stringify({
+    name,
+    email,
+    phone
+  }));
+
+  toast("Account saved");
+  closeLogin();
+}
+
+function resetPaymentFlow(){
+  clearTimeout(window.__paymentTimer);
+
+  document.getElementById("detailsStep").classList.remove("hidden");
+  document.getElementById("timerStep").classList.add("hidden");
+  document.getElementById("paymentStep").classList.add("hidden");
+
+  document.getElementById("checkoutSubtitle").textContent =
+    "First enter your delivery details.";
+
+  document.getElementById("paymentTimer").textContent = "2";
+}
+
+function openCheckout(){
+  if(!cart.length){
+    toast("Your cart is empty");
+    return;
+  }
+
+  closeCart();
+  resetPaymentFlow();
+
+  const saved = JSON.parse(localStorage.getItem("bb_account") || "null");
+
+  if(saved){
+    document.getElementById("cName").value = saved.name || "";
+    document.getElementById("cPhone").value = saved.phone || "";
+  }
+
+  document.getElementById("checkoutModal").classList.add("open");
+}
+
+function closeCheckout(){
+  clearTimeout(window.__paymentTimer);
+  document.getElementById("checkoutModal").classList.remove("open");
+}
+
+function validCustomerDetails(){
+  const name = document.getElementById("cName").value.trim();
+  const phone = document.getElementById("cPhone").value.trim();
+  const address = document.getElementById("cAddress").value.trim();
+  const pincode = document.getElementById("cPincode").value.trim();
+
+  if(!name){
+    toast("Please enter your full name");
+    return false;
+  }
+
+  if(!/^[0-9]{10}$/.test(phone.replace(/\D/g,""))){
+    toast("Please enter a valid 10-digit mobile number");
+    return false;
+  }
+
+  if(!address){
+    toast("Please enter your complete address");
+    return false;
+  }
+
+  if(!/^[0-9]{6}$/.test(pincode.replace(/\D/g,""))){
+    toast("Please enter a valid 6-digit pincode");
+    return false;
+  }
+
+  return true;
+}
+
+function continueToPayment(){
+  if(!validCustomerDetails()) return;
+
+  document.getElementById("detailsStep").classList.add("hidden");
+  document.getElementById("timerStep").classList.remove("hidden");
+  document.getElementById("paymentStep").classList.add("hidden");
+
+  document.getElementById("checkoutSubtitle").textContent =
+    "Please wait while payment options are prepared.";
+
+  let seconds = 2;
+  document.getElementById("paymentTimer").textContent = seconds;
+
+  clearTimeout(window.__paymentTimer);
+
+  const tick = () => {
+    seconds -= 1;
+
+    if(seconds > 0){
+      document.getElementById("paymentTimer").textContent = seconds;
+      window.__paymentTimer = setTimeout(tick, 1000);
+    }else{
+      document.getElementById("timerStep").classList.add("hidden");
+      document.getElementById("paymentStep").classList.remove("hidden");
+
+      document.getElementById("checkoutSubtitle").textContent =
+        "Payment options are now available.";
+    }
+  };
+
+  window.__paymentTimer = setTimeout(tick, 1000);
+}
+
+function getOrderData(){
+  let total = 0;
+  const order = [];
+
+  cart.forEach(item => {
+    const p = products.find(x => x.id === item.id);
+
+    if(!p) return;
+
+    const qty = Number(item.qty || 1);
+    total += p.price * qty;
+
+    order.push({
+      name: p.name,
+      qty,
+      price: p.price
+    });
+  });
+
+  return {total, order};
+}
+
+function placeOrder(){
+  if(!validCustomerDetails()) return;
+
+  const {total, order} = getOrderData();
+
+  if(!order.length){
+    toast("Your cart is empty");
+    return;
+  }
+
+  const name = document.getElementById("cName").value.trim();
+  const phone = document.getElementById("cPhone").value.trim();
+  const address = document.getElementById("cAddress").value.trim();
+  const pincode = document.getElementById("cPincode").value.trim();
+
+  const orderLines = order.map((item, index) =>
+    `${index + 1}. ${item.name} x ${item.qty} = ${money(item.price * item.qty)}`
+  ).join("\n");
+
+  const message =
+`Hello Branded Bags, I have completed the online payment and want to confirm my order.
+
+ORDER:
+${orderLines}
+
+TOTAL: ${money(total)}
+
+CUSTOMER DETAILS:
+Name: ${name}
+Mobile: ${phone}
+Address: ${address}
+Pincode: ${pincode}
+
+I will send the payment proof on WhatsApp.`;
+
+  const url = "https://wa.me/" + WHATSAPP_NUMBER +
+    "?text=" + encodeURIComponent(message);
+
+  window.open(url, "_blank");
+
+  toast("Opening WhatsApp...");
+
+  cart = [];
+  saveCart();
+  updateCart();
+
+  setTimeout(() => {
+    closeCheckout();
+  }, 700);
+}
+
+function whatsappSupport(){
+  window.open(
+    "https://wa.me/" + WHATSAPP_NUMBER +
+    "?text=" + encodeURIComponent("Hello Branded Bags, I need customer support."),
+    "_blank"
+  );
+}
+
+function contactSupport(){
+  window.open(
+    "https://wa.me/" + SUPPORT_NUMBER +
+    "?text=" + encodeURIComponent("Hello Branded Bags, I need customer support."),
+    "_blank"
+  );
+}
+
+loadProducts();
+updateCart();
+</script>
+</body>
+</html>
