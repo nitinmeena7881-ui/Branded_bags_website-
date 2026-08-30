@@ -302,17 +302,15 @@ footer p{color:#aaa;line-height:1.7}
       <textarea id="cAddress" rows="3" placeholder="Complete Delivery Address *"></textarea>
       <input id="cPincode" placeholder="Pincode *" inputmode="numeric">
 
-      <button id="confirmDetailsBtn" class="checkout-btn" type="button" onclick="showPayment()">
-        Confirm Details & Continue
-      </button>
+      <button type="button" class="checkout-btn" id="confirmPaymentDetails" onclick="showPaymentQR()">Confirm Details & Continue</button>
 
-      <div id="paymentStep" style="display:none;">
+      <div id="paymentStep" style="display:none">
         <div class="payment-note">
           <b>Payment Instructions</b><br><br>
           1. Scan either QR code below.<br>
-          2. Complete the payment.<br>
-          3. Place your order.<br>
-          4. Send payment proof on WhatsApp.
+          2. Complete the payment for your cart total.<br>
+          3. After payment, tap “Place Order & WhatsApp”.<br>
+          4. Send the payment proof on WhatsApp.
         </div>
 
         <div class="qr-wrap">
@@ -320,7 +318,7 @@ footer p{color:#aaa;line-height:1.7}
           <img class="qr" src="qr2.png" alt="Payment QR 2" onerror="this.src='assets/qr2.png'">
         </div>
 
-        <button class="checkout-btn" type="button" onclick="placeOrder()">Place Order & WhatsApp</button>
+        <button type="button" class="checkout-btn" onclick="placeOrder()">Place Order & WhatsApp</button>
       </div>
     </div>
   </div>
@@ -481,5 +479,4 @@ function renderGrid(category){
     ? products
     : products.filter(p => p.category === category);
 
-  document.getElementById("allGrid").innerHTML =
-    list.length ? l
+  document.getElementById("a
