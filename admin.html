@@ -2,1145 +2,1463 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Branded Bags - Admin Panel</title>
 
 <style>
 *{box-sizing:border-box}
 
 body{
-  margin:0;
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  background:#f5f5f5;
-  color:#111;
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:#f5f5f5;
+color:#111;
 }
 
-.top{
-  background:#111;
-  color:white;
-  padding:22px 5vw;
+.header{
+background:#111;
+color:#fff;
+padding:22px 5%;
 }
 
-.top h1{
-  margin:0 0 5px;
-  font-size:26px;
+.header h1{
+margin:0;
+font-size:26px;
 }
 
-.top p{
-  margin:0;
-  opacity:.75;
+.header p{
+margin:6px 0 0;
+opacity:.75;
 }
 
-.wrap{
-  width:min(1100px,94%);
-  margin:25px auto 60px;
+.container{
+width:min(1100px,94%);
+margin:25px auto 60px;
 }
 
 .card{
-  background:white;
-  border:1px solid #ddd;
-  border-radius:18px;
-  padding:22px;
-  margin-bottom:22px;
-  box-shadow:0 4px 18px rgba(0,0,0,.05);
+background:#fff;
+border:1px solid #ddd;
+border-radius:18px;
+padding:22px;
+margin-bottom:22px;
+box-shadow:0 4px 16px rgba(0,0,0,.06);
 }
 
 .card h2{
-  margin-top:0;
-  font-size:24px;
+margin:0 0 20px;
+font-size:25px;
 }
 
 .grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
 }
 
 .field{
-  display:flex;
-  flex-direction:column;
-  gap:7px;
+display:flex;
+flex-direction:column;
+gap:7px;
 }
 
-.field.full{
-  grid-column:1/-1;
+.full{
+grid-column:1/-1;
 }
 
 label{
-  font-weight:700;
+font-weight:bold;
 }
 
 input,select,textarea{
-  width:100%;
-  padding:13px;
-  border:1px solid #ccc;
-  border-radius:10px;
-  font-size:16px;
-  outline:none;
-  background:white;
+width:100%;
+padding:14px;
+font-size:16px;
+border:1px solid #ccc;
+border-radius:10px;
+background:#fff;
+outline:none;
 }
 
 textarea{
-  min-height:120px;
-  resize:vertical;
+min-height:120px;
+resize:vertical;
 }
 
-input:focus,select:focus,textarea:focus{
-  border-color:#111;
+input:focus,
+select:focus,
+textarea:focus{
+border-color:#111;
 }
 
-.check{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-top:10px;
-  font-weight:700;
+.checkbox{
+display:flex;
+align-items:center;
+gap:10px;
+margin-top:16px;
+font-size:17px;
 }
 
-.check input{
-  width:20px;
-  height:20px;
+.checkbox input{
+width:20px;
+height:20px;
 }
 
-.actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:18px;
+.buttons{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-top:18px;
 }
 
 button{
-  border:0;
-  border-radius:10px;
-  padding:13px 18px;
-  font-size:16px;
-  font-weight:700;
-  cursor:pointer;
-  background:#111;
-  color:white;
-  touch-action:manipulation;
+appearance:none;
+-webkit-appearance:none;
+border:0;
+padding:14px 20px;
+border-radius:10px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+-webkit-tap-highlight-color:transparent;
+touch-action:manipulation;
+background:#111;
+color:#fff;
 }
 
-button:hover{
-  opacity:.9;
+button:active{
+transform:scale(.98);
 }
 
-button.green{
-  background:#15803d;
+.green{
+background:#16803c;
 }
 
-button.red{
-  background:#c1121f;
+.red{
+background:#c1121f;
 }
 
-button.light{
-  background:white;
-  color:#111;
-  border:1px solid #ccc;
+.white{
+background:#fff;
+color:#111;
+border:1px solid #ccc;
 }
 
 .status{
-  padding:12px;
-  border-radius:10px;
-  background:#f1f1f1;
-  margin-top:15px;
-  display:none;
+margin-top:15px;
+padding:12px;
+border-radius:10px;
+background:#f1f1f1;
+display:none;
 }
 
 .product{
-  display:grid;
-  grid-template-columns:90px 1fr auto;
-  gap:15px;
-  align-items:center;
-  padding:15px 0;
-  border-bottom:1px solid #eee;
+display:grid;
+grid-template-columns:90px 1fr auto;
+gap:15px;
+align-items:center;
+padding:15px 0;
+border-bottom:1px solid #eee;
 }
 
 .product:last-child{
-  border-bottom:0;
+border-bottom:0;
 }
 
 .product img{
-  width:90px;
-  height:90px;
-  object-fit:cover;
-  border-radius:12px;
-  background:#eee;
+width:90px;
+height:90px;
+object-fit:cover;
+border-radius:12px;
+background:#eee;
 }
 
 .product h3{
-  margin:0 0 6px;
-}
-
-.price{
-  font-weight:700;
+margin:0 0 7px;
 }
 
 .old{
-  text-decoration:line-through;
-  color:#888;
-  margin-right:8px;
+text-decoration:line-through;
+color:#888;
+margin-right:8px;
 }
 
 .sale{
-  color:#d00;
-}
-
-.order{
-  border:1px solid #ddd;
-  border-radius:14px;
-  padding:16px;
-  margin:12px 0;
-  background:#fafafa;
-}
-
-.order h3{
-  margin:0 0 8px;
-}
-
-.order p{
-  margin:5px 0;
+color:#d00000;
+font-weight:bold;
 }
 
 .badge{
-  display:inline-block;
-  padding:5px 9px;
-  border-radius:20px;
-  background:#111;
-  color:white;
-  font-size:12px;
-  margin-right:5px;
+display:inline-block;
+padding:5px 9px;
+border-radius:20px;
+background:#111;
+color:#fff;
+font-size:12px;
+margin-right:5px;
+}
+
+.order{
+background:#fafafa;
+border:1px solid #ddd;
+border-radius:14px;
+padding:16px;
+margin:12px 0;
+}
+
+.order h3{
+margin:0 0 10px;
+}
+
+.order p{
+margin:6px 0;
+line-height:1.45;
 }
 
 .empty{
-  padding:20px;
-  text-align:center;
-  color:#777;
+padding:20px;
+text-align:center;
+color:#777;
 }
 
 @media(max-width:700px){
-  .grid{
-    grid-template-columns:1fr;
-  }
 
-  .field.full{
-    grid-column:auto;
-  }
+.grid{
+grid-template-columns:1fr;
+}
 
-  .product{
-    grid-template-columns:70px 1fr;
-  }
+.full{
+grid-column:auto;
+}
 
-  .product img{
-    width:70px;
-    height:70px;
-  }
+.product{
+grid-template-columns:70px 1fr;
+}
 
-  .product .actions{
-    grid-column:1/-1;
-  }
+.product img{
+width:70px;
+height:70px;
+}
 
-  button{
-    width:100%;
-  }
+.product .buttons{
+grid-column:1/-1;
+}
+
+button{
+width:100%;
+}
+
 }
 </style>
 </head>
 
 <body>
 
-<div class="top">
-  <h1>Branded Bags — Admin Panel</h1>
-  <p>Manage products, prices, discounts and orders</p>
+<div class="header">
+<h1>Branded Bags — Admin Panel</h1>
+<p>Manage Products, Prices, Discounts & Orders</p>
 </div>
 
-<div class="wrap">
+<div class="container">
 
-  <!-- PRODUCT FORM -->
-  <div class="card">
-    <h2 id="formTitle">Add Product</h2>
+<!-- ================= PRODUCT FORM ================= -->
 
-    <input type="hidden" id="productId">
+<div class="card">
 
-    <div class="grid">
+<h2 id="formTitle">Add Product</h2>
 
-      <div class="field">
-        <label>Product Name</label>
-        <input id="productName" type="text" placeholder="Example: Premium Handbag">
-      </div>
+<input type="hidden" id="productId">
 
-      <div class="field">
-        <label>Category</label>
-        <select id="category">
-          <option value="Ladies Bags">Ladies Bags</option>
-          <option value="Handbags">Handbags</option>
-          <option value="Shoulder Bags">Shoulder Bags</option>
-          <option value="Sling Bags">Sling Bags</option>
-          <option value="Tote Bags">Tote Bags</option>
-          <option value="Backpacks">Backpacks</option>
-          <option value="Combo Bags">Combo Bags</option>
-          <option value="Premium">Premium</option>
-        </select>
-      </div>
+<div class="grid">
 
-      <div class="field">
-        <label>Original Price ₹</label>
-        <input id="originalPrice" type="number" min="0" placeholder="1999">
-      </div>
+<div class="field">
+<label>Product Name</label>
+<input id="productName" type="text" placeholder="Premium Handbag">
+</div>
 
-      <div class="field">
-        <label>Discount %</label>
-        <input id="discount" type="number" min="0" max="100" value="50">
-      </div>
+<div class="field">
+<label>Category</label>
+<select id="category">
+<option value="Ladies Bags">Ladies Bags</option>
+<option value="Handbags">Handbags</option>
+<option value="Shoulder Bags">Shoulder Bags</option>
+<option value="Sling Bags">Sling Bags</option>
+<option value="Tote Bags">Tote Bags</option>
+<option value="Backpacks">Backpacks</option>
+<option value="Combo Bags">Combo Bags</option>
+<option value="Premium">Premium</option>
+</select>
+</div>
 
-      <div class="field">
-        <label>Selling Price ₹</label>
-        <input id="sellingPrice" type="number" min="0" placeholder="999">
-      </div>
+<div class="field">
+<label>Original Price ₹</label>
+<input id="originalPrice" type="number" min="0" placeholder="1999"
+oninput="calculatePrice()">
+</div>
 
-      <div class="field">
-        <label>Image URL</label>
-        <input id="image" type="url" placeholder="https://...">
-      </div>
+<div class="field">
+<label>Discount %</label>
+<input id="discount" type="number" min="0" max="100" value="50"
+oninput="calculatePrice()">
+</div>
 
-      <div class="field full">
-        <label>Product Description</label>
-        <textarea id="description" placeholder="Product description"></textarea>
-      </div>
+<div class="field">
+<label>Selling Price ₹</label>
+<input id="sellingPrice" type="number" min="0" placeholder="999">
+</div>
 
-    </div>
+<div class="field">
+<label>Image URL</label>
+<input id="image" type="url" placeholder="https://...">
+</div>
 
-    <label class="check">
-      <input id="combo" type="checkbox">
-      Combo Bag — discount लागू नहीं करना
-    </label>
+<div class="field full">
+<label>Description</label>
+<textarea id="description"
+placeholder="Product description"></textarea>
+</div>
 
-    <div class="actions">
-      <button id="saveProductBtn">Save Product</button>
-      <button id="clearBtn" class="light">Clear</button>
-    </div>
+</div>
 
-    <div id="productStatus" class="status"></div>
-  </div>
+<label class="checkbox">
+<input id="combo" type="checkbox" onchange="calculatePrice()">
+Combo Bag — discount लागू नहीं करना
+</label>
 
+<div class="buttons">
 
-  <!-- PRODUCTS -->
-  <div class="card">
-    <h2>Products</h2>
+<button type="button" onclick="saveProduct()">
+Save Product
+</button>
 
-    <div class="actions">
-      <button id="downloadBtn" class="green">Download products.json</button>
-      <button id="importBtn" class="light">Import products.json</button>
-      <button id="resetBtn" class="red">Reset Catalog</button>
-    </div>
+<button type="button" class="white" onclick="clearForm()">
+Clear
+</button>
 
-    <input
-      id="fileInput"
-      type="file"
-      accept=".json,application/json"
-      style="display:none"
-    >
+</div>
 
-    <div id="productsList">
-      Loading products...
-    </div>
-  </div>
-
-
-  <!-- ORDERS -->
-  <div class="card">
-    <h2>Orders</h2>
-
-    <div class="actions">
-      <button id="refreshOrdersBtn">Refresh Orders</button>
-    </div>
-
-    <div id="ordersStatus" class="status"></div>
-
-    <div id="ordersList">
-      Loading orders...
-    </div>
-  </div>
+<div id="productStatus" class="status"></div>
 
 </div>
 
 
-<!-- SUPABASE -->
+<!-- ================= PRODUCTS ================= -->
+
+<div class="card">
+
+<h2>Products</h2>
+
+<div class="buttons">
+
+<button type="button"
+class="green"
+onclick="downloadJson()">
+Download products.json
+</button>
+
+<button type="button"
+class="white"
+onclick="openImport()">
+Import products.json
+</button>
+
+<button type="button"
+class="red"
+onclick="resetCatalog()">
+Reset Catalog
+</button>
+
+</div>
+
+<input
+id="fileInput"
+type="file"
+accept=".json,application/json"
+style="display:none"
+onchange="importJson(event)"
+>
+
+<div id="productsList">
+Loading products...
+</div>
+
+</div>
+
+
+<!-- ================= ORDERS ================= -->
+
+<div class="card">
+
+<h2>Orders</h2>
+
+<div class="buttons">
+
+<button type="button"
+onclick="loadOrders()">
+Refresh Orders
+</button>
+
+</div>
+
+<div id="ordersStatus" class="status"></div>
+
+<div id="ordersList">
+Loading orders...
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ================= SUPABASE ================= -->
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-"use strict";
-
-/* ==============================
-   SUPABASE
-============================== */
 
 const SUPABASE_URL =
-  "https://lkdwjqpjcitnchmibupa.supabase.co";
+"https://lkdwjqpjcitnchmibupa.supabase.co";
 
 const SUPABASE_KEY =
-  "sb_publishable_iM4hwDWoyBnhbAzEfWj5Uw_cQumbH5k";
+"sb_publishable_iM4hwDWoyBnhbAzEfWj5Uw_cQumbH5k";
 
-const supabaseClient =
-  window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
-
-
-/* ==============================
-   LOCAL PRODUCT CATALOG
-============================== */
-
-const STORAGE_KEY = "branded_bags_products";
+const STORAGE_KEY =
+"branded_bags_products";
 
 let products = [];
 
+let supabaseClient = null;
 
-/* ==============================
-   ELEMENT HELPER
-============================== */
 
-function $(id){
-  return document.getElementById(id);
+/* ================= SUPABASE START ================= */
+
+try{
+
+if(
+window.supabase &&
+typeof window.supabase.createClient === "function"
+){
+
+supabaseClient =
+window.supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
+
+}
+
+}catch(error){
+
+console.error(
+"Supabase error:",
+error
+);
+
 }
 
 
-/* ==============================
-   STATUS
-============================== */
+/* ================= HELPER ================= */
 
-function showStatus(id, message){
-  const el = $(id);
-  if(!el) return;
+function get(id){
 
-  el.textContent = message;
-  el.style.display = "block";
+return document.getElementById(id);
+
 }
 
 
-/* ==============================
-   LOAD PRODUCTS
-============================== */
+/* ================= ESCAPE ================= */
+
+function esc(value){
+
+return String(value ?? "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* ================= PRICE ================= */
+
+function calculatePrice(){
+
+const original =
+Number(get("originalPrice").value || 0);
+
+const discount =
+Number(get("discount").value || 0);
+
+const combo =
+get("combo").checked;
+
+if(original <= 0){
+
+return;
+
+}
+
+if(combo){
+
+get("sellingPrice").value =
+original;
+
+return;
+
+}
+
+const selling =
+original -
+(original * discount / 100);
+
+get("sellingPrice").value =
+Math.round(selling);
+
+}
+
+
+/* ================= LOAD PRODUCTS ================= */
 
 async function loadProducts(){
 
-  try{
+try{
 
-    const saved = localStorage.getItem(STORAGE_KEY);
+const saved =
+localStorage.getItem(STORAGE_KEY);
 
-    if(saved){
+if(saved){
 
-      const parsed = JSON.parse(saved);
+const data =
+JSON.parse(saved);
 
-      if(Array.isArray(parsed)){
-        products = parsed;
-      }
+if(Array.isArray(data)){
 
-    }else{
+products = data;
 
-      try{
+}
 
-        const response = await fetch("products.json", {
-          cache:"no-store"
-        });
+}else{
 
-        if(response.ok){
+try{
 
-          const data = await response.json();
+const response =
+await fetch(
+"products.json",
+{
+cache:"no-store"
+}
+);
 
-          if(Array.isArray(data)){
-            products = data;
-            localStorage.setItem(
-              STORAGE_KEY,
-              JSON.stringify(products)
-            );
-          }
+if(response.ok){
 
-        }
+const data =
+await response.json();
 
-      }catch(error){
+if(Array.isArray(data)){
 
-        console.log("products.json not loaded");
+products = data;
 
-      }
+localStorage.setItem(
+STORAGE_KEY,
+JSON.stringify(products)
+);
 
-    }
+}
 
-  }catch(error){
+}
 
-    console.error(error);
-    products = [];
+}catch(error){
 
-  }
+console.log(
+"products.json not available"
+);
 
-  renderProducts();
+}
+
+}
+
+}catch(error){
+
+console.error(error);
+
+products = [];
+
+}
+
+renderProducts();
+
 }
 
 
-/* ==============================
-   SAVE LOCAL CATALOG
-============================== */
+/* ================= SAVE LOCAL ================= */
 
-function persistProducts(){
+function persist(){
 
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify(products)
-  );
+localStorage.setItem(
+STORAGE_KEY,
+JSON.stringify(products)
+);
 
-  renderProducts();
+renderProducts();
+
 }
 
 
-/* ==============================
-   CALCULATE SELLING PRICE
-============================== */
-
-function calculateSellingPrice(){
-
-  const original =
-    Number($("originalPrice").value || 0);
-
-  const discount =
-    Number($("discount").value || 0);
-
-  const combo =
-    $("combo").checked;
-
-  if(original <= 0){
-    return;
-  }
-
-  if(combo){
-
-    $("sellingPrice").value = original;
-    return;
-
-  }
-
-  const selling =
-    original - (original * discount / 100);
-
-  $("sellingPrice").value =
-    Math.round(selling);
-}
-
-
-/* ==============================
-   SAVE PRODUCT
-============================== */
+/* ================= SAVE PRODUCT ================= */
 
 function saveProduct(){
 
-  const name =
-    $("productName").value.trim();
+try{
 
-  const category =
-    $("category").value;
+const name =
+get("productName").value.trim();
 
-  const originalPrice =
-    Number($("originalPrice").value || 0);
+const category =
+get("category").value;
 
-  const discount =
-    Number($("discount").value || 0);
+const original =
+Number(
+get("originalPrice").value || 0
+);
 
-  const sellingPrice =
-    Number($("sellingPrice").value || 0);
+const discount =
+Number(
+get("discount").value || 0
+);
 
-  const image =
-    $("image").value.trim();
+const enteredSelling =
+Number(
+get("sellingPrice").value || 0
+);
 
-  const description =
-    $("description").value.trim();
+const image =
+get("image").value.trim();
 
-  const combo =
-    $("combo").checked;
+const description =
+get("description").value.trim();
 
-  if(!name){
+const combo =
+get("combo").checked;
 
-    alert("Please enter Product Name.");
-    return;
-  }
+if(!name){
 
-  if(originalPrice <= 0){
+alert("Product Name डालिए।");
 
-    alert("Please enter Original Price.");
-    return;
-  }
+return;
 
-  let finalSellingPrice =
-    sellingPrice;
+}
 
-  if(combo){
+if(original <= 0){
 
-    finalSellingPrice =
-      originalPrice;
+alert("Original Price डालिए।");
 
-  }else if(finalSellingPrice <= 0){
+return;
 
-    finalSellingPrice =
-      Math.round(
-        originalPrice -
-        (originalPrice * discount / 100)
-      );
+}
 
-  }
+let selling =
+enteredSelling;
 
-  const existingId =
-    $("productId").value;
+if(combo){
 
-  const product = {
+selling = original;
 
-    id: existingId ||
-      ("bag-" + Date.now()),
+}else if(selling <= 0){
 
-    name:name,
+selling =
+Math.round(
+original -
+(original * discount / 100)
+);
 
-    category:category,
+}
 
-    originalPrice:originalPrice,
-
-    price:finalSellingPrice,
-
-    sellingPrice:finalSellingPrice,
-
-    discount:combo ? 0 : discount,
-
-    combo:combo,
-
-    image:image,
-
-    description:description
-
-  };
+const id =
+get("productId").value ||
+("bag-" + Date.now());
 
 
-  if(existingId){
+const product = {
 
-    const index =
-      products.findIndex(
-        p => String(p.id) === String(existingId)
-      );
+id:id,
 
-    if(index >= 0){
+name:name,
 
-      products[index] = product;
+title:name,
 
-    }else{
+category:category,
 
-      products.push(product);
+originalPrice:original,
 
-    }
+price:selling,
 
-  }else{
+sellingPrice:selling,
 
-    products.push(product);
+discount:combo ? 0 : discount,
 
-  }
+combo:combo,
+
+image:image,
+
+description:description
+
+};
 
 
-  persistProducts();
+const existing =
+products.findIndex(
+p =>
+String(p.id) === String(id)
+);
 
-  showStatus(
-    "productStatus",
-    "Product saved successfully."
-  );
 
-  clearForm();
+if(existing >= 0){
+
+products[existing] =
+product;
+
+}else{
+
+products.push(product);
 
 }
 
 
-/* ==============================
-   CLEAR FORM
-============================== */
+persist();
+
+showStatus(
+"productStatus",
+"Product saved successfully."
+);
+
+clearForm();
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Product save error: " +
+error.message
+);
+
+}
+
+}
+
+
+/* ================= CLEAR ================= */
 
 function clearForm(){
 
-  $("productId").value = "";
+get("productId").value = "";
 
-  $("productName").value = "";
+get("productName").value = "";
 
-  $("category").value =
-    "Ladies Bags";
+get("category").value =
+"Ladies Bags";
 
-  $("originalPrice").value = "";
+get("originalPrice").value = "";
 
-  $("discount").value = "50";
+get("discount").value = "50";
 
-  $("sellingPrice").value = "";
+get("sellingPrice").value = "";
 
-  $("image").value = "";
+get("image").value = "";
 
-  $("description").value = "";
+get("description").value = "";
 
-  $("combo").checked = false;
+get("combo").checked = false;
 
-  $("formTitle").textContent =
-    "Add Product";
-
-}
-
-
-/* ==============================
-   EDIT PRODUCT
-============================== */
-
-function editProduct(id){
-
-  const p =
-    products.find(
-      item => String(item.id) === String(id)
-    );
-
-  if(!p) return;
-
-  $("productId").value =
-    p.id || "";
-
-  $("productName").value =
-    p.name || "";
-
-  $("category").value =
-    p.category || "Ladies Bags";
-
-  $("originalPrice").value =
-    p.originalPrice || p.price || "";
-
-  $("discount").value =
-    p.discount ?? 50;
-
-  $("sellingPrice").value =
-    p.sellingPrice ??
-    p.price ??
-    "";
-
-  $("image").value =
-    p.image || "";
-
-  $("description").value =
-    p.description || "";
-
-  $("combo").checked =
-    Boolean(p.combo);
-
-  $("formTitle").textContent =
-    "Edit Product";
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+get("formTitle").textContent =
+"Add Product";
 
 }
 
 
-/* ==============================
-   DELETE PRODUCT
-============================== */
+/* ================= STATUS ================= */
 
-function deleteProduct(id){
+function showStatus(id,message){
 
-  if(!confirm("Delete this product?")){
-    return;
-  }
+const box = get(id);
 
-  products =
-    products.filter(
-      p => String(p.id) !== String(id)
-    );
+box.textContent = message;
 
-  persistProducts();
+box.style.display = "block";
+
+setTimeout(
+function(){
+
+box.style.display = "none";
+
+},
+3000
+);
 
 }
 
 
-/* ==============================
-   RENDER PRODUCTS
-============================== */
+/* ================= RENDER PRODUCTS ================= */
 
 function renderProducts(){
 
-  const box =
-    $("productsList");
+const box =
+get("productsList");
 
-  if(!box) return;
+if(!products.length){
 
-  if(!products.length){
+box.innerHTML =
+'<div class="empty">No products found.</div>';
 
-    box.innerHTML =
-      '<div class="empty">No products found.</div>';
+return;
 
-    return;
-  }
+}
 
-  box.innerHTML =
-    products.map(p => {
+box.innerHTML =
+products.map(
+function(p){
 
-      const image =
-        p.image ||
-        "https://via.placeholder.com/90?text=Bag";
+const original =
+Number(
+p.originalPrice ??
+p.price ??
+0
+);
 
-      const original =
-        Number(
-          p.originalPrice ??
-          p.price ??
-          0
-        );
+const selling =
+Number(
+p.sellingPrice ??
+p.price ??
+0
+);
 
-      const selling =
-        Number(
-          p.sellingPrice ??
-          p.price ??
-          0
-        );
+const discount =
+p.combo
+? 0
+: Number(p.discount || 0);
 
-      const discount =
-        p.combo ? 0 :
-        Number(p.discount || 0);
+const image =
+p.image ||
+"https://via.placeholder.com/90?text=Bag";
 
-      return `
-        <div class="product">
+return `
 
-          <img
-            src="${escapeHtml(image)}"
-            alt="${escapeHtml(p.name || "Product")}"
-            onerror="this.src='https://via.placeholder.com/90?text=Bag'"
-          >
+<div class="product">
 
-          <div>
+<img
+src="${esc(image)}"
+alt="${esc(p.name || "Product")}"
+onerror="this.src='https://via.placeholder.com/90?text=Bag'"
+>
 
-            <h3>
-              ${escapeHtml(p.name || "Unnamed Product")}
-            </h3>
+<div>
 
-            <div>
-              <span class="badge">
-                ${escapeHtml(p.category || "Bags")}
-              </span>
+<h3>
+${esc(p.name || "Unnamed Product")}
+</h3>
 
-              ${
-                p.combo
-                ? '<span class="badge">COMBO</span>'
-                : ''
-              }
-            </div>
+<div>
 
-            <div class="price" style="margin-top:7px">
+<span class="badge">
+${esc(p.category || "Bags")}
+</span>
 
-              <span class="old">
-                ₹${original}
-              </span>
+${
+p.combo
+? '<span class="badge">COMBO</span>'
+: ''
+}
 
-              <span class="sale">
-                ₹${selling}
-              </span>
+</div>
 
-              ${
-                discount > 0
-                ? `<span class="sale"> (${discount}% OFF)</span>`
-                : ''
-              }
+<div style="margin-top:8px">
 
-            </div>
+<span class="old">
+₹${original}
+</span>
 
-          </div>
+<span class="sale">
+₹${selling}
+</span>
 
-          <div class="actions">
+${
+discount > 0
+? `<span class="sale"> (${discount}% OFF)</span>`
+: ''
+}
 
-            <button
-              class="light"
-              onclick="editProduct('${escapeJs(p.id)}')"
-            >
-              Edit
-            </button>
+</div>
 
-            <button
-              class="red"
-              onclick="deleteProduct('${escapeJs(p.id)}')"
-            >
-              Delete
-            </button>
+</div>
 
-          </div>
+<div class="buttons">
 
-        </div>
-      `;
+<button
+type="button"
+class="white"
+onclick="editProduct('${String(p.id).replace(/'/g,"\\'")}')">
+Edit
+</button>
 
-    }).join("");
+<button
+type="button"
+class="red"
+onclick="deleteProduct('${String(p.id).replace(/'/g,"\\'")}')">
+Delete
+</button>
+
+</div>
+
+</div>
+
+`;
+
+}
+).join("");
 
 }
 
 
-/* ==============================
-   ESCAPE HTML
-============================== */
+/* ================= EDIT ================= */
 
-function escapeHtml(value){
+function editProduct(id){
 
-  return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+const p =
+products.find(
+item =>
+String(item.id) === String(id)
+);
+
+if(!p){
+
+return;
+
+}
+
+get("productId").value =
+p.id || "";
+
+get("productName").value =
+p.name || p.title || "";
+
+get("category").value =
+p.category || "Ladies Bags";
+
+get("originalPrice").value =
+p.originalPrice ||
+p.price ||
+"";
+
+get("discount").value =
+p.discount ?? 50;
+
+get("sellingPrice").value =
+p.sellingPrice ??
+p.price ??
+"";
+
+get("image").value =
+p.image || "";
+
+get("description").value =
+p.description || "";
+
+get("combo").checked =
+Boolean(p.combo);
+
+get("formTitle").textContent =
+"Edit Product";
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
 
 }
 
 
-/* ==============================
-   ESCAPE JS
-============================== */
+/* ================= DELETE ================= */
 
-function escapeJs(value){
+function deleteProduct(id){
 
-  return String(value ?? "")
-    .replace(/\\/g,"\\\\")
-    .replace(/'/g,"\\'");
+if(
+!confirm(
+"क्या आप यह product delete करना चाहते हैं?"
+)
+){
+
+return;
+
+}
+
+products =
+products.filter(
+p =>
+String(p.id) !== String(id)
+);
+
+persist();
+
 }
 
 
-/* ==============================
-   DOWNLOAD JSON
-============================== */
+/* ================= DOWNLOAD ================= */
 
 function downloadJson(){
 
-  const blob =
-    new Blob(
-      [
-        JSON.stringify(
-          products,
-          null,
-          2
-        )
-      ],
-      {
-        type:"application/json"
-      }
-    );
+try{
 
-  const url =
-    URL.createObjectURL(blob);
+const blob =
+new Blob(
+[
+JSON.stringify(
+products,
+null,
+2
+)
+],
+{
+type:"application/json"
+}
+);
 
-  const a =
-    document.createElement("a");
+const url =
+URL.createObjectURL(blob);
 
-  a.href = url;
+const a =
+document.createElement("a");
 
-  a.download =
-    "products.json";
+a.href = url;
 
-  document.body.appendChild(a);
+a.download =
+"products.json";
 
-  a.click();
+document.body.appendChild(a);
 
-  a.remove();
+a.click();
 
-  setTimeout(
-    () => URL.revokeObjectURL(url),
-    1000
-  );
+a.remove();
+
+setTimeout(
+function(){
+
+URL.revokeObjectURL(url);
+
+},
+1000
+);
+
+}catch(error){
+
+alert(
+"Download error: " +
+error.message
+);
+
+}
 
 }
 
 
-/* ==============================
-   IMPORT JSON
-============================== */
+/* ================= IMPORT OPEN ================= */
 
-function importJson(){
+function openImport(){
 
-  $("fileInput").click();
+get("fileInput").click();
 
 }
 
 
-/* ==============================
-   HANDLE IMPORT
-============================== */
+/* ================= IMPORT ================= */
 
-async function handleImport(event){
+async function importJson(event){
 
-  const file =
-    event.target.files &&
-    event.target.files[0];
+const file =
+event.target.files &&
+event.target.files[0];
 
-  if(!file) return;
+if(!file){
 
-  try{
+return;
 
-    const text =
-      await file.text();
+}
 
-    const data =
-      JSON.parse(text);
+try{
 
-    if(!Array.isArray(data)){
-      throw new Error(
-        "Invalid catalog"
-      );
-    }
+const text =
+await file.text();
 
-    products = data;
+const data =
+JSON.parse(text);
 
-    persistProducts();
+if(!Array.isArray(data)){
 
-    alert(
-      "Catalog imported successfully."
-    );
+throw new Error(
+"Invalid JSON"
+);
 
-  }catch(error){
+}
 
-    console.error(error);
+products = data;
 
-    alert(
-      "Invalid products.json file."
-    );
+persist();
 
-  }
+alert(
+"Products imported successfully."
+);
 
-  event.target.value = "";
+}catch(error){
+
+console.error(error);
+
+alert(
+"Invalid products.json file."
+);
+
+}
+
+event.target.value = "";
 
 }
 
 
-/* ==============================
-   RESET CATALOG
-============================== */
+/* ================= RESET ================= */
 
 function resetCatalog(){
 
-  if(
-    !confirm(
-      "Reset catalog? Local product changes will be removed."
-    )
-  ){
-    return;
-  }
+if(
+!confirm(
+"Reset catalog? Local changes will be removed."
+)
+){
 
-  localStorage.removeItem(
-    STORAGE_KEY
-  );
+return;
 
-  location.reload();
+}
+
+localStorage.removeItem(
+STORAGE_KEY
+);
+
+location.reload();
 
 }
 
 
-/* ==============================
-   LOAD ORDERS FROM SUPABASE
-============================== */
+/* ================= ORDERS ================= */
 
 async function loadOrders(){
 
-  const list =
-    $("ordersList");
+const box =
+get("ordersList");
 
-  if(!list) return;
-
-  list.innerHTML =
-    "Loading orders...";
-
-  try{
-
-    const {
-      data,
-      error
-    } =
-      await supabaseClient
-        .from("orders")
-        .select("*")
-        .order(
-          "created_at",
-          {
-            ascending:false
-          }
-        );
-
-    if(error){
-
-      console.error(error);
-
-      list.innerHTML =
-        `
-        <div class="empty">
-          Unable to load orders.<br>
-          ${escapeHtml(error.message)}
-        </div>
-        `;
-
-      return;
-    }
+box.innerHTML =
+"Loading orders...";
 
 
-    if(!data || !data.length){
+if(!supabaseClient){
 
-      list.innerHTML =
-        '<div class="empty">No orders found.</div>';
+box.innerHTML =
+`
+<div class="empty">
+Supabase connection available नहीं है।
+</div>
+`;
 
-      return;
-    }
+return;
 
-
-    list.innerHTML =
-      data.map(order => {
-
-        const customer =
-          order.name ||
-          order.customer_name ||
-          "Customer";
-
-        const mobile =
-          order.mobile ||
-          order.phone ||
-          "";
-
-        const address =
-          order.address ||
-          "";
-
-        const total =
-          order.total_amount ??
-          order.total ??
-          0;
-
-        const payment =
-          order.payment_status ||
-          "Pending";
-
-        const status =
-          order.order_status ||
-          "New";
-
-        const created =
-          order.created_at
-          ? new Date(
-              order.created_at
-            ).toLocaleString("en-IN")
-          : "";
+}
 
 
-        let itemsText = "";
+try{
 
-        if(order.items){
+const result =
+await supabaseClient
+.from("orders")
+.select("*")
+.order(
+"created_at",
+{
+ascending:false
+}
+);
 
-          try{
+const data =
+result.data;
 
-            const items =
-              typeof order.items === "string"
-              ? JSON.parse(order.items)
-              : order.items;
+const error =
+result.error;
 
-            if(Array.isArray(items)){
 
-              itemsText =
-                items.map(item => {
+if(error){
 
-                  return `
-                    <div>
-                      ${escapeHtml(
-                        item.name ||
-                        item.title ||
-                        "Product
+console.error(error);
+
+box.innerHTML =
+`
+<div class="empty">
+
+Orders load नहीं हुए।<br><br>
+
+${esc(error.message)}
+
+</div>
+`;
+
+return;
+
+}
+
+
+if(!data || data.length === 0){
+
+box.innerHTML =
+`
+<div class="empty">
+No orders found.
+</div>
+`;
+
+return;
+
+}
+
+
+box.innerHTML =
+data.map(
+function(order){
+
+const name =
+order.name ||
+order.customer_name ||
+"Customer";
+
+const mobile =
+order.mobile ||
+order.phone ||
+"";
+
+const house =
+order.house ||
+"";
+
+const address =
+order.address ||
+"";
+
+const city =
+order.city ||
+"";
+
+const state =
+order.state ||
+"";
+
+const pin =
+order.pin ||
+"";
+
+const landmark =
+order.landmark ||
+"";
+
+const note =
+order.note ||
+"";
+
+const total =
+order.total_amount ??
+order.total ??
+0;
+
+const payment =
+order.payment_status ||
+"Pending";
+
+const status =
+order.order_status ||
+"New";
+
+const created =
+order.created_at
+? new Date(
+order.created_at
+).toLocaleString("en-IN")
+: "";
+
+
+let itemsHtml = "";
+
+
+if(order.items){
+
+try{
+
+const items =
+typeof order.items === "string"
+? JSON.parse(order.items)
+: order.items;
+
+
+if(Array.isArray(items)){
+
+itemsHtml =
+items.map(
+function(item){
+
+const itemName =
+item.name ||
+item.title ||
+"Product";
+
+const qty =
+item.quantity ||
+item.qty ||
+1;
+
+return `
+<div>
+${esc(itemName)}
+× ${Number(qty)}
+</div>
+`;
+
+}
+).join("");
+
+}
+
+}catch(e){
+
+itemsHtml =
+esc(
+String(order.items)
+);
+
+}
+
+}
+
+
+return `
+
+<div class="order">
+
+<h3>
+${esc(name)}
+</h3>
+
+<p>
+<strong>Mobile:</strong>
+${esc(mobile)}
+</p>
+
+<p>
+<strong>Address:</strong>
+${esc(house)}
+${house && address ? ", " : ""}
+${esc(address)}
+${city ? ", " + esc(city) : ""}
+${state ? ", " + esc(state) : ""}
+${pin ? " - " + esc(pin) : ""}
+</p>
+
+${
+landmark
+? `
+<p>
+<strong>Landmark:</strong>
+${esc(landmark)}
+</p>
+`
+: ""
+}
+
+${
+itemsHtml
+? `
+<p>
+<strong>Items:</strong><br>
+${itemsHtml}
+</p>
+`
+: ""
+}
+
+<p>
+<strong>Total:</strong>
+₹${Number(total)}
+</p>
+
+<p>
+<strong>Payment:</strong>
+${esc(payment)}
+</p>
+
+<p>
+<strong>Order Status:</strong>
+${esc(status)}
+</p>
+
+${
+note
+? `
+<p>
+<strong>Note:</strong>
+${esc(note)}
+</p>
+`
+: ""
+}
+
+${
+created
+? `
+<p>
+<strong>Order Date:</strong>
+${esc(created)}
+</p>
+`
+: ""
+}
+
+</div>
+
+`;
+
+}
+).join("");
+
+
+}catch(error){
+
+console.error(error);
+
+box.innerHTML =
+`
+<div class="empty">
+
+Orders load करने में error आया।<br><br>
+
+${esc(error.message)}
+
+</div>
+`;
+
+}
+
+}
+
+
+/* ================= START ================= */
+
+loadProducts();
+
+loadOrders();
+
+</script>
+
+</body>
+  </html>
