@@ -178,5 +178,355 @@
     "price": 1699,
     "badge": "COMBO",
     "type": "combo"
+  },
+  {
+    "id": "sale19",
+    "name": "Elegant Beige Tote Bag",
+    "category": "Tote Bags",
+    "image": "assets/products/IMG-20260830-WA0010.jpg",
+    "originalPrice": 1499,
+    "price": 750,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale20",
+    "name": "Classic Brown Shoulder Tote",
+    "category": "Tote Bags",
+    "image": "assets/products/IMG-20260830-WA0011.jpg",
+    "originalPrice": 1599,
+    "price": 800,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale21",
+    "name": "White Signature Tote Bag",
+    "category": "Tote Bags",
+    "image": "assets/products/IMG-20260830-WA0013.jpg",
+    "originalPrice": 1699,
+    "price": 850,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale22",
+    "name": "Green Chain Shoulder Bag",
+    "category": "Shoulder Bags",
+    "image": "assets/products/IMG-20260830-WA0014.jpg",
+    "originalPrice": 1799,
+    "price": 900,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale23",
+    "name": "Duo-Tone Pattern Shoulder Bag",
+    "category": "Shoulder Bags",
+    "image": "assets/products/IMG-20260830-WA0015.jpg",
+    "originalPrice": 1899,
+    "price": 950,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale24",
+    "name": "Monogram Structured Tote",
+    "category": "Tote Bags",
+    "image": "assets/products/IMG-20260830-WA0016.jpg",
+    "originalPrice": 1999,
+    "price": 1000,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale25",
+    "name": "Dior-Style Flap Handbag",
+    "category": "Handbags",
+    "image": "assets/products/IMG-20260830-WA0017.jpg",
+    "originalPrice": 2099,
+    "price": 1050,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale26",
+    "name": "Luxury Black Chain Bag",
+    "category": "Shoulder Bags",
+    "image": "assets/products/IMG-20260830-WA0018.jpg",
+    "originalPrice": 2199,
+    "price": 1100,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale27",
+    "name": "Minimal White Tote Bag",
+    "category": "Tote Bags",
+    "image": "assets/products/IMG-20260830-WA0020.jpg",
+    "originalPrice": 2299,
+    "price": 1150,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale28",
+    "name": "Monogram Shopper Tote",
+    "category": "Tote Bags",
+    "image": "assets/products/IMG-20260830-WA0021.jpg",
+    "originalPrice": 2399,
+    "price": 1200,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale29",
+    "name": "Classic Logo Shoulder Bag",
+    "category": "Shoulder Bags",
+    "image": "assets/products/IMG-20260830-WA0022.jpg",
+    "originalPrice": 2499,
+    "price": 1250,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale30",
+    "name": "Monogram Mini Shoulder Bag",
+    "category": "Crossbody Bags",
+    "image": "assets/products/IMG-20260830-WA0023.jpg",
+    "originalPrice": 1499,
+    "price": 750,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale31",
+    "name": "Black Structured Mini Bag",
+    "category": "Handbags",
+    "image": "assets/products/IMG-20260830-WA0024.jpg",
+    "originalPrice": 1599,
+    "price": 800,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale32",
+    "name": "White Quilted Tote Bag",
+    "category": "Tote Bags",
+    "image": "assets/products/IMG-20260830-WA0025.jpg",
+    "originalPrice": 1699,
+    "price": 850,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale33",
+    "name": "Patterned Canvas Tote",
+    "category": "Tote Bags",
+    "image": "assets/products/IMG-20260830-WA0027.jpg",
+    "originalPrice": 1799,
+    "price": 900,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale34",
+    "name": "Black Mini Handbag",
+    "category": "Handbags",
+    "image": "assets/products/IMG-20260830-WA0028.jpg",
+    "originalPrice": 1899,
+    "price": 950,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale35",
+    "name": "Monogram Box Shoulder Bag",
+    "category": "Shoulder Bags",
+    "image": "assets/products/IMG-20260830-WA0031.jpg",
+    "originalPrice": 1999,
+    "price": 1000,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale36",
+    "name": "Black & Gold Flap Bag",
+    "category": "Shoulder Bags",
+    "image": "assets/products/IMG-20260830-WA0033.jpg",
+    "originalPrice": 2099,
+    "price": 1050,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale37",
+    "name": "Classic Brown Satchel",
+    "category": "Handbags",
+    "image": "assets/products/IMG-20260830-WA0034.jpg",
+    "originalPrice": 2199,
+    "price": 1100,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale38",
+    "name": "Brown Monogram Tote",
+    "category": "Tote Bags",
+    "image": "assets/products/IMG-20260830-WA0035.jpg",
+    "originalPrice": 2299,
+    "price": 1150,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale39",
+    "name": "White Logo Clutch",
+    "category": "Clutches",
+    "image": "assets/products/IMG-20260830-WA0037.jpg",
+    "originalPrice": 2399,
+    "price": 1200,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale40",
+    "name": "Cream Monogram Tote",
+    "category": "Tote Bags",
+    "image": "assets/products/IMG-20260830-WA0038.jpg",
+    "originalPrice": 2499,
+    "price": 1250,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale41",
+    "name": "Luxury Pattern Handbag",
+    "category": "Handbags",
+    "image": "assets/products/IMG-20260830-WA0040.jpg",
+    "originalPrice": 1499,
+    "price": 750,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale42",
+    "name": "Classic Brown Tote",
+    "category": "Tote Bags",
+    "image": "assets/products/IMG-20260830-WA0041.jpg",
+    "originalPrice": 1599,
+    "price": 800,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale43",
+    "name": "White Chain Flap Bag",
+    "category": "Shoulder Bags",
+    "image": "assets/products/IMG-20260830-WA0043.jpg",
+    "originalPrice": 1699,
+    "price": 850,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale44",
+    "name": "Brown Monogram Handbag",
+    "category": "Handbags",
+    "image": "assets/products/IMG-20260830-WA0044.jpg",
+    "originalPrice": 1799,
+    "price": 900,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale45",
+    "name": "Structured Brown Tote",
+    "category": "Tote Bags",
+    "image": "assets/products/IMG-20260830-WA0045.jpg",
+    "originalPrice": 1899,
+    "price": 950,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale46",
+    "name": "Dark Monogram Shoulder Bag",
+    "category": "Shoulder Bags",
+    "image": "assets/products/IMG-20260830-WA0046.jpg",
+    "originalPrice": 1999,
+    "price": 1000,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale47",
+    "name": "White Signature Shopper",
+    "category": "Tote Bags",
+    "image": "assets/products/IMG-20260830-WA0047.jpg",
+    "originalPrice": 2099,
+    "price": 1050,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale48",
+    "name": "Classic Monogram Satchel",
+    "category": "Handbags",
+    "image": "assets/products/IMG-20260830-WA0048.jpg",
+    "originalPrice": 2199,
+    "price": 1100,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale49",
+    "name": "Black Monogram Tote",
+    "category": "Tote Bags",
+    "image": "assets/products/IMG-20260830-WA0049.jpg",
+    "originalPrice": 2299,
+    "price": 1150,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale50",
+    "name": "Gold-Detail Flap Handbag",
+    "category": "Shoulder Bags",
+    "image": "assets/products/IMG-20260830-WA0050.jpg",
+    "originalPrice": 2399,
+    "price": 1200,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale51",
+    "name": "Classic Brown Shoulder Bag",
+    "category": "Shoulder Bags",
+    "image": "assets/products/IMG-20260830-WA0051.jpg",
+    "originalPrice": 2499,
+    "price": 1250,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale52",
+    "name": "White Monogram Tote",
+    "category": "Tote Bags",
+    "image": "assets/products/IMG-20260830-WA0052.jpg",
+    "originalPrice": 1499,
+    "price": 750,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale53",
+    "name": "Dark Pattern Shopper Tote",
+    "category": "Tote Bags",
+    "image": "assets/products/IMG-20260830-WA0053.jpg",
+    "originalPrice": 1599,
+    "price": 800,
+    "badge": "50% OFF",
+    "type": "sale"
   }
 ]
