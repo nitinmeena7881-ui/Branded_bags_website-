@@ -11,12 +11,12 @@
 <style>
 :root{
   --gold:#b58a3a;
+  --gold2:#8b6a2e;
   --ink:#171717;
   --muted:#6d6d6d;
   --line:#e9e4da;
   --soft:#faf8f4;
   --white:#fff;
-  --success:#16803c;
 }
 
 *{
@@ -49,14 +49,18 @@ a{
   color:inherit;
 }
 
+/* TOP BAR */
+
 .top{
   background:#111;
   color:#fff;
   text-align:center;
-  padding:9px;
+  padding:9px 12px;
   font-size:12px;
   letter-spacing:.08em;
 }
+
+/* NAVIGATION */
 
 .nav{
   position:sticky;
@@ -69,7 +73,7 @@ a{
   align-items:center;
   justify-content:space-between;
   gap:20px;
-  padding:12px 5vw;
+  padding:10px 5vw;
 }
 
 .brand{
@@ -82,8 +86,8 @@ a{
 }
 
 .brand img{
-  width:46px;
-  height:46px;
+  width:48px;
+  height:48px;
   object-fit:contain;
   border-radius:50%;
 }
@@ -100,12 +104,12 @@ a{
 
 .actions{
   display:flex;
-  gap:10px;
+  gap:8px;
 }
 
 .pill{
   border:1px solid var(--line);
-  padding:10px 13px;
+  padding:10px 14px;
   border-radius:999px;
   background:#fff;
   cursor:pointer;
@@ -114,6 +118,8 @@ a{
 .pill:hover{
   border-color:var(--gold);
 }
+
+/* HERO */
 
 .hero{
   padding:70px 5vw 55px;
@@ -178,12 +184,32 @@ a{
   object-fit:cover;
 }
 
-.hero-card:after{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:linear-gradient(0deg,rgba(0,0,0,.18),transparent 55%);
+/* TRUST */
+
+.trust{
+  background:var(--soft);
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  padding:22px 5vw;
 }
+
+.trust div{
+  padding:14px;
+  text-align:center;
+}
+
+.trust b{
+  display:block;
+  margin-bottom:5px;
+}
+
+.trust span{
+  font-size:12px;
+  color:#777;
+}
+
+/* SECTIONS */
 
 .section{
   padding:55px 5vw;
@@ -207,6 +233,8 @@ a{
   color:var(--muted);
 }
 
+/* FILTERS */
+
 .filters{
   display:flex;
   gap:8px;
@@ -226,6 +254,8 @@ a{
   background:#171717;
   color:#fff;
 }
+
+/* PRODUCT GRID */
 
 .grid{
   display:grid;
@@ -276,7 +306,7 @@ a{
 
 .cat{
   font-size:11px;
-  color:#8b6a2e;
+  color:var(--gold2);
   text-transform:uppercase;
   letter-spacing:.12em;
 }
@@ -302,6 +332,12 @@ a{
   font-size:13px;
 }
 
+.discount{
+  font-size:10px;
+  font-weight:800;
+  color:#16803c;
+}
+
 .card-actions{
   display:flex;
   gap:7px;
@@ -324,28 +360,16 @@ a{
   border-color:#171717;
 }
 
-.trust{
-  background:var(--soft);
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-  padding:22px 5vw;
-}
-
-.trust div{
-  padding:14px;
+.empty{
+  grid-column:1/-1;
+  padding:45px 15px;
   text-align:center;
-}
-
-.trust b{
-  display:block;
-  margin-bottom:5px;
-}
-
-.trust span{
-  font-size:12px;
   color:#777;
+  border:1px dashed var(--line);
+  border-radius:16px;
 }
+
+/* FOOTER */
 
 footer{
   background:#111;
@@ -368,6 +392,10 @@ footer{
   font-size:13px;
 }
 
+.footer-links a:hover{
+  color:#fff;
+}
+
 .copyright{
   grid-column:1/-1;
   border-top:1px solid #333;
@@ -376,7 +404,7 @@ footer{
   font-size:12px;
 }
 
-/* CART */
+/* CART DRAWER */
 
 .drawer{
   position:fixed;
@@ -392,7 +420,7 @@ footer{
 .shade{
   position:absolute;
   inset:0;
-  background:rgba(0,0,0,.4);
+  background:rgba(0,0,0,.45);
 }
 
 .panel{
@@ -404,7 +432,7 @@ footer{
   background:#fff;
   padding:22px;
   overflow:auto;
-  box-shadow:-10px 0 30px rgba(0,0,0,.12);
+  box-shadow:-10px 0 30px rgba(0,0,0,.15);
 }
 
 .close{
@@ -438,22 +466,6 @@ footer{
   border:1px solid #ddd;
   background:#fff;
   border-radius:7px;
-  cursor:pointer;
-}
-
-.checkout{
-  width:100%;
-  padding:14px;
-  border:0;
-  background:#171717;
-  color:#fff;
-  border-radius:12px;
-  font-weight:800;
-  cursor:pointer;
-}
-
-.checkout:hover{
-  opacity:.9;
 }
 
 /* MODALS */
@@ -511,7 +523,15 @@ footer{
   background:#fff;
 }
 
-.order-success{
+.note{
+  padding:12px;
+  background:var(--soft);
+  border-radius:10px;
+  font-size:13px;
+  line-height:1.6;
+}
+
+.success{
   padding:15px;
   background:#f4f8f4;
   border:1px solid #d9e8d9;
@@ -519,9 +539,12 @@ footer{
   margin-bottom:15px;
 }
 
-.empty{
-  padding:30px 10px;
+/* LOADING */
+
+.loading{
+  grid-column:1/-1;
   text-align:center;
+  padding:50px 20px;
   color:#777;
 }
 
@@ -553,36 +576,11 @@ footer{
 @media(max-width:560px){
 
   .top{
-    font-size:10px;
-  }
-
-  .hero{
-    padding-top:42px;
-  }
-
-  .grid{
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-  }
-
-  .section{
-    padding:38px 4vw;
-  }
-
-  .info{
-    padding:11px;
-  }
-
-  .name{
-    font-size:13px;
+    font-size:9px;
   }
 
   .nav{
-    padding:10px 4vw;
-  }
-
-  .brand span{
-    font-size:14px;
+    padding:9px 4vw;
   }
 
   .brand img{
@@ -590,8 +588,12 @@ footer{
     height:40px;
   }
 
+  .brand span{
+    font-size:14px;
+  }
+
   .actions{
-    gap:5px;
+    gap:4px;
   }
 
   .pill{
@@ -599,17 +601,58 @@ footer{
     font-size:12px;
   }
 
-  .trust{
-    padding:15px 4vw;
-    gap:4px;
+  .hero{
+    padding-top:42px;
+  }
+
+  .hero-card{
+    min-height:320px;
+  }
+
+  .section{
+    padding:38px 4vw;
+  }
+
+  .section h2{
+    font-size:32px;
+  }
+
+  .grid{
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .info{
+    padding:10px;
+  }
+
+  .name{
+    font-size:13px;
   }
 
   .card-actions{
     flex-direction:column;
   }
 
-  .hero-card{
-    min-height:330px;
+  .smallbtn{
+    width:100%;
+  }
+
+  .trust{
+    padding:15px 4vw;
+    gap:4px;
+  }
+
+  .trust div{
+    padding:10px 4px;
+  }
+
+  .trust b{
+    font-size:13px;
+  }
+
+  .trust span{
+    font-size:10px;
   }
 
   .qr{
@@ -630,22 +673,40 @@ footer{
 
 <body>
 
+<!-- TOP BAR -->
+
 <div class="top">
 LUXURY COLLECTION • ALL INDIA DELIVERY • 7-DAY DELIVERY • 3-DAY RETURNS • ONLINE PAYMENT ONLY
 </div>
 
+
+<!-- NAVIGATION -->
+
 <nav class="nav">
 
 <a class="brand" href="#">
-<img src="assets/logo.png" alt="Branded Bags Logo">
+<img src="assets/logo.png" alt="Branded Bags">
 <span>BRANDED BAGS</span>
 </a>
 
 <div class="navlinks">
-<a href="#shop">Shop</a>
-<a href="#sale">50% OFF</a>
-<a href="#combos">Combos</a>
-<a href="#policy">Policies</a>
+
+<a href="#shop">
+Shop
+</a>
+
+<a href="#sale">
+50% OFF
+</a>
+
+<a href="#combos">
+Combos
+</a>
+
+<a href="#policy">
+Policies
+</a>
+
 </div>
 
 <div class="actions">
@@ -661,6 +722,9 @@ Cart <span id="cartCount">0</span>
 </div>
 
 </nav>
+
+
+<!-- HERO -->
 
 <header class="hero">
 
@@ -691,10 +755,18 @@ Explore Combos
 </div>
 
 <div class="hero-card">
-<img src="assets/products/1639.jpg" alt="Featured bag">
+
+<img
+src="assets/products/1639.jpg"
+alt="Featured bag"
+>
+
 </div>
 
 </header>
+
+
+<!-- TRUST -->
 
 <div class="trust">
 
@@ -725,7 +797,7 @@ Explore Combos
 </div>
 
 
-<!-- SALE -->
+<!-- 50% OFF -->
 
 <section class="section" id="sale">
 
@@ -749,14 +821,24 @@ Original-price tags shown for transparent discount display.
 
 </div>
 
-<div id="saleGrid" class="grid"></div>
+<div id="saleGrid" class="grid">
+
+<div class="loading">
+Loading products...
+</div>
+
+</div>
 
 </section>
 
 
-<!-- COMBOS -->
+<!-- COMBO -->
 
-<section class="section" id="combos" style="background:#faf8f4">
+<section
+class="section"
+id="combos"
+style="background:#faf8f4"
+>
 
 <div class="section-head">
 
@@ -778,7 +860,13 @@ Special combo pricing selected for this collection.
 
 </div>
 
-<div id="comboGrid" class="grid"></div>
+<div id="comboGrid" class="grid">
+
+<div class="loading">
+Loading combo bags...
+</div>
+
+</div>
 
 </section>
 
@@ -805,12 +893,18 @@ All Bags
 
 <div id="filters" class="filters"></div>
 
-<div id="allGrid" class="grid"></div>
+<div id="allGrid" class="grid">
+
+<div class="loading">
+Loading products...
+</div>
+
+</div>
 
 </section>
 
 
-<!-- POLICY -->
+<!-- POLICIES -->
 
 <section class="section" id="policy">
 
@@ -833,6 +927,7 @@ Our Policies
 <div class="grid">
 
 <div class="card">
+
 <div class="info">
 
 <h3>
@@ -844,10 +939,12 @@ COD is not available. Payment is accepted online only.
 </p>
 
 </div>
+
 </div>
 
 
 <div class="card">
+
 <div class="info">
 
 <h3>
@@ -859,14 +956,16 @@ Eligible products can be returned within 3 days of delivery.
 </p>
 
 </div>
+
 </div>
 
 
 <div class="card">
+
 <div class="info">
 
 <h3>
-Delivery
+7-Day Delivery
 </h3>
 
 <p>
@@ -874,10 +973,12 @@ All-India delivery is generally completed within 7 days.
 </p>
 
 </div>
+
 </div>
 
 
 <div class="card">
+
 <div class="info">
 
 <h3>
@@ -888,11 +989,15 @@ Customer Support
 WhatsApp support is available for order assistance.
 </p>
 
-<button class="btn" onclick="whatsapp()">
+<button
+class="btn"
+onclick="whatsapp()"
+>
 Chat on WhatsApp
 </button>
 
 </div>
+
 </div>
 
 </div>
@@ -906,7 +1011,10 @@ Chat on WhatsApp
 
 <div class="footer-brand">
 
-<img src="assets/logo.png" alt="Branded Bags">
+<img
+src="assets/logo.png"
+alt="Branded Bags"
+>
 
 <h3>
 Branded Bags
@@ -976,15 +1084,24 @@ All India
 </footer>
 
 
-<!-- CART -->
+<!-- CART DRAWER -->
 
-<div class="drawer" id="cartDrawer">
+<div
+class="drawer"
+id="cartDrawer"
+>
 
-<div class="shade" onclick="closeCart()"></div>
+<div
+class="shade"
+onclick="closeCart()"
+></div>
 
 <div class="panel">
 
-<button class="pill close" onclick="closeCart()">
+<button
+class="pill close"
+onclick="closeCart()"
+>
 Close
 </button>
 
@@ -996,7 +1113,10 @@ Your Cart
 
 <h3 id="cartTotal"></h3>
 
-<button class="checkout" onclick="openCheckout()">
+<button
+class="checkout"
+onclick="openCheckout()"
+>
 Proceed to Checkout
 </button>
 
@@ -1007,11 +1127,18 @@ Proceed to Checkout
 
 <!-- LOGIN -->
 
-<div class="modal" id="loginModal">
+<div
+class="modal"
+id="loginModal"
+>
 
 <div class="modalbox">
 
-<button class="pill" style="float:right" onclick="closeLogin()">
+<button
+class="pill"
+style="float:right"
+onclick="closeLogin()"
+>
 Close
 </button>
 
@@ -1039,10 +1166,14 @@ placeholder="Email"
 <input
 id="loginPhone"
 placeholder="Mobile number"
+inputmode="numeric"
 >
 
-<button class="checkout" onclick="saveAccount()">
-Continue
+<button
+class="checkout"
+onclick="saveAccount()"
+>
+Save Account
 </button>
 
 </div>
@@ -1054,11 +1185,18 @@ Continue
 
 <!-- CHECKOUT -->
 
-<div class="modal" id="checkoutModal">
+<div
+class="modal"
+id="checkoutModal"
+>
 
 <div class="modalbox">
 
-<button class="pill" style="float:right" onclick="closeCheckout()">
+<button
+class="pill"
+style="float:right"
+onclick="closeCheckout()"
+>
 Close
 </button>
 
@@ -1095,7 +1233,9 @@ placeholder="Pincode"
 inputmode="numeric"
 >
 
-<div style="display:flex;gap:14px;flex-wrap:wrap">
+<div
+style="display:flex;gap:14px;flex-wrap:wrap"
+>
 
 <img
 class="qr"
@@ -1111,12 +1251,24 @@ alt="Payment QR"
 
 </div>
 
-<small>
+<div class="note">
+
+<b>
+Payment Instructions
+</b>
+
+<br>
+
 Scan either QR code to complete payment.
+
+<br>
+
 After payment, place the order and send payment proof on WhatsApp.
-</small>
+
+</div>
 
 <button
+id="placeOrderButton"
 class="checkout"
 onclick="placeOrder()"
 >
@@ -1136,6 +1288,10 @@ Place Order
 
 <script>
 
+/* ================================
+   SUPABASE
+================================ */
+
 const SUPABASE_URL =
 "https://lkdwjqpjcitnchmibupa.supabase.co";
 
@@ -1149,8 +1305,11 @@ window.supabase.createClient(
 );
 
 
-let products = [];
+/* ================================
+   DATA
+================================ */
 
+let products = [];
 
 let cart =
 JSON.parse(
@@ -1158,57 +1317,209 @@ JSON.parse(
 );
 
 
-const money =
-n =>
-'₹' +
-Number(n || 0).toLocaleString('en-IN');
+const money = n => {
+
+  return '₹' +
+  Number(n || 0)
+  .toLocaleString('en-IN');
+
+};
 
 
-/* LOAD PRODUCTS */
+/* ================================
+   LOAD PRODUCTS
+================================ */
 
-fetch('products.json')
+async function loadProducts(){
 
-.then(r => {
+  try{
 
-  if(!r.ok){
-    throw new Error('products.json not found');
+    const response =
+      await fetch(
+        'products.json',
+        {
+          cache:'no-store'
+        }
+      );
+
+
+    if(!response.ok){
+
+      throw new Error(
+        'products.json not found'
+      );
+
+    }
+
+
+    const fileProducts =
+      await response.json();
+
+
+    let savedCatalog = null;
+
+
+    try{
+
+      savedCatalog =
+        JSON.parse(
+          localStorage.getItem(
+            'bb_catalog'
+          ) || 'null'
+        );
+
+    }catch(error){
+
+      savedCatalog = null;
+
+    }
+
+
+    /*
+      IMPORTANT:
+      Empty [] from localStorage
+      must NOT hide products.json.
+    */
+
+    if(
+      Array.isArray(savedCatalog) &&
+      savedCatalog.length > 0
+    ){
+
+      products =
+        savedCatalog;
+
+    }else{
+
+      products =
+        Array.isArray(fileProducts)
+        ? fileProducts
+        : [];
+
+    }
+
+
+    renderAll();
+
+
+  }catch(error){
+
+    console.error(
+      'Product loading error:',
+      error
+    );
+
+
+    let savedCatalog = null;
+
+
+    try{
+
+      savedCatalog =
+        JSON.parse(
+          localStorage.getItem(
+            'bb_catalog'
+          ) || 'null'
+        );
+
+    }catch(e){
+
+      savedCatalog = null;
+
+    }
+
+
+    if(
+      Array.isArray(savedCatalog) &&
+      savedCatalog.length > 0
+    ){
+
+      products =
+        savedCatalog;
+
+      renderAll();
+
+      return;
+
+    }
+
+
+    showProductError();
+
   }
 
-  return r.json();
-
-})
-
-.then(d => {
-
-  products =
-    JSON.parse(
-      localStorage.getItem('bb_catalog') || 'null'
-    ) || d;
-
-  renderAll();
-
-})
-
-.catch(error => {
-
-  console.error(error);
-
-  alert(
-    'Products load nahi ho rahe. Please check products.json.'
-  );
-
-});
+}
 
 
-/* PRODUCT CARD */
+/* ================================
+   PRODUCT ERROR
+================================ */
+
+function showProductError(){
+
+  const message = `
+
+<div class="empty">
+
+<b>
+Products are not loading.
+</b>
+
+<br><br>
+
+Please make sure
+<strong>products.json</strong>
+is present in the GitHub project.
+
+</div>
+
+`;
+
+
+  document.getElementById(
+    'saleGrid'
+  ).innerHTML = message;
+
+
+  document.getElementById(
+    'comboGrid'
+  ).innerHTML = message;
+
+
+  document.getElementById(
+    'allGrid'
+  ).innerHTML = message;
+
+}
+
+
+/* ================================
+   PRODUCT CARD
+================================ */
 
 function card(p){
 
-  const original =
-    Number(p.originalPrice || p.price || 0);
-
   const price =
-    Number(p.price || 0);
+    Number(
+      p.price || 0
+    );
+
+
+  const original =
+    Number(
+      p.originalPrice ||
+      price
+    );
+
+
+  const discount =
+    original > price
+    ? Math.round(
+        ((original - price) /
+        original) * 100
+      )
+    : 0;
+
 
   return `
 
@@ -1220,11 +1531,14 @@ function card(p){
 src="${p.image || ''}"
 alt="${p.name || 'Branded Bag'}"
 loading="lazy"
+onerror="this.style.display='none'"
 >
 
-<span class="badge">
-${p.badge || ''}
-</span>
+${
+  p.badge
+  ? `<span class="badge">${p.badge}</span>`
+  : ''
+}
 
 </div>
 
@@ -1250,20 +1564,26 @@ ${
   : ''
 }
 
+${
+  discount > 0
+  ? `<span class="discount">${discount}% OFF</span>`
+  : ''
+}
+
 </div>
 
 <div class="card-actions">
 
 <button
 class="smallbtn"
-onclick="addCart('${p.id}')"
+onclick="addCart('${String(p.id)}')"
 >
 Add to Cart
 </button>
 
 <button
 class="smallbtn buy"
-onclick="buyNow('${p.id}')"
+onclick="buyNow('${String(p.id)}')"
 >
 Buy Now
 </button>
@@ -1279,46 +1599,91 @@ Buy Now
 }
 
 
-/* RENDER ALL */
+/* ================================
+   RENDER
+================================ */
 
 function renderAll(){
 
-  document.getElementById('saleGrid').innerHTML =
-    products
-      .filter(p => p.type === 'sale')
-      .map(card)
-      .join('');
+  const saleGrid =
+    document.getElementById(
+      'saleGrid'
+    );
 
 
-  document.getElementById('comboGrid').innerHTML =
-    products
-      .filter(p => p.type === 'combo')
-      .map(card)
-      .join('');
+  const comboGrid =
+    document.getElementById(
+      'comboGrid'
+    );
 
 
-  const cats = [
-    'All',
-    ...new Set(
-      products.map(
-        p => p.category
+  const allGrid =
+    document.getElementById(
+      'allGrid'
+    );
+
+
+  const sales =
+    products.filter(
+      p =>
+        String(p.type || '')
+        .toLowerCase()
+        === 'sale'
+    );
+
+
+  const combos =
+    products.filter(
+      p =>
+        String(p.type || '')
+        .toLowerCase()
+        === 'combo'
+    );
+
+
+  saleGrid.innerHTML =
+    sales.length
+    ? sales.map(card).join('')
+    : `<div class="empty">No sale products available.</div>`;
+
+
+  comboGrid.innerHTML =
+    combos.length
+    ? combos.map(card).join('')
+    : `<div class="empty">No combo products available.</div>`;
+
+
+  const categories =
+    [
+      'All',
+      ...new Set(
+        products
+        .map(
+          p => p.category
+        )
+        .filter(Boolean)
       )
-    )
-  ];
+    ];
 
 
-  document.getElementById('filters').innerHTML =
+  document.getElementById(
+    'filters'
+  ).innerHTML =
 
-    cats.map((c,i) => `
+    categories
+    .map(
+      (category,index) => `
 
 <button
-class="filter ${i ? '' : 'active'}"
-onclick="filterCat('${c}',this)"
+class="filter ${index === 0 ? 'active' : ''}"
+onclick="filterCat('${String(category).replace(/'/g,"\\'")}',this)"
 >
-${c}
+${category}
 </button>
 
-`).join('');
+`
+    )
+    .join('');
 
 
   renderGrid('All');
@@ -1328,384 +1693,20 @@ ${c}
 }
 
 
-/* CATEGORY */
+/* ================================
+   CATEGORY
+================================ */
 
-function renderGrid(cat){
+function renderGrid(category){
 
-  document.getElementById('allGrid').innerHTML =
-
-    products
-
-      .filter(
-        p =>
-          cat === 'All' ||
-          p.category === cat
-      )
-
-      .map(card)
-
-      .join('');
-
-}
-
-
-function filterCat(c,b){
-
-  document
-    .querySelectorAll('.filter')
-    .forEach(
-      x =>
-        x.classList.remove('active')
-    );
-
-  b.classList.add('active');
-
-  renderGrid(c);
-
-}
-
-
-/* CART */
-
-function addCart(id){
-
-  const p =
-    products.find(
-      x => String(x.id) === String(id)
-    );
-
-
-  if(!p){
-
-    alert('Product not found.');
-
-    return;
-
-  }
-
-
-  const x =
-    cart.find(
-      i => String(i.id) === String(id)
-    );
-
-
-  if(x){
-
-    x.qty++;
-
-  }else{
-
-    cart.push({
-      id:id,
-      qty:1
-    });
-
-  }
-
-
-  saveCart();
-
-  openCart();
-
-}
-
-
-function buyNow(id){
-
-  const alreadyInCart =
-    cart.some(
-      x => String(x.id) === String(id)
-    );
-
-
-  if(!alreadyInCart){
-
-    cart.push({
-      id:id,
-      qty:1
-    });
-
-    saveCart();
-
-  }
-
-
-  openCheckout();
-
-}
-
-
-function saveCart(){
-
-  localStorage.setItem(
-    'bb_cart',
-    JSON.stringify(cart)
-  );
-
-  updateCart();
-
-}
-
-
-function updateCart(){
-
-  const count =
-    cart.reduce(
-      (s,x) =>
-        s + Number(x.qty || 0),
-      0
-    );
-
-
-  document.getElementById(
-    'cartCount'
-  ).textContent = count;
-
-}
-
-
-/* OPEN CART */
-
-function openCart(){
-
-  document
-    .getElementById('cartDrawer')
-    .classList.add('open');
-
-
-  const box =
+  const grid =
     document.getElementById(
-      'cartItems'
+      'allGrid'
     );
 
 
-  if(!cart.length){
-
-    box.innerHTML =
-      '<div class="empty">Your cart is empty.</div>';
-
-    document.getElementById(
-      'cartTotal'
-    ).textContent = '';
-
-    return;
-
-  }
-
-
-  let total = 0;
-
-
-  box.innerHTML =
-
-    cart.map(i => {
-
-      const p =
-        products.find(
-          x =>
-            String(x.id) === String(i.id)
-        );
-
-
-      if(!p){
-        return '';
-      }
-
-
-      const qty =
-        Number(i.qty || 1);
-
-
-      total +=
-        Number(p.price || 0) * qty;
-
-
-      return `
-
-<div class="cart-item">
-
-<img
-src="${p.image}"
-alt="${p.name}"
->
-
-<div style="flex:1">
-
-<b>
-${p.name}
-</b>
-
-<div>
-${money(p.price)} × ${qty}
-</div>
-
-<div class="qty">
-
-<button
-onclick="changeQty('${p.id}',-1)"
->
-−
-</button>
-
-<button
-onclick="changeQty('${p.id}',1)"
->
-+
-</button>
-
-<button
-onclick="removeItem('${p.id}')"
->
-Remove
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-`;
-
-    }).join('');
-
-
-  document.getElementById(
-    'cartTotal'
-  ).textContent =
-    'Total: ' + money(total);
-
-}
-
-
-function closeCart(){
-
-  document
-    .getElementById('cartDrawer')
-    .classList.remove('open');
-
-}
-
-
-function changeQty(id,d){
-
-  const x =
-    cart.find(
-      i =>
-        String(i.id) === String(id)
-    );
-
-
-  if(!x){
-    return;
-  }
-
-
-  x.qty =
-    Number(x.qty || 0) + d;
-
-
-  if(x.qty < 1){
-
-    cart =
-      cart.filter(
-        i =>
-          String(i.id) !== String(id)
-      );
-
-  }
-
-
-  saveCart();
-
-  openCart();
-
-}
-
-
-function removeItem(id){
-
-  cart =
-    cart.filter(
-      i =>
-        String(i.id) !== String(id)
-    );
-
-
-  saveCart();
-
-  openCart();
-
-}
-
-
-/* ACCOUNT */
-
-function openLogin(){
-
-  document
-    .getElementById('loginModal')
-    .classList.add('open');
-
-}
-
-
-function closeLogin(){
-
-  document
-    .getElementById('loginModal')
-    .classList.remove('open');
-
-}
-
-
-function saveAccount(){
-
-  const account = {
-
-    name:
-      document
-        .getElementById('loginName')
-        .value
-        .trim(),
-
-    email:
-      document
-        .getElementById('loginEmail')
-        .value
-        .trim(),
-
-    phone:
-      document
-        .getElementById('loginPhone')
-        .value
-        .trim()
-
-  };
-
-
-  localStorage.setItem(
-    'bb_account',
-    JSON.stringify(account)
-  );
-
-
-  alert(
-    'Account details saved on this device.'
-  );
-
-
-  closeLogin();
-
-}
-
-
-/* CHECKOUT */
-
-function openCheckout(){
-
-  if(!cart.length){
-
-    alert(
-      'Please add a p
+  const list =
+    category === 'All'
+    ? products
+    : products.filter(
+        p =  
