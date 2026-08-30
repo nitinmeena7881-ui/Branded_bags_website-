@@ -1,13 +1,13 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>Branded Bags | Luxury Fashion</title>
 
 <meta name="description"
-content="Branded Bags - premium handbags, 50% OFF collection and exclusive combo bags.">
+content="Branded Bags - Premium handbags, 50% OFF collection and exclusive combo bags.">
 
 <style>
 :root{
@@ -20,6 +20,7 @@ content="Branded Bags - premium handbags, 50% OFF collection and exclusive combo
   --cream:#faf8f3;
   --white:#fff;
   --green:#168a45;
+  --red:#c1121f;
 }
 
 *{
@@ -32,7 +33,7 @@ html{
 
 body{
   margin:0;
-  font-family:Inter,Arial,system-ui,sans-serif;
+  font-family:Arial,Helvetica,sans-serif;
   color:var(--text);
   background:#fff;
 }
@@ -52,13 +53,13 @@ a{
   text-decoration:none;
 }
 
-/* TOP BAR */
+/* TOP */
 
 .topbar{
-  background:var(--black);
+  background:#151515;
   color:#fff;
   text-align:center;
-  padding:9px 15px;
+  padding:9px 12px;
   font-size:11px;
   letter-spacing:.12em;
 }
@@ -72,9 +73,9 @@ a{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:20px;
+  gap:15px;
   padding:10px 5vw;
-  background:rgba(255,255,255,.96);
+  background:rgba(255,255,255,.97);
   backdrop-filter:blur(15px);
   border-bottom:1px solid var(--line);
 }
@@ -82,8 +83,7 @@ a{
 .brand{
   display:flex;
   align-items:center;
-  gap:12px;
-  min-width:max-content;
+  gap:10px;
 }
 
 .brand img{
@@ -94,20 +94,15 @@ a{
 }
 
 .brand-name{
-  font-size:20px;
-  font-weight:800;
-  letter-spacing:.05em;
+  font-size:19px;
+  font-weight:900;
+  letter-spacing:.04em;
 }
 
 .navlinks{
   display:flex;
-  gap:24px;
-  align-items:center;
+  gap:22px;
   font-size:14px;
-}
-
-.navlinks a{
-  transition:.2s;
 }
 
 .navlinks a:hover{
@@ -116,15 +111,15 @@ a{
 
 .actions{
   display:flex;
-  gap:8px;
+  gap:7px;
 }
 
 .pill{
   border:1px solid var(--line);
   background:#fff;
   border-radius:999px;
-  padding:10px 15px;
-  transition:.2s;
+  padding:10px 14px;
+  font-weight:700;
 }
 
 .pill:hover{
@@ -134,11 +129,11 @@ a{
 /* HERO */
 
 .hero{
-  min-height:590px;
-  padding:65px 5vw;
+  min-height:570px;
+  padding:60px 5vw;
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:50px;
+  gap:45px;
   align-items:center;
   background:
     radial-gradient(circle at 90% 20%,#f3e8d4 0,transparent 30%),
@@ -149,18 +144,18 @@ a{
   color:var(--gold);
   font-size:12px;
   font-weight:900;
-  letter-spacing:.22em;
+  letter-spacing:.2em;
 }
 
 .hero h1{
   margin:16px 0;
   font-family:Georgia,serif;
-  font-size:clamp(48px,7vw,86px);
+  font-size:clamp(48px,7vw,84px);
   line-height:.94;
 }
 
 .hero p{
-  max-width:550px;
+  max-width:560px;
   color:var(--muted);
   line-height:1.8;
   font-size:17px;
@@ -181,12 +176,12 @@ a{
 
 .btn.light{
   background:#fff;
-  color:var(--black);
+  color:#111;
   border-color:var(--line);
 }
 
 .hero-card{
-  height:480px;
+  height:460px;
   border-radius:30px;
   overflow:hidden;
   background:#eee;
@@ -232,10 +227,10 @@ a{
   font-size:12px;
 }
 
-/* SECTIONS */
+/* SECTION */
 
 .section{
-  padding:70px 5vw;
+  padding:65px 5vw;
 }
 
 .section.cream{
@@ -255,11 +250,11 @@ a{
 .section-head p{
   margin:0;
   color:var(--muted);
-  font-size:17px;
+  font-size:16px;
   line-height:1.6;
 }
 
-/* FILTERS */
+/* FILTER */
 
 .filters{
   display:flex;
@@ -276,12 +271,12 @@ a{
 }
 
 .filter.active{
-  background:var(--black);
+  background:#111;
   color:#fff;
-  border-color:var(--black);
+  border-color:#111;
 }
 
-/* PRODUCT GRID */
+/* PRODUCTS */
 
 .grid{
   display:grid;
@@ -314,24 +309,18 @@ a{
   height:100%;
   object-fit:cover;
   display:block;
-  transition:.35s;
-}
-
-.card:hover .photo img{
-  transform:scale(1.03);
 }
 
 .badge{
   position:absolute;
-  left:11px;
-  top:11px;
-  background:var(--black);
+  left:10px;
+  top:10px;
+  background:#111;
   color:#fff;
   border-radius:999px;
   padding:7px 10px;
   font-size:10px;
   font-weight:900;
-  letter-spacing:.05em;
 }
 
 .badge.combo{
@@ -345,7 +334,7 @@ a{
 .cat{
   color:var(--gold2);
   text-transform:uppercase;
-  letter-spacing:.12em;
+  letter-spacing:.1em;
   font-size:10px;
   font-weight:800;
 }
@@ -390,7 +379,7 @@ a{
 .smallbtn{
   border:1px solid var(--line);
   background:#fff;
-  padding:10px 6px;
+  padding:10px 5px;
   border-radius:10px;
   font-size:12px;
   font-weight:800;
@@ -398,19 +387,17 @@ a{
 
 .smallbtn.buy{
   color:#fff;
-  background:var(--black);
-  border-color:var(--black);
+  background:#111;
+  border-color:#111;
 }
-
-/* LOADING */
 
 .loading{
   grid-column:1/-1;
   padding:60px 20px;
   text-align:center;
+  color:#888;
   border:1px dashed var(--line);
   border-radius:20px;
-  color:#888;
 }
 
 .empty{
@@ -420,7 +407,7 @@ a{
   color:#888;
 }
 
-/* POLICIES */
+/* POLICY */
 
 .policy-card{
   padding:24px;
@@ -439,7 +426,7 @@ a{
 
 footer{
   padding:50px 5vw 25px;
-  background:var(--black);
+  background:#151515;
   color:#fff;
   display:grid;
   grid-template-columns:2fr 1fr 1fr;
@@ -468,18 +455,9 @@ footer p{
 
 .footer-links b{
   color:#fff;
-  margin-bottom:5px;
 }
 
-.copyright{
-  grid-column:1/-1;
-  border-top:1px solid #333;
-  padding-top:20px;
-  color:#888;
-  font-size:12px;
-}
-
-/* CART DRAWER */
+/* CART */
 
 .drawer{
   position:fixed;
@@ -572,7 +550,7 @@ footer p{
   padding:15px;
   border:0;
   border-radius:12px;
-  background:var(--black);
+  background:#111;
   color:#fff;
   font-weight:900;
 }
@@ -626,11 +604,6 @@ footer p{
   outline:none;
 }
 
-.form input:focus,
-.form textarea:focus{
-  border-color:var(--gold);
-}
-
 .qr-wrap{
   display:flex;
   flex-wrap:wrap;
@@ -671,7 +644,7 @@ footer p{
   bottom:25px;
   z-index:1000;
   transform:translate(-50%,120px);
-  background:var(--black);
+  background:#111;
   color:#fff;
   padding:13px 18px;
   border-radius:999px;
@@ -723,26 +696,25 @@ footer p{
   }
 
   .brand img{
-    width:48px;
-    height:48px;
+    width:46px;
+    height:46px;
   }
 
   .brand-name{
-    font-size:16px;
+    font-size:15px;
   }
 
   .pill{
-    padding:9px 11px;
-    font-size:12px;
+    padding:9px 10px;
+    font-size:11px;
   }
 
   .hero{
     padding:45px 4vw;
-    min-height:auto;
   }
 
   .hero h1{
-    font-size:56px;
+    font-size:55px;
   }
 
   .hero p{
@@ -750,7 +722,7 @@ footer p{
   }
 
   .hero-card{
-    height:360px;
+    height:350px;
   }
 
   .section{
@@ -780,31 +752,10 @@ footer p{
 
   .smallbtn{
     font-size:10px;
-    padding:9px 4px;
-  }
-
-  .trust{
-    padding:12px 4vw;
-  }
-
-  .trust-box{
-    padding:10px 4px;
-  }
-
-  .trust-box b{
-    font-size:12px;
-  }
-
-  .trust-box span{
-    font-size:10px;
   }
 
   footer{
     grid-template-columns:1fr;
-  }
-
-  .copyright{
-    grid-column:auto;
   }
 
   .qr{
@@ -817,484 +768,487 @@ footer p{
 
 <body>
 
-<!-- TOP BAR -->
 <div class="topbar">
-  LUXURY COLLECTION • 50% OFF • ALL INDIA DELIVERY • ONLINE PAYMENT ONLY
+LUXURY COLLECTION • 50% OFF • ALL INDIA DELIVERY • ONLINE PAYMENT ONLY
 </div>
 
-<!-- NAVIGATION -->
 <nav class="nav">
 
-  <a class="brand" href="#">
-    <img src="logo.png" alt="Branded Bags Logo"
-         onerror="this.src='assets/logo.png'">
-    <span class="brand-name">BRANDED BAGS</span>
-  </a>
+<a class="brand" href="#">
+<img src="logo.png"
+     alt="Branded Bags"
+     onerror="this.src='assets/logo.png'">
+<span class="brand-name">BRANDED BAGS</span>
+</a>
 
-  <div class="navlinks">
-    <a href="#sale">50% OFF</a>
-    <a href="#combos">Combos</a>
-    <a href="#shop">Shop</a>
-    <a href="#policy">Policies</a>
-  </div>
+<div class="navlinks">
+<a href="#sale">50% OFF</a>
+<a href="#combos">Combos</a>
+<a href="#shop">Shop</a>
+<a href="#policy">Policies</a>
+</div>
 
-  <div class="actions">
-    <button class="pill" onclick="openLogin()">
-      Account
-    </button>
+<div class="actions">
+<button class="pill" onclick="openLogin()">
+Account
+</button>
 
-    <button class="pill" onclick="openCart()">
-      Cart <span id="cartCount">0</span>
-    </button>
-  </div>
+<button class="pill" onclick="openCart()">
+Cart <span id="cartCount">0</span>
+</button>
+</div>
 
 </nav>
 
-<!-- HERO -->
 <header class="hero">
 
-  <div>
+<div>
 
-    <div class="eyebrow">
-      FASHION • STYLE • ELEGANCE
-    </div>
+<div class="eyebrow">
+FASHION • STYLE • ELEGANCE
+</div>
 
-    <h1>
-      Carry<br>
-      Your Style.
-    </h1>
+<h1>
+Carry<br>
+Your Style.
+</h1>
 
-    <p>
-      Discover our curated collection of luxury-inspired handbags,
-      totes, shoulder bags, crossbody bags and exclusive combo bags.
-    </p>
+<p>
+Discover our curated collection of luxury-inspired handbags,
+totes, shoulder bags, backpacks and exclusive combo bags.
+</p>
 
-    <a class="btn" href="#sale">
-      Shop 50% OFF
-    </a>
+<a class="btn" href="#sale">
+Shop 50% OFF
+</a>
 
-    <a class="btn light" href="#combos">
-      View Combos
-    </a>
+<a class="btn light" href="#combos">
+View Combos
+</a>
 
-  </div>
+</div>
 
-  <div class="hero-card">
-    <img
-      src="assets/products/1639.jpg"
-      alt="Featured Branded Bag"
-      onerror="this.src='assets/products/1636.jpg'"
-    >
-  </div>
+<div class="hero-card">
+
+<img
+src="assets/products/1639.jpg"
+alt="Featured Bag"
+onerror="this.src='assets/products/1636.jpg'"
+>
+
+</div>
 
 </header>
 
-<!-- TRUST -->
 <div class="trust">
 
-  <div class="trust-box">
-    <div class="trust-icon">🚚</div>
-    <b>Fast Delivery</b>
-    <span>All India</span>
-  </div>
+<div class="trust-box">
+<div class="trust-icon">🚚</div>
+<b>Fast Delivery</b>
+<span>All India</span>
+</div>
 
-  <div class="trust-box">
-    <div class="trust-icon">↩️</div>
-    <b>7-Day Returns</b>
-    <span>Easy return window</span>
-  </div>
+<div class="trust-box">
+<div class="trust-icon">↩️</div>
+<b>7-Day Returns</b>
+<span>Easy return window</span>
+</div>
 
-  <div class="trust-box">
-    <div class="trust-icon">🔒</div>
-    <b>Secure Payment</b>
-    <span>Online payment only</span>
-  </div>
+<div class="trust-box">
+<div class="trust-icon">🔒</div>
+<b>Secure Payment</b>
+<span>Online payment only</span>
+</div>
 
-  <div class="trust-box">
-    <div class="trust-icon">💬</div>
-    <b>WhatsApp Support</b>
-    <span>Customer assistance</span>
-  </div>
+<div class="trust-box">
+<div class="trust-icon">💬</div>
+<b>WhatsApp Support</b>
+<span>Customer assistance</span>
+</div>
 
 </div>
 
 <!-- SALE -->
+
 <section class="section" id="sale">
 
-  <div class="section-head">
+<div class="section-head">
 
-    <div class="eyebrow">
-      LIMITED COLLECTION
-    </div>
+<div class="eyebrow">
+LIMITED COLLECTION
+</div>
 
-    <h2>
-      50% OFF Bags
-    </h2>
+<h2>
+50% OFF Bags
+</h2>
 
-    <p>
-      Enjoy special prices on our selected bag collection.
-    </p>
+<p>
+Enjoy special prices on our selected bag collection.
+</p>
 
-  </div>
+</div>
 
-  <div id="saleGrid" class="grid">
-    <div class="loading">
-      Loading sale collection...
-    </div>
-  </div>
+<div id="saleGrid" class="grid">
+
+<div class="loading">
+Loading sale collection...
+</div>
+
+</div>
 
 </section>
 
 <!-- COMBOS -->
+
 <section class="section cream" id="combos">
 
-  <div class="section-head">
+<div class="section-head">
 
-    <div class="eyebrow">
-      CURATED SETS
-    </div>
+<div class="eyebrow">
+CURATED SETS
+</div>
 
-    <h2>
-      Combo Bags
-    </h2>
+<h2>
+Combo Bags
+</h2>
 
-    <p>
-      Exclusive combo prices. Combo products are not included
-      in the 50% OFF sale.
-    </p>
+<p>
+Exclusive combo prices. Combo products are not included
+in the 50% OFF sale.
+</p>
 
-  </div>
+</div>
 
-  <div id="comboGrid" class="grid">
-    <div class="loading">
-      Loading combo collection...
-    </div>
-  </div>
+<div id="comboGrid" class="grid">
+
+<div class="loading">
+Loading combo collection...
+</div>
+
+</div>
 
 </section>
 
-<!-- ALL PRODUCTS -->
+<!-- SHOP -->
+
 <section class="section" id="shop">
 
-  <div class="section-head">
+<div class="section-head">
 
-    <div class="eyebrow">
-      SHOP BY STYLE
-    </div>
+<div class="eyebrow">
+SHOP BY STYLE
+</div>
 
-    <h2>
-      All Bags
-    </h2>
+<h2>
+All Bags
+</h2>
 
-    <p>
-      Choose your favourite style and add it to your cart.
-    </p>
+<p>
+Choose your favourite style and add it to your cart.
+</p>
 
-  </div>
+</div>
 
-  <div id="filters" class="filters"></div>
+<div id="filters" class="filters"></div>
 
-  <div id="allGrid" class="grid">
-    <div class="loading">
-      Loading products...
-    </div>
-  </div>
+<div id="allGrid" class="grid">
+
+<div class="loading">
+Loading products...
+</div>
+
+</div>
 
 </section>
 
-<!-- POLICIES -->
+<!-- POLICY -->
+
 <section class="section cream" id="policy">
 
-  <div class="section-head">
+<div class="section-head">
 
-    <div class="eyebrow">
-      SHOP WITH CONFIDENCE
-    </div>
+<div class="eyebrow">
+SHOP WITH CONFIDENCE
+</div>
 
-    <h2>
-      Our Policies
-    </h2>
+<h2>
+Our Policies
+</h2>
 
-    <p>
-      Simple and transparent shopping experience.
-    </p>
+<p>
+Simple and transparent shopping experience.
+</p>
 
-  </div>
+</div>
 
-  <div class="grid">
+<div class="grid">
 
-    <div class="card policy-card">
-      <h3>🔒 Online Payment</h3>
-      <p>
-        COD is not available. Payment is accepted online only
-        through the provided payment QR codes.
-      </p>
-    </div>
+<div class="card policy-card">
+<h3>🔒 Online Payment</h3>
+<p>
+COD is not available. Payment is accepted online only
+through the provided payment QR codes.
+</p>
+</div>
 
-    <div class="card policy-card">
-      <h3>↩️ 7-Day Returns</h3>
-      <p>
-        Eligible products can be returned within 7 days of delivery,
-        subject to the applicable return conditions.
-      </p>
-    </div>
+<div class="card policy-card">
+<h3>↩️ 7-Day Returns</h3>
+<p>
+Eligible products can be returned within 7 days of delivery,
+subject to applicable return conditions.
+</p>
+</div>
 
-    <div class="card policy-card">
-      <h3>🚚 Delivery</h3>
-      <p>
-        We provide All India delivery. Delivery time may vary
-        depending on location and courier service.
-      </p>
-    </div>
+<div class="card policy-card">
+<h3>🚚 Delivery</h3>
+<p>
+All India delivery is available. Delivery time may vary
+depending on location and courier service.
+</p>
+</div>
 
-    <div class="card policy-card">
-      <h3>💬 Customer Support</h3>
-      <p>
-        Need help with an order? Contact our support team.
-      </p>
+<div class="card policy-card">
+<h3>💬 Customer Support</h3>
+<p>
+Need help with your order? Contact our support team.
+</p>
 
-      <button class="btn" onclick="contactSupport()">
-        Contact Support
-      </button>
-    </div>
+<button class="btn" onclick="contactSupport()">
+Contact Support
+</button>
 
-  </div>
+</div>
+
+</div>
 
 </section>
 
 <!-- FOOTER -->
+
 <footer>
 
-  <div>
+<div>
 
-    <img
-      class="footer-logo"
-      src="logo.png"
-      alt="Branded Bags"
-      onerror="this.src='assets/logo.png'"
-    >
+<img
+class="footer-logo"
+src="logo.png"
+alt="Branded Bags"
+onerror="this.src='assets/logo.png'"
+>
 
-    <h3>
-      Branded Bags
-    </h3>
+<h3>Branded Bags</h3>
 
-    <p>
-      Luxury-inspired fashion, modern style and curated
-      collections for everyday elegance.
-    </p>
+<p>
+Luxury-inspired fashion, modern style and curated
+collections for everyday elegance.
+</p>
 
-  </div>
+</div>
 
-  <div class="footer-links">
+<div class="footer-links">
 
-    <b>Quick Links</b>
+<b>Quick Links</b>
 
-    <a href="#sale">50% OFF</a>
-    <a href="#combos">Combo Bags</a>
-    <a href="#shop">All Bags</a>
-    <a href="#policy">Policies</a>
+<a href="#sale">50% OFF</a>
+<a href="#combos">Combo Bags</a>
+<a href="#shop">All Bags</a>
+<a href="#policy">Policies</a>
 
-  </div>
+</div>
 
-  <div class="footer-links">
+<div class="footer-links">
 
-    <b>Customer Support</b>
+<b>Customer Support</b>
 
-    <span>Online Payment Only</span>
-    <span>7-Day Returns</span>
-    <span>All India Delivery</span>
+<span>Online Payment Only</span>
+<span>7-Day Returns</span>
+<span>All India Delivery</span>
 
-    <button
-      class="btn"
-      onclick="whatsappSupport()"
-      style="margin-top:8px"
-    >
-      WhatsApp
-    </button>
+<button
+class="btn"
+onclick="whatsappSupport()">
+WhatsApp
+</button>
 
-  </div>
+</div>
 
-  <div class="copyright">
-    © 2026 Branded Bags. All rights reserved.
-  </div>
+<div class="copyright">
+© 2026 Branded Bags. All rights reserved.
+</div>
 
 </footer>
 
-<!-- CART DRAWER -->
+<!-- CART -->
+
 <div class="drawer" id="cartDrawer">
 
-  <div class="shade" onclick="closeCart()"></div>
+<div class="shade" onclick="closeCart()"></div>
 
-  <div class="panel">
+<div class="panel">
 
-    <button
-      class="pill close"
-      onclick="closeCart()"
-    >
-      Close
-    </button>
+<button class="pill close" onclick="closeCart()">
+Close
+</button>
 
-    <h2>Your Cart</h2>
+<h2>Your Cart</h2>
 
-    <div id="cartItems"></div>
+<div id="cartItems"></div>
 
-    <div
-      id="cartTotal"
-      class="total"
-    >
-      Total: ₹0
-    </div>
+<div id="cartTotal" class="total">
+Total: ₹0
+</div>
 
-    <button
-      class="checkout-btn"
-      onclick="openCheckout()"
-    >
-      Proceed to Checkout
-    </button>
-
-  </div>
+<button
+class="checkout-btn"
+onclick="openCheckout()">
+Proceed to Checkout
+</button>
 
 </div>
 
-<!-- LOGIN MODAL -->
+</div>
+
+<!-- LOGIN -->
+
 <div class="modal" id="loginModal">
 
-  <div class="modalbox">
+<div class="modalbox">
 
-    <button
-      class="pill modal-close"
-      onclick="closeLogin()"
-    >
-      Close
-    </button>
+<button class="pill modal-close" onclick="closeLogin()">
+Close
+</button>
 
-    <h2>Customer Account</h2>
+<h2>Customer Account</h2>
 
-    <p>
-      Save your details for faster checkout.
-    </p>
+<p>
+Save your details for faster checkout.
+</p>
 
-    <div class="form">
+<div class="form">
 
-      <input
-        id="loginName"
-        placeholder="Full Name"
-      >
+<input id="loginName"
+placeholder="Full Name">
 
-      <input
-        id="loginEmail"
-        type="email"
-        placeholder="Email Address"
-      >
+<input id="loginEmail"
+type="email"
+placeholder="Email Address">
 
-      <input
-        id="loginPhone"
-        placeholder="Mobile Number"
-      >
+<input id="loginPhone"
+placeholder="Mobile Number">
 
-      <button
-        class="checkout-btn"
-        onclick="saveAccount()"
-      >
-        Save Account
-      </button>
-
-    </div>
-
-  </div>
+<button
+class="checkout-btn"
+onclick="saveAccount()">
+Save Account
+</button>
 
 </div>
 
-<!-- CHECKOUT MODAL -->
+</div>
+
+</div>
+
+<!-- CHECKOUT -->
+
 <div class="modal" id="checkoutModal">
 
-  <div class="modalbox">
+<div class="modalbox">
 
-    <button
-      class="pill modal-close"
-      onclick="closeCheckout()"
-    >
-      Close
-    </button>
+<button
+class="pill modal-close"
+onclick="closeCheckout()">
+Close
+</button>
 
-    <h2>Secure Checkout</h2>
+<h2>Secure Checkout</h2>
 
-    <p>
-      Online payment only • No COD
-    </p>
+<p>
+Online payment only • No COD
+</p>
 
-    <div class="form">
+<div class="form">
 
-      <input
-        id="cName"
-        placeholder="Full Name *"
-      >
+<input
+id="cName"
+placeholder="Full Name *">
 
-      <input
-        id="cPhone"
-        placeholder="Mobile Number *"
-        inputmode="numeric"
-      >
+<input
+id="cPhone"
+placeholder="Mobile Number *"
+inputmode="numeric">
 
-      <textarea
-        id="cAddress"
-        rows="3"
-        placeholder="Complete Delivery Address *"
-      ></textarea>
+<input
+id="cHouse"
+placeholder="House / Flat / Building *">
 
-      <input
-        id="cPincode"
-        placeholder="Pincode *"
-        inputmode="numeric"
-      >
+<textarea
+id="cAddress"
+rows="3"
+placeholder="Street / Complete Address *"></textarea>
 
-      <div class="payment-note">
+<input
+id="cCity"
+placeholder="City *">
 
-        <b>Payment Instructions</b><br><br>
+<input
+id="cState"
+placeholder="State *">
 
-        1. Scan either QR code below.<br>
-        2. Complete the payment.<br>
-        3. Place your order.<br>
-        4. Send payment proof on WhatsApp.
+<input
+id="cPincode"
+placeholder="Pincode *"
+inputmode="numeric">
 
-      </div>
+<input
+id="cLandmark"
+placeholder="Landmark (optional)">
 
-      <div class="qr-wrap">
+<div class="payment-note">
 
-        <img
-          class="qr"
-          src="qr1.jpg"
-          alt="Payment QR 1"
-          onerror="this.src='assets/qr1.jpg'"
-        >
+<b>Payment Instructions</b><br><br>
 
-        <img
-          class="qr"
-          src="qr2.png"
-          alt="Payment QR 2"
-          onerror="this.src='assets/qr2.png'"
-        >
-
-      </div>
-
-      <button
-        class="checkout-btn"
-        onclick="placeOrder()"
-        id="placeOrderBtn"
-      >
-        Place Order & WhatsApp
-      </button>
-
-    </div>
-
-  </div>
+1. Scan either QR code below.<br>
+2. Complete the payment.<br>
+3. Place your order.<br>
+4. Send payment proof on WhatsApp.
 
 </div>
 
-<!-- TOAST -->
+<div class="qr-wrap">
+
+<img
+class="qr"
+src="qr1.jpg"
+alt="Payment QR 1"
+onerror="this.src='assets/qr1.jpg'">
+
+<img
+class="qr"
+src="qr2.png"
+alt="Payment QR 2"
+onerror="this.src='assets/qr2.png'">
+
+</div>
+
+<button
+class="checkout-btn"
+onclick="placeOrder()"
+id="placeOrderBtn">
+
+Place Order & WhatsApp
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
 <div class="toast" id="toast"></div>
 
 <!-- SUPABASE -->
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
@@ -1304,27 +1258,27 @@ footer p{
 ========================================================= */
 
 const SUPABASE_URL =
-  "https://lkdwjqpjcitnchmibupa.supabase.co";
+"https://lkdwjqpjcitnchmibupa.supabase.co";
 
 const SUPABASE_KEY =
-  "sb_publishable_iM4hwDWoyBnhbAzEfWj5Uw_cQumbH5k";
+"sb_publishable_iM4hwDWoyBnhbAzEfWj5Uw_cQumbH5k";
 
 const sb =
-  window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
+window.supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
 
 
 /* =========================================================
-   CONTACT NUMBERS
+   CONTACT
 ========================================================= */
 
 const WHATSAPP_NUMBER =
-  "917658868426";
+"917658868426";
 
 const SUPPORT_NUMBER =
-  "918764373020";
+"918764373020";
 
 
 /* =========================================================
@@ -1334,20 +1288,36 @@ const SUPPORT_NUMBER =
 let products = [];
 
 let cart =
-  JSON.parse(
-    localStorage.getItem("bb_cart") || "[]"
-  );
+JSON.parse(
+localStorage.getItem("bb_cart") || "[]"
+);
 
 
 /* =========================================================
-   MONEY
+   HELPER
 ========================================================= */
+
+function el(id){
+return document.getElementById(id);
+}
+
+
+function esc(value){
+
+return String(value ?? "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
 
 function money(value){
 
-  return "₹" +
-    Number(value || 0)
-      .toLocaleString("en-IN");
+return Number(value || 0)
+.toLocaleString("en-IN");
 
 }
 
@@ -1358,1049 +1328,169 @@ function money(value){
 
 function toast(message){
 
-  const box =
-    document.getElementById("toast");
+const box = el("toast");
 
-  box.textContent = message;
+box.textContent = message;
 
-  box.classList.add("show");
+box.classList.add("show");
 
-  setTimeout(() => {
-    box.classList.remove("show");
-  }, 2500);
+setTimeout(function(){
+
+box.classList.remove("show");
+
+},2500);
 
 }
 
 
 /* =========================================================
-   LOAD PRODUCTS
+   IMAGE
+========================================================= */
+
+function imageUrl(image){
+
+if(!image){
+
+return "https://via.placeholder.com/500x500?text=Branded+Bag";
+
+}
+
+return image;
+
+}
+
+
+/* =========================================================
+   NORMALIZE PRODUCT
+========================================================= */
+
+function normalizeProduct(p){
+
+const original =
+Number(
+p.original_price ??
+p.originalPrice ??
+p.price ??
+0
+);
+
+const selling =
+Number(
+p.selling_price ??
+p.sellingPrice ??
+p.price ??
+original
+);
+
+const discount =
+Number(
+p.discount ??
+0
+);
+
+const type =
+String(
+p.type ??
+""
+).toLowerCase();
+
+const combo =
+Boolean(
+p.combo
+) ||
+type.includes("combo") ||
+String(p.category || "")
+.toLowerCase() === "combo bags";
+
+return {
+
+id:p.id,
+
+name:
+p.name ||
+p.title ||
+"Unnamed Product",
+
+category:
+p.category ||
+"Bags",
+
+image:
+p.image ||
+p.image_url ||
+"",
+
+description:
+p.description ||
+"",
+
+originalPrice:
+original,
+
+sellingPrice:
+selling,
+
+discount:
+combo ? 0 : discount,
+
+combo:combo
+
+};
+
+}
+
+
+/* =========================================================
+   LOAD PRODUCTS FROM SUPABASE
 ========================================================= */
 
 async function loadProducts(){
 
-  try{
+const saleGrid = el("saleGrid");
+const comboGrid = el("comboGrid");
+const allGrid = el("allGrid");
 
-    const response =
-      await fetch(
-        "products.json?v=" + Date.now()
-      );
+saleGrid.innerHTML =
+'<div class="loading">Loading products...</div>';
 
-    if(!response.ok){
-      throw new Error(
-        "products.json not found"
-      );
-    }
+comboGrid.innerHTML =
+'<div class="loading">Loading products...</div>';
 
-    const data =
-      await response.json();
+allGrid.innerHTML =
+'<div class="loading">Loading products...</div>';
 
-    if(!Array.isArray(data)){
-      throw new Error(
-        "Invalid products.json"
-      );
-    }
+try{
 
-    products = data;
+const result =
+await sb
+.from("products")
+.select("*")
+.order("created_at",{ascending:false});
 
-    renderAll();
+if(result.error){
 
-  }catch(error){
+console.error(result.error);
 
-    console.error(
-      "Product loading error:",
-      error
-    );
-
-    document.getElementById(
-      "saleGrid"
-    ).innerHTML =
-      '<div class="empty">Products could not be loaded. Please check products.json.</div>';
-
-    document.getElementById(
-      "comboGrid"
-    ).innerHTML =
-      '<div class="empty">Products could not be loaded.</div>';
-
-    document.getElementById(
-      "allGrid"
-    ).innerHTML =
-      '<div class="empty">Products could not be loaded.</div>';
-
-  }
+throw result.error;
 
 }
 
+products =
+(result.data || [])
+.map(normalizeProduct);
 
-/* =========================================================
-   PRODUCT CARD
-========================================================= */
+renderFilters();
 
-function card(product){
+renderProducts();
 
-  const isCombo =
-    product.type === "combo";
+}catch(error){
 
-  const saving =
-    Number(product.originalPrice || 0) -
-    Number(product.price || 0);
+console.error("Supabase products error:",error);
 
-  return `
+try{
 
-    <article class="card">
-
-      <div class="photo">
-
-        <img
-          src="${escapeHtml(product.image)}"
-          alt="${escapeHtml(product.name)}"
-          loading="lazy"
-          onerror="this.style.display='none'"
-        >
-
-        <span class="badge ${isCombo ? "combo" : ""}">
-          ${escapeHtml(product.badge || (isCombo ? "COMBO" : "SALE"))}
-        </span>
-
-      </div>
-
-      <div class="info">
-
-        <div class="cat">
-          ${escapeHtml(product.category || "Bags")}
-        </div>
-
-        <div class="name">
-          ${escapeHtml(product.name)}
-        </div>
-
-        <div class="price">
-
-          <strong>
-            ${money(product.price)}
-          </strong>
-
-          <del>
-            ${money(product.originalPrice)}
-          </del>
-
-        </div>
-
-        ${
-          saving > 0
-          ?
-          `<div class="saving">
-             Save ${money(saving)}
-           </div>`
-          :
-          ""
-        }
-
-        <div class="card-actions">
-
-          <button
-            class="smallbtn"
-            onclick="addCart('${escapeJs(product.id)}')"
-          >
-            Add to Cart
-          </button>
-
-          <button
-            class="smallbtn buy"
-            onclick="buyNow('${escapeJs(product.id)}')"
-          >
-            Buy Now
-          </button>
-
-        </div>
-
-      </div>
-
-    </article>
-
-  `;
-
-}
-
-
-/* =========================================================
-   SECURITY HELPERS
-========================================================= */
-
-function escapeHtml(value){
-
-  return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
-}
-
-function escapeJs(value){
-
-  return String(value ?? "")
-    .replace(/\\/g,"\\\\")
-    .replace(/'/g,"\\'");
-
-}
-
-
-/* =========================================================
-   RENDER
-========================================================= */
-
-function renderAll(){
-
-  const sale =
-    products.filter(
-      p => p.type === "sale"
-    );
-
-  const combos =
-    products.filter(
-      p => p.type === "combo"
-    );
-
-  document.getElementById(
-    "saleGrid"
-  ).innerHTML =
-    sale.length
-    ?
-    sale.map(card).join("")
-    :
-    '<div class="empty">No sale products available.</div>';
-
-  document.getElementById(
-    "comboGrid"
-  ).innerHTML =
-    combos.length
-    ?
-    combos.map(card).join("")
-    :
-    '<div class="empty">No combo products available.</div>';
-
-
-  const categories = [
-    "All",
-    ...new Set(
-      products.map(
-        p => p.category
-      )
-    )
-  ];
-
-  document.getElementById(
-    "filters"
-  ).innerHTML =
-    categories.map(
-      (category,index) => `
-
-        <button
-          class="filter ${index === 0 ? "active" : ""}"
-          onclick="filterCategory('${escapeJs(category)}',this)"
-        >
-          ${escapeHtml(category)}
-        </button>
-
-      `
-    ).join("");
-
-
-  renderGrid("All");
-
-  updateCart();
-
-}
-
-
-/* =========================================================
-   ALL PRODUCTS
-========================================================= */
-
-function renderGrid(category){
-
-  const filtered =
-    category === "All"
-    ?
-    products
-    :
-    products.filter(
-      p => p.category === category
-    );
-
-  document.getElementById(
-    "allGrid"
-  ).innerHTML =
-    filtered.length
-    ?
-    filtered.map(card).join("")
-    :
-    '<div class="empty">No products found.</div>';
-
-}
-
-
-/* =========================================================
-   FILTER
-========================================================= */
-
-function filterCategory(category,button){
-
-  document
-    .querySelectorAll(".filter")
-    .forEach(
-      b => b.classList.remove("active")
-    );
-
-  button.classList.add("active");
-
-  renderGrid(category);
-
-}
-
-
-/* =========================================================
-   CART
-========================================================= */
-
-function addCart(id){
-
-  const product =
-    products.find(
-      p => String(p.id) === String(id)
-    );
-
-  if(!product){
-
-    toast("Product not found.");
-
-    return;
-  }
-
-  const existing =
-    cart.find(
-      item => String(item.id) === String(id)
-    );
-
-  if(existing){
-
-    existing.qty += 1;
-
-  }else{
-
-    cart.push({
-      id:id,
-      qty:1
-    });
-
-  }
-
-  saveCart();
-
-  toast(
-    product.name +
-    " added to cart."
-  );
-
-  openCart();
-
-}
-
-
-function buyNow(id){
-
-  addCart(id);
-
-  setTimeout(
-    () => openCheckout(),
-    150
-  );
-
-}
-
-
-function saveCart(){
-
-  localStorage.setItem(
-    "bb_cart",
-    JSON.stringify(cart)
-  );
-
-  updateCart();
-
-}
-
-
-function updateCart(){
-
-  const count =
-    cart.reduce(
-      (total,item) =>
-        total + Number(item.qty || 0),
-      0
-    );
-
-  document.getElementById(
-    "cartCount"
-  ).textContent = count;
-
-}
-
-
-/* =========================================================
-   OPEN CART
-========================================================= */
-
-function openCart(){
-
-  document
-    .getElementById("cartDrawer")
-    .classList.add("open");
-
-  renderCart();
-
-}
-
-
-function closeCart(){
-
-  document
-    .getElementById("cartDrawer")
-    .classList.remove("open");
-
-}
-
-
-/* =========================================================
-   RENDER CART
-========================================================= */
-
-function renderCart(){
-
-  const box =
-    document.getElementById(
-      "cartItems"
-    );
-
-  const totalBox =
-    document.getElementById(
-      "cartTotal"
-    );
-
-  if(!cart.length){
-
-    box.innerHTML =
-      '<div class="empty">Your cart is empty.</div>';
-
-    totalBox.textContent =
-      "Total: ₹0";
-
-    return;
-
-  }
-
-  let total = 0;
-
-  let html = "";
-
-  cart.forEach(item => {
-
-    const product =
-      products.find(
-        p => String(p.id) === String(item.id)
-      );
-
-    if(!product) return;
-
-    const qty =
-      Number(item.qty || 1);
-
-    total +=
-      Number(product.price) * qty;
-
-    html += `
-
-      <div class="cart-item">
-
-        <img
-          src="${escapeHtml(product.image)}"
-          alt="${escapeHtml(product.name)}"
-        >
-
-        <div class="cart-details">
-
-          <div class="cart-name">
-            ${escapeHtml(product.name)}
-          </div>
-
-          <div>
-            ${money(product.price)}
-            × ${qty}
-          </div>
-
-          <div class="qty">
-
-            <button
-              onclick="changeQty('${escapeJs(product.id)}',-1)"
-            >
-              −
-            </button>
-
-            <b>${qty}</b>
-
-            <button
-              onclick="changeQty('${escapeJs(product.id)}',1)"
-            >
-              +
-            </button>
-
-            <button
-              class="remove"
-              onclick="removeItem('${escapeJs(product.id)}')"
-            >
-              Remove
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    `;
-
-  });
-
-  box.innerHTML =
-    html ||
-    '<div class="empty">Your cart is empty.</div>';
-
-  totalBox.textContent =
-    "Total: " + money(total);
-
-}
-
-
-/* =========================================================
-   CHANGE QUANTITY
-========================================================= */
-
-function changeQty(id,difference){
-
-  const item =
-    cart.find(
-      x => String(x.id) === String(id)
-    );
-
-  if(!item) return;
-
-  item.qty += difference;
-
-  if(item.qty <= 0){
-
-    cart =
-      cart.filter(
-        x => String(x.id) !== String(id)
-      );
-
-  }
-
-  saveCart();
-
-  renderCart();
-
-}
-
-
-function removeItem(id){
-
-  cart =
-    cart.filter(
-      x => String(x.id) !== String(id)
-    );
-
-  saveCart();
-
-  renderCart();
-
-  toast("Product removed.");
-
-}
-
-
-/* =========================================================
-   ACCOUNT
-========================================================= */
-
-function openLogin(){
-
-  const account =
-    JSON.parse(
-      localStorage.getItem(
-        "bb_account"
-      ) || "null"
-    );
-
-  if(account){
-
-    document.getElementById(
-      "loginName"
-    ).value =
-      account.name || "";
-
-    document.getElementById(
-      "loginEmail"
-    ).value =
-      account.email || "";
-
-    document.getElementById(
-      "loginPhone"
-    ).value =
-      account.phone || "";
-
-  }
-
-  document
-    .getElementById("loginModal")
-    .classList.add("open");
-
-}
-
-
-function closeLogin(){
-
-  document
-    .getElementById("loginModal")
-    .classList.remove("open");
-
-}
-
-
-function saveAccount(){
-
-  const account = {
-
-    name:
-      document
-        .getElementById("loginName")
-        .value.trim(),
-
-    email:
-      document
-        .getElementById("loginEmail")
-        .value.trim(),
-
-    phone:
-      document
-        .getElementById("loginPhone")
-        .value.trim()
-
-  };
-
-  if(!account.name){
-
-    toast("Please enter your name.");
-
-    return;
-
-  }
-
-  localStorage.setItem(
-    "bb_account",
-    JSON.stringify(account)
-  );
-
-  document.getElementById(
-    "cName"
-  ).value = account.name;
-
-  document.getElementById(
-    "cPhone"
-  ).value = account.phone;
-
-  closeLogin();
-
-  toast("Account details saved.");
-
-}
-
-
-/* =========================================================
-   CHECKOUT
-========================================================= */
-
-function openCheckout(){
-
-  if(!cart.length){
-
-    toast(
-      "Please add a product first."
-    );
-
-    return;
-
-  }
-
-  closeCart();
-
-  const account =
-    JSON.parse(
-      localStorage.getItem(
-        "bb_account"
-      ) || "null"
-    );
-
-  if(account){
-
-    document.getElementById(
-      "cName"
-    ).value =
-      account.name || "";
-
-    document.getElementById(
-      "cPhone"
-    ).value =
-      account.phone || "";
-
-  }
-
-  document
-    .getElementById("checkoutModal")
-    .classList.add("open");
-
-}
-
-
-function closeCheckout(){
-
-  document
-    .getElementById("checkoutModal")
-    .classList.remove("open");
-
-}
-
-
-/* =========================================================
-   PLACE ORDER
-========================================================= */
-
-async function placeOrder(){
-
-  const name =
-    document
-      .getElementById("cName")
-      .value.trim();
-
-  const phone =
-    document
-      .getElementById("cPhone")
-      .value.trim();
-
-  const address =
-    document
-      .getElementById("cAddress")
-      .value.trim();
-
-  const pincode =
-    document
-      .getElementById("cPincode")
-      .value.trim();
-
-
-  if(!name || !phone || !address || !pincode){
-
-    toast(
-      "Please fill all delivery details."
-    );
-
-    return;
-
-  }
-
-
-  if(cart.length === 0){
-
-    toast(
-      "Your cart is empty."
-    );
-
-    return;
-
-  }
-
-
-  const button =
-    document.getElementById(
-      "placeOrderBtn"
-    );
-
-  button.disabled = true;
-
-  button.textContent =
-    "Saving Order...";
-
-
-  try{
-
-    let total = 0;
-
-    const orderItems = [];
-
-    cart.forEach(item => {
-
-      const product =
-        products.find(
-          p =>
-            String(p.id) ===
-            String(item.id)
-        );
-
-      if(!product) return;
-
-      const qty =
-        Number(item.qty || 1);
-
-      total +=
-        Number(product.price) * qty;
-
-      orderItems.push({
-
-        id:product.id,
-
-        name:product.name,
-
-        price:Number(product.price),
-
-        quantity:qty
-
-      });
-
-    });
-
-
-    if(orderItems.length === 0){
-
-      throw new Error(
-        "No valid products in cart."
-      );
-
-    }
-
-
-    const fullAddress =
-      address +
-      ", Pincode: " +
-      pincode;
-
-
-    /*
-      IMPORTANT:
-      Supabase will generate the UUID
-      automatically because the id column
-      has DEFAULT gen_random_uuid().
-    */
-
-    const { data, error } =
-      await sb
-        .from("orders")
-        .insert({
-
-          customer_name:name,
-
-          mobile:phone,
-
-          address:fullAddress,
-
-          items:orderItems,
-
-          total_amount:total,
-
-          payment_status:"pending",
-
-          order_status:"new"
-
-        })
-        .select("id")
-        .single();
-
-
-    if(error){
-
-      console.error(
-        "Supabase error:",
-        error
-      );
-
-      throw new Error(
-        error.message ||
-        "Order could not be saved."
-      );
-
-    }
-
-
-    const orderId =
-      data && data.id
-      ?
-      data.id
-      :
-      "BB-" +
-      Date.now();
-
-
-    const itemsText =
-      orderItems
-        .map(
-          item =>
-            item.name +
-            " x" +
-            item.quantity
-        )
-        .join(", ");
-
-
-    const whatsappMessage =
-      "Hello Branded Bags,%0A%0A" +
-
-      "Order ID: " +
-      encodeURIComponent(orderId) +
-      "%0A" +
-
-      "Name: " +
-      encodeURIComponent(name) +
-      "%0A" +
-
-      "Phone: " +
-      encodeURIComponent(phone) +
-      "%0A" +
-
-      "Address: " +
-      encodeURIComponent(fullAddress) +
-      "%0A" +
-
-      "Items: " +
-      encodeURIComponent(itemsText) +
-      "%0A" +
-
-      "Total: " +
-      encodeURIComponent(
-        money(total)
-      ) +
-      "%0A" +
-
-      "Payment Status: Pending";
-
-
-    /* Clear cart */
-
-    cart = [];
-
-    saveCart();
-
-
-    /* Close checkout */
-
-    closeCheckout();
-
-
-    /* WhatsApp */
-
-    const whatsappUrl =
-      "https://wa.me/" +
-      WHATSAPP_NUMBER +
-      "?text=" +
-      whatsappMessage;
-
-
-    window.open(
-      whatsappUrl,
-      "_blank"
-    );
-
-
-    alert(
-      "Order successfully saved!%0A%0A" +
-      "Order ID: " +
-      orderId +
-      "%0A%0A" +
-      "Please complete payment and send payment proof on WhatsApp."
-    );
-
-
-  }catch(error){
-
-    console.error(
-      "Order error:",
-      error
-    );
-
-    alert(
-      "Order save nahi hua.\n\n" +
-      "Error: " +
-      error.message
-    );
-
-  }finally{
-
-    button.disabled = false;
-
-    button.textContent =
-      "Place Order & WhatsApp";
-
-  }
-
-}
-
-
-/* =========================================================
-   WHATSAPP
-========================================================= */
-
-function whatsappSupport(){
-
-  const url =
-    "https://wa.me/" +
-    WHATSAPP_NUMBER +
-    "?text=" +
-    encodeURIComponent(
-      "Hello Branded Bags, I need help with my order."
-    );
-
-  window.open(
-    url,
-    "_blank"
-  );
-
-}
-
-
-function contactSupport(){
-
-  window.open(
-    "tel:8764373020",
-    "_self"
-  );
-
-}
-
-
-/* =========================================================
-   START
-========================================================= */
-
-document.addEventListener(
-  "DOMContentLoaded",
-  () => {
-
-    updateCart();
-
-    loadProducts();
-
-  }
-);
-
-</script>
-
-</body>
-</html>
+const response =
+await fetch(
+"products.json",
+{
+cache:"no-sto
