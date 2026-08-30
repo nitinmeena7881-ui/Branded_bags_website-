@@ -1,0 +1,182 @@
+[
+  {
+    "id": "sale1",
+    "name": "Classic Beige Tote Bag",
+    "category": "Tote Bags",
+    "image": "assets/products/1636.jpg",
+    "originalPrice": 999,
+    "price": 500,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale2",
+    "name": "Signature Beige Tote Bag",
+    "category": "Shoulder Bags",
+    "image": "assets/products/1645.jpg",
+    "originalPrice": 1099,
+    "price": 550,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale3",
+    "name": "Classic Brown Tote Bag",
+    "category": "Crossbody Bags",
+    "image": "assets/products/1642.jpg",
+    "originalPrice": 1199,
+    "price": 600,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale4",
+    "name": "Elegant Mini Shoulder Bag",
+    "category": "Handbags",
+    "image": "assets/products/1654.jpg",
+    "originalPrice": 1299,
+    "price": 650,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale5",
+    "name": "Classic Black Tote Bag",
+    "category": "Tote Bags",
+    "image": "assets/products/1651.jpg",
+    "originalPrice": 1399,
+    "price": 700,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale6",
+    "name": "Emerald Shoulder Bag",
+    "category": "Shoulder Bags",
+    "image": "assets/products/1648.jpg",
+    "originalPrice": 1499,
+    "price": 750,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale7",
+    "name": "Black Mini Shoulder Bag",
+    "category": "Crossbody Bags",
+    "image": "assets/products/1660.jpg",
+    "originalPrice": 999,
+    "price": 500,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale8",
+    "name": "Ivory Logo Shoulder Bag",
+    "category": "Handbags",
+    "image": "assets/products/1711.jpg",
+    "originalPrice": 1199,
+    "price": 600,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale9",
+    "name": "Black Pattern Shoulder Bag",
+    "category": "Tote Bags",
+    "image": "assets/products/1729.jpg",
+    "originalPrice": 1299,
+    "price": 650,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "sale10",
+    "name": "Brown Crossbody Bag",
+    "category": "Shoulder Bags",
+    "image": "assets/products/1754.jpg",
+    "originalPrice": 1499,
+    "price": 750,
+    "badge": "50% OFF",
+    "type": "sale"
+  },
+  {
+    "id": "combo1",
+    "name": "Monogram Envelope Bag Combo",
+    "category": "Combo Bags",
+    "image": "assets/products/1750.jpg",
+    "originalPrice": 1799,
+    "price": 1299,
+    "badge": "COMBO",
+    "type": "combo"
+  },
+  {
+    "id": "combo2",
+    "name": "Croc Texture Bag Combo",
+    "category": "Handbag Combos",
+    "image": "assets/products/1741.jpg",
+    "originalPrice": 1899,
+    "price": 1399,
+    "badge": "COMBO",
+    "type": "combo"
+  },
+  {
+    "id": "combo3",
+    "name": "Quilted Shoulder Bag Combo",
+    "category": "Shoulder Combos",
+    "image": "assets/products/1720.jpg",
+    "originalPrice": 1999,
+    "price": 1499,
+    "badge": "COMBO",
+    "type": "combo"
+  },
+  {
+    "id": "combo4",
+    "name": "Classic Mini Bag Combo",
+    "category": "Gift Combos",
+    "image": "assets/products/1723.jpg",
+    "originalPrice": 1799,
+    "price": 1599,
+    "badge": "COMBO",
+    "type": "combo"
+  },
+  {
+    "id": "combo5",
+    "name": "Everyday Shoulder Bag Combo",
+    "category": "Combo Bags",
+    "image": "assets/products/1639.jpg",
+    "originalPrice": 1899,
+    "price": 1399,
+    "badge": "COMBO",
+    "type": "combo"
+  },
+  {
+    "id": "combo6",
+    "name": "Color Pop Mini Bag Combo",
+    "category": "Handbag Combos",
+    "image": "assets/products/1690.jpg",
+    "originalPrice": 1999,
+    "price": 1499,
+    "badge": "COMBO",
+    "type": "combo"
+  },
+  {
+    "id": "combo7",
+    "name": "Structured Handbag Combo",
+    "category": "Shoulder Combos",
+    "image": "assets/products/1669.jpg",
+    "originalPrice": 1899,
+    "price": 1599,
+    "badge": "COMBO",
+    "type": "combo"
+  },
+  {
+    "id": "combo8",
+    "name": "Gift Box Handbag Combo",
+    "category": "Gift Combos",
+    "image": "assets/products/1657.jpg",
+    "originalPrice": 1999,
+    "price": 1699,
+    "badge": "COMBO",
+    "type": "combo"
+  }
+]
