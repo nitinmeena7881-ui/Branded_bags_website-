@@ -1,106 +1,406 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Branded Bags — Admin Panel</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Branded Bags – Admin Panel</title>
+
 <style>
-body{font-family:system-ui,-apple-system,Segoe UI,sans-serif;margin:0;background:#faf8f4;color:#171717}
-.top{padding:18px 5vw;background:#111;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:12px}
-.top a{color:#fff}.wrap{padding:24px 5vw;max-width:1100px;margin:auto}
-.card{background:#fff;border:1px solid #e5e0d7;border-radius:16px;padding:18px;margin-bottom:18px}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.grid input,.grid select{width:100%;padding:11px;border:1px solid #ddd;border-radius:9px;box-sizing:border-box}
-.btn{padding:11px 15px;border-radius:9px;border:0;background:#111;color:#fff;cursor:pointer;font-weight:700;margin:5px 5px 0 0}
-.light{background:#fff;color:#111;border:1px solid #ddd}.danger{background:#b42318}
-.note{padding:12px;border-radius:10px;background:#f7f2e8;color:#5d4a27;font-size:13px;line-height:1.5}
-.product{display:grid;grid-template-columns:80px 1fr auto;gap:14px;align-items:center;border-top:1px solid #eee;padding:13px 0}
-.product img{width:80px;height:80px;object-fit:cover;border-radius:10px}.muted{color:#777;font-size:13px}
-.actions{white-space:nowrap}.empty{padding:20px;text-align:center;color:#777}
-@media(max-width:700px){.grid{grid-template-columns:1fr}.product{grid-template-columns:65px 1fr}.product .actions{grid-column:2}.product img{width:65px;height:65px}}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  background:#f5f5f5;
+  color:#111;
+}
+.top{
+  background:#111;
+  color:#fff;
+  padding:18px 5vw;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  flex-wrap:wrap;
+}
+.top a{
+  color:#fff;
+  text-decoration:none;
+  margin-right:12px;
+}
+.wrap{
+  max-width:1200px;
+  margin:auto;
+  padding:24px 16px;
+}
+.card{
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:16px;
+  padding:20px;
+  margin-bottom:18px;
+  box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+h1,h2,h3{margin-top:0}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+}
+label{
+  display:block;
+  font-weight:600;
+  margin-bottom:6px;
+}
+input,select,textarea{
+  width:100%;
+  padding:12px;
+  border:1px solid #ccc;
+  border-radius:10px;
+  font-size:15px;
+}
+textarea{min-height:90px}
+button{
+  border:0;
+  border-radius:10px;
+  padding:11px 16px;
+  cursor:pointer;
+  font-weight:600;
+}
+.btn{
+  background:#111;
+  color:#fff;
+}
+.light{
+  background:#fff;
+  color:#111;
+  border:1px solid #ccc;
+}
+.danger{
+  background:#b00020;
+  color:#fff;
+}
+.success{
+  background:#16803c;
+  color:#fff;
+}
+.note{
+  background:#f1f5f9;
+  padding:12px;
+  border-radius:10px;
+  margin-top:10px;
+}
+.product{
+  border:1px solid #ddd;
+  border-radius:14px;
+  padding:14px;
+  background:#fff;
+}
+.product img{
+  width:90px;
+  height:90px;
+  object-fit:cover;
+  border-radius:10px;
+  float:left;
+  margin-right:12px;
+}
+.product:after{
+  content:"";
+  display:block;
+  clear:both;
+}
+.price{
+  font-weight:700;
+  margin:5px 0;
+}
+.actions{
+  margin-top:12px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.order{
+  border:1px solid #ddd;
+  padding:15px;
+  border-radius:12px;
+  margin-bottom:12px;
+}
+.status{
+  padding:5px 9px;
+  border-radius:20px;
+  background:#eee;
+  display:inline-block;
+  font-size:13px;
+}
+@media(max-width:700px){
+  .grid{grid-template-columns:1fr}
+  .wrap{padding:15px}
+}
 </style>
 </head>
+
 <body>
-<div class="top"><b>Branded Bags — Admin Panel</b><a href="index.html">View Store</a></div>
+
+<div class="top">
+  <div>
+    <b>Branded Bags – Admin Panel</b>
+  </div>
+  <div>
+    <a href="index.html">Website</a>
+    <a href="admin.html">Admin</a>
+  </div>
+</div>
+
 <div class="wrap">
+
 <div class="card">
-<h2 id="formTitle">Add Product</h2>
-<div class="note">Changes made here are saved on this device and are also used by the store on this same device. Use <b>Download products.json</b> to publish the catalog to Vercel for all customers.</div><br>
-<div class="grid">
-<input id="name" placeholder="Product name">
-<input id="category" placeholder="Category">
-<input id="image" placeholder="Image path, e.g. assets/products/1636.jpg">
-<input id="original" type="number" min="0" placeholder="Original/MRP">
-<input id="price" type="number" min="0" placeholder="Selling price">
-<select id="type"><option value="sale">50% OFF</option><option value="combo">COMBO</option></select>
+  <h2>Admin Dashboard</h2>
+  <div class="note">
+    यहाँ से products, prices, discounts और orders manage करें।
+  </div>
 </div>
-<div>
-<button class="btn" onclick="saveProduct()">Save Product</button>
-<button class="btn light" onclick="cancelEdit()">Clear</button>
-<button class="btn light" onclick="downloadJson()">Download products.json</button>
-<button class="btn light" onclick="importJson()">Import products.json</button>
-<button class="btn danger" onclick="resetCatalog()">Reset to original catalog</button>
-<input id="fileInput" type="file" accept=".json,application/json" hidden>
+
+<div class="card">
+  <h2>Add / Edit Product</h2>
+
+  <input type="hidden" id="editId">
+
+  <div class="grid">
+
+    <div>
+      <label>Product Name</label>
+      <input id="pName" placeholder="Bag name">
+    </div>
+
+    <div>
+      <label>Category</label>
+      <select id="pCategory">
+        <option>All Bags</option>
+        <option>Women Bags</option>
+        <option>Hand Bags</option>
+        <option>Sling Bags</option>
+        <option>Shoulder Bags</option>
+        <option>Combo Bags</option>
+        <option>Premium</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Original Price ₹</label>
+      <input id="pOriginal" type="number" placeholder="1999">
+    </div>
+
+    <div>
+      <label>Discount %</label>
+      <input id="pDiscount" type="number" value="50">
+    </div>
+
+    <div>
+      <label>Selling Price ₹</label>
+      <input id="pPrice" type="number" placeholder="999">
+    </div>
+
+    <div>
+      <label>Image URL</label>
+      <input id="pImage" placeholder="https://...">
+    </div>
+
+  </div>
+
+  <br>
+
+  <label>
+    <input id="pCombo" type="checkbox" style="width:auto">
+    Combo Bag – discount लागू नहीं करना
+  </label>
+
+  <br>
+
+  <label>Description</label>
+  <textarea id="pDescription" placeholder="Product description"></textarea>
+
+  <div class="actions">
+    <button class="btn" onclick="saveProduct()">Save Product</button>
+    <button class="light" onclick="clearForm()">Clear</button>
+  </div>
 </div>
+
+<div class="card">
+  <h2>Products</h2>
+
+  <div class="actions">
+    <button class="success" onclick="downloadJson()">Download products.json</button>
+    <button class="light" onclick="importJson()">Import products.json</button>
+    <button class="danger" onclick="resetCatalog()">Reset Catalog</button>
+  </div>
+
+  <input type="file" id="fileInput" accept=".json" style="display:none">
+
+  <br>
+
+  <div id="productsGrid" class="grid"></div>
 </div>
-<div class="card"><h2>Current Products (<span id="count">0</span>)</h2><div id="list"></div></div>
+
+<div class="card">
+  <h2>Orders</h2>
+  <button class="btn" onclick="loadOrders()">Refresh Orders</button>
+  <div id="ordersBox" style="margin-top:15px">
+    Loading orders...
+  </div>
 </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
-const key='bb_catalog';
-let products=[], editingIndex=-1;
-const $=id=>document.getElementById(id);
-fetch('products.json').then(r=>r.json()).then(d=>{
-  products=JSON.parse(localStorage.getItem(key)||'null')||d;
-  render();
-});
-function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
-function render(){
-  $('count').textContent=products.length;
-  $('list').innerHTML=products.length?products.map((p,i)=>`
-  <div class="product">
-    <img src="${esc(p.image)}" onerror="this.style.opacity=.35" alt="">
-    <div><b>${esc(p.name)}</b><div class="muted">${esc(p.category)} • ${p.type==='combo'?'COMBO':'50% OFF'} • ₹${Number(p.price||0).toLocaleString('en-IN')} (MRP ₹${Number(p.originalPrice||0).toLocaleString('en-IN')})</div></div>
-    <div class="actions"><button class="btn" onclick="editProduct(${i})">Edit</button><button class="btn danger" onclick="deleteProduct(${i})">Delete</button></div>
-  </div>`).join(''):'<div class="empty">No products.</div>';
-}
-function saveProduct(){
-  const p={
-    id: editingIndex>=0?products[editingIndex].id:'custom'+Date.now(),
-    name:$('name').value.trim()||'New Bag',
-    category:$('category').value.trim()||'Handbags',
-    image:$('image').value.trim()||'assets/logo.png',
-    originalPrice:Number($('original').value)||999,
-    price:Number($('price').value)||499,
-    badge:$('type').value==='sale'?'50% OFF':'COMBO',
-    type:$('type').value
-  };
-  if(p.type==='sale' && p.originalPrice>0){
-    // Keep the user's entered selling price; do not silently alter pricing.
+/* ==============================
+   SUPABASE
+============================== */
+
+const SUPABASE_URL =
+"https://lkdwjqpjcitnchmibupa.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_iM4hwDWoyBnhbAzEfWj5Uw_cQumbH5k";
+
+const supabaseClient =
+window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+
+/* ==============================
+   LOCAL PRODUCT CATALOG
+============================== */
+
+const key = "branded_bags_products";
+
+let products = [];
+
+const defaultProducts = [];
+
+
+/* ==============================
+   LOAD PRODUCTS
+============================== */
+
+function loadProducts(){
+
+  try{
+
+    const saved =
+      localStorage.getItem(key);
+
+    if(saved){
+
+      const data =
+        JSON.parse(saved);
+
+      if(Array.isArray(data)){
+        products = data;
+      }else{
+        products = [...defaultProducts];
+      }
+
+    }else{
+
+      products = [...defaultProducts];
+
+    }
+
+  }catch(e){
+
+    products = [...defaultProducts];
+
   }
-  if(editingIndex>=0) products[editingIndex]=p; else products.push(p);
-  persist(); cancelEdit(); alert('Product saved on this device.');
+
+  renderProducts();
+
 }
-function editProduct(i){
-  const p=products[i]; editingIndex=i; $('formTitle').textContent='Edit Product';
-  $('name').value=p.name||'';$('category').value=p.category||'';$('image').value=p.image||'';
-  $('original').value=p.originalPrice??'';$('price').value=p.price??'';$('type').value=p.type||'sale';
-  window.scrollTo({top:0,behavior:'smooth'});
+
+
+/* ==============================
+   SAVE PRODUCTS
+============================== */
+
+function persist(){
+
+  localStorage.setItem(
+    key,
+    JSON.stringify(products)
+  );
+
+  renderProducts();
+
 }
-function deleteProduct(i){if(confirm('Delete this product?')){products.splice(i,1);persist();}}
-function cancelEdit(){editingIndex=-1;$('formTitle').textContent='Add Product';['name','category','image','original','price'].forEach(id=>$(id).value='');$('type').value='sale';}
-function persist(){localStorage.setItem(key,JSON.stringify(products));render();}
-function downloadJson(){
-  const blob=new Blob([JSON.stringify(products,null,2)],{type:'application/json'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='products.json';a.click();URL.revokeObjectURL(a.href);
+
+
+/* ==============================
+   MONEY
+============================== */
+
+function money(n){
+
+  return Number(n || 0)
+    .toLocaleString("en-IN");
+
 }
-function importJson(){$('fileInput').click()}
-$('fileInput').addEventListener('change',async e=>{
-  const f=e.target.files[0]; if(!f)return;
-  try{const d=JSON.parse(await f.text()); if(!Array.isArray(d))throw Error();
-    products=d;persist();alert('Catalog imported.');}catch(err){alert('Invalid products.json file.')}
-  e.target.value='';
-});
-function resetCatalog(){
-  if(!confirm('Reset to the original catalog? Your device changes will be removed.'))return;
-  localStorage.removeItem(key); location.reload();
-}
-</script>
-</body></html>
+
+
+/* ==============================
+   RENDER PRODUCTS
+============================== */
+
+function renderProducts(){
+
+  const box =
+    document.getElementById("productsGrid");
+
+  if(!products.length){
+
+    box.innerHTML =
+      '<div class="note">No products found. Add a product above or import your products.json.</div>';
+
+    return;
+  }
+
+  box.innerHTML =
+    products.map((p,index)=>{
+
+      const original =
+        Number(p.originalPrice || p.original || p.price || 0);
+
+      const price =
+        Number(p.price || p.sellingPrice || 0);
+
+      const discount =
+        Number(p.discount || 0);
+
+      return `
+      <div class="product">
+
+        ${
+          p.image
+          ?
+          `<img src="${escapeHtml(p.image)}"
+                onerror="this.style.display='none'">`
+          :
+          ''
+        }
+
+        <h3>${escapeHtml(p.name || "Unnamed Product")}</h3>
+
+        <div>
+          Category:
+          <b>${escapeHtml(p.category || "")}</b>
+        </div>
+
+        <div class="price">
+          Original:
+          ₹${money(original)}
+        </div>
+
+        <div class="price">
+          Selling:
