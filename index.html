@@ -35,7 +35,10 @@ footer{background:#111;color:#fff;padding:45px 5vw;display:grid;grid-template-co
 <script>
 let products=[],cart=JSON.parse(localStorage.getItem('bb_cart')||'[]');
 const money=n=>'₹'+Number(n).toLocaleString('en-IN');
-fetch('products.json').then(r=>r.json()).then(d=>{products=d;renderAll();});
+fetch('products.json').then(r=>r.json()).then(d=>{
+  products=JSON.parse(localStorage.getItem('bb_catalog')||'null')||d;
+  renderAll();
+});
 function card(p){return `<article class="card"><div class="photo"><img src="${p.image}" alt="${p.name}" loading="lazy"><span class="badge">${p.badge}</span></div><div class="info"><div class="cat">${p.category}</div><div class="name">${p.name}</div><div class="price"><strong>${money(p.price)}</strong><del>${money(p.originalPrice)}</del></div><div class="card-actions"><button class="smallbtn" onclick="addCart('${p.id}')">Add to Cart</button><button class="smallbtn buy" onclick="buyNow('${p.id}')">Buy Now</button></div></div></article>`}
 function renderAll(){document.getElementById('saleGrid').innerHTML=products.filter(p=>p.type==='sale').map(card).join('');document.getElementById('comboGrid').innerHTML=products.filter(p=>p.type==='combo').map(card).join('');const cats=['All',...new Set(products.map(p=>p.category))];document.getElementById('filters').innerHTML=cats.map((c,i)=>`<button class="filter ${i?'':'active'}" onclick="filterCat('${c}',this)">${c}</button>`).join('');renderGrid('All');updateCart();}
 function renderGrid(cat){document.getElementById('allGrid').innerHTML=products.filter(p=>cat==='All'||p.category===cat).map(card).join('')}
@@ -51,6 +54,6 @@ function removeItem(id){cart=cart.filter(i=>i.id!==id);saveCart();openCart()}
 function openLogin(){document.getElementById('loginModal').classList.add('open')}function closeLogin(){document.getElementById('loginModal').classList.remove('open')}
 function saveAccount(){localStorage.setItem('bb_account',JSON.stringify({name:loginName.value,email:loginEmail.value,phone:loginPhone.value}));alert('Account details saved on this device.');closeLogin()}
 function openCheckout(){if(!cart.length){alert('Please add a product first.');return}closeCart();document.getElementById('checkoutModal').classList.add('open')}function closeCheckout(){document.getElementById('checkoutModal').classList.remove('open')}
-function placeOrder(){const n=cName.value,p=cPhone.value,a=cAddress.value,z=cPincode.value;if(!n||!p||!a||!z){alert('Please fill all delivery details.');return}const items=cart.map(i=>{const x=products.find(p=>p.id===i.id);return `${x.name} x${i.qty}`}).join(', ');const msg=`Hello Branded Bags, I want to place an order.%0AName: ${encodeURIComponent(n)}%0APhone: ${encodeURIComponent(p)}%0AAddress: ${encodeURIComponent(a)}%0APincode: ${encodeURIComponent(z)}%0AItems: ${encodeURIComponent(items)}`;cart=[];saveCart();window.open('https://wa.me/918764373020?text='+msg,'_blank');closeCheckout();alert('Order request prepared on WhatsApp. Please send payment proof there.')}
-function whatsapp(){window.open('https://wa.me/917658868426?text=Hello%20Branded%20Bags%2C%20I%20need%20support.','_blank')}
+function placeOrder(){const n=cName.value,p=cPhone.value,a=cAddress.value,z=cPincode.value;if(!n||!p||!a||!z){alert('Please fill all delivery details.');return}const items=cart.map(i=>{const x=products.find(p=>p.id===i.id);return `${x.name} x${i.qty}`}).join(', ');const msg=`Hello Branded Bags, I want to place an order.%0AName: ${encodeURIComponent(n)}%0APhone: ${encodeURIComponent(p)}%0AAddress: ${encodeURIComponent(a)}%0APincode: ${encodeURIComponent(z)}%0AItems: ${encodeURIComponent(items)}`;cart=[];saveCart();window.open('https://wa.me/917658868426?text='+msg,'_blank');closeCheckout();alert('Order request prepared on WhatsApp. Please send payment proof there.')}
+function whatsapp(){window.open('https://wa.me/918764373020?text=Hello%20Branded%20Bags%2C%20I%20need%20support.','_blank')}
 </script></body></html>
