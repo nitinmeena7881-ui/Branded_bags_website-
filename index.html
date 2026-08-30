@@ -2,24 +2,24 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>Branded Bags | Luxury Fashion</title>
 
-<meta name="description" content="Branded Bags - premium fashion bags, 50% OFF collection and exclusive combo bags.">
+<meta name="description"
+content="Branded Bags - premium handbags, 50% OFF collection and exclusive combo bags.">
 
 <style>
 :root{
   --gold:#b58a3a;
-  --gold-dark:#8b6a2e;
+  --gold2:#8b6a2e;
   --black:#151515;
-  --text:#202020;
-  --muted:#707070;
+  --text:#222;
+  --muted:#777;
   --line:#e8e2d7;
-  --cream:#faf8f4;
-  --white:#ffffff;
-  --success:#176b3a;
-  --danger:#a51d2d;
+  --cream:#faf8f3;
+  --white:#fff;
+  --green:#168a45;
 }
 
 *{
@@ -32,7 +32,7 @@ html{
 
 body{
   margin:0;
-  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-family:Inter,Arial,system-ui,sans-serif;
   color:var(--text);
   background:#fff;
 }
@@ -41,11 +41,6 @@ button,
 input,
 textarea{
   font:inherit;
-}
-
-button,
-a{
-  -webkit-tap-highlight-color:transparent;
 }
 
 button{
@@ -60,58 +55,63 @@ a{
 /* TOP BAR */
 
 .topbar{
-  background:#111;
+  background:var(--black);
   color:#fff;
   text-align:center;
-  padding:9px 12px;
+  padding:9px 15px;
   font-size:11px;
-  font-weight:700;
   letter-spacing:.12em;
 }
 
-/* NAVIGATION */
+/* NAV */
 
 .nav{
   position:sticky;
   top:0;
   z-index:100;
-  background:rgba(255,255,255,.96);
-  backdrop-filter:blur(15px);
-  border-bottom:1px solid var(--line);
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:20px;
   padding:10px 5vw;
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid var(--line);
 }
 
 .brand{
   display:flex;
   align-items:center;
   gap:12px;
-  font-size:20px;
-  font-weight:800;
-  letter-spacing:.05em;
-  white-space:nowrap;
+  min-width:max-content;
 }
 
 .brand img{
   width:52px;
   height:52px;
-  object-fit:contain;
   border-radius:50%;
+  object-fit:contain;
+}
+
+.brand-name{
+  font-size:20px;
+  font-weight:800;
+  letter-spacing:.05em;
 }
 
 .navlinks{
   display:flex;
-  align-items:center;
   gap:24px;
+  align-items:center;
   font-size:14px;
-  font-weight:600;
+}
+
+.navlinks a{
+  transition:.2s;
 }
 
 .navlinks a:hover{
-  color:var(--gold-dark);
+  color:var(--gold2);
 }
 
 .actions{
@@ -122,90 +122,74 @@ a{
 .pill{
   border:1px solid var(--line);
   background:#fff;
-  color:#222;
   border-radius:999px;
-  padding:10px 14px;
-  font-weight:600;
+  padding:10px 15px;
+  transition:.2s;
 }
 
 .pill:hover{
-  border-color:#c8b895;
+  border-color:var(--gold);
 }
 
 /* HERO */
 
 .hero{
-  min-height:650px;
-  padding:70px 5vw;
-  background:
-    radial-gradient(circle at 85% 20%,rgba(181,138,58,.12),transparent 30%),
-    linear-gradient(120deg,#fff 50%,#f8f1e5);
+  min-height:590px;
+  padding:65px 5vw;
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:50px;
   align-items:center;
-}
-
-.hero-content{
-  max-width:650px;
+  background:
+    radial-gradient(circle at 90% 20%,#f3e8d4 0,transparent 30%),
+    linear-gradient(120deg,#fff 50%,#faf5eb);
 }
 
 .eyebrow{
-  color:var(--gold-dark);
+  color:var(--gold);
   font-size:12px;
-  font-weight:800;
-  letter-spacing:.2em;
+  font-weight:900;
+  letter-spacing:.22em;
 }
 
 .hero h1{
-  font-family:Georgia,"Times New Roman",serif;
+  margin:16px 0;
+  font-family:Georgia,serif;
   font-size:clamp(48px,7vw,86px);
-  line-height:.92;
-  margin:18px 0 22px;
-  letter-spacing:-.04em;
+  line-height:.94;
 }
 
 .hero p{
+  max-width:550px;
   color:var(--muted);
-  max-width:560px;
   line-height:1.8;
-  font-size:16px;
-}
-
-.hero-buttons{
-  margin-top:20px;
+  font-size:17px;
 }
 
 .btn{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  min-height:46px;
-  padding:12px 20px;
-  border-radius:999px;
-  border:1px solid #171717;
-  background:#171717;
+  border:1px solid var(--black);
+  background:var(--black);
   color:#fff;
+  padding:13px 21px;
+  border-radius:999px;
   font-weight:800;
-  margin:6px 7px 0 0;
-}
-
-.btn:hover{
-  transform:translateY(-1px);
+  margin:8px 7px 0 0;
 }
 
 .btn.light{
   background:#fff;
-  color:#171717;
+  color:var(--black);
   border-color:var(--line);
 }
 
 .hero-card{
-  height:520px;
+  height:480px;
   border-radius:30px;
   overflow:hidden;
   background:#eee;
-  position:relative;
   box-shadow:0 25px 70px rgba(0,0,0,.12);
 }
 
@@ -215,41 +199,36 @@ a{
   object-fit:cover;
 }
 
-.hero-card:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(0deg,rgba(0,0,0,.18),transparent 55%);
-}
-
 /* TRUST */
 
 .trust{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  background:var(--cream);
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
+  gap:10px;
   padding:20px 5vw;
+  background:var(--cream);
+  border-bottom:1px solid var(--line);
 }
 
-.trust-item{
+.trust-box{
   text-align:center;
-  padding:12px;
+  padding:14px;
 }
 
 .trust-icon{
-  font-size:22px;
+  font-size:25px;
   margin-bottom:7px;
 }
 
-.trust-item b{
+.trust-box b{
   display:block;
   font-size:14px;
 }
 
-.trust-item span{
-  color:#777;
+.trust-box span{
+  display:block;
+  margin-top:4px;
+  color:#888;
   font-size:12px;
 }
 
@@ -264,21 +243,42 @@ a{
 }
 
 .section-head{
-  margin-bottom:30px;
+  margin-bottom:28px;
 }
 
-.section h2{
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(36px,5vw,52px);
+.section-head h2{
   margin:8px 0 10px;
-  letter-spacing:-.03em;
+  font-family:Georgia,serif;
+  font-size:clamp(38px,5vw,58px);
 }
 
 .section-head p{
-  color:var(--muted);
-  max-width:650px;
-  line-height:1.7;
   margin:0;
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.6;
+}
+
+/* FILTERS */
+
+.filters{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:28px;
+}
+
+.filter{
+  padding:9px 15px;
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius:999px;
+}
+
+.filter.active{
+  background:var(--black);
+  color:#fff;
+  border-color:var(--black);
 }
 
 /* PRODUCT GRID */
@@ -290,11 +290,11 @@ a{
 }
 
 .card{
-  border:1px solid var(--line);
-  border-radius:20px;
-  overflow:hidden;
   background:#fff;
-  transition:.2s ease;
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+  transition:.25s;
 }
 
 .card:hover{
@@ -304,8 +304,8 @@ a{
 
 .photo{
   position:relative;
-  aspect-ratio:1/1.15;
-  background:#f5f2ed;
+  aspect-ratio:1/1.13;
+  background:#f4f2ee;
   overflow:hidden;
 }
 
@@ -318,15 +318,14 @@ a{
 }
 
 .card:hover .photo img{
-  transform:scale(1.035);
+  transform:scale(1.03);
 }
 
 .badge{
   position:absolute;
-  top:12px;
-  left:12px;
-  z-index:2;
-  background:#151515;
+  left:11px;
+  top:11px;
+  background:var(--black);
   color:#fff;
   border-radius:999px;
   padding:7px 10px;
@@ -335,30 +334,33 @@ a{
   letter-spacing:.05em;
 }
 
+.badge.combo{
+  background:var(--gold2);
+}
+
 .info{
   padding:15px;
 }
 
 .cat{
-  color:var(--gold-dark);
+  color:var(--gold2);
+  text-transform:uppercase;
+  letter-spacing:.12em;
   font-size:10px;
   font-weight:800;
-  letter-spacing:.12em;
-  text-transform:uppercase;
 }
 
 .name{
   min-height:42px;
+  margin:7px 0;
   font-size:15px;
-  font-weight:750;
-  margin:8px 0;
-  line-height:1.4;
+  font-weight:800;
 }
 
 .price{
   display:flex;
   align-items:center;
-  gap:9px;
+  gap:8px;
   flex-wrap:wrap;
 }
 
@@ -371,10 +373,11 @@ a{
   font-size:13px;
 }
 
-.discount{
-  color:var(--success);
+.saving{
+  color:var(--green);
   font-size:11px;
   font-weight:800;
+  margin-top:4px;
 }
 
 .card-actions{
@@ -385,120 +388,73 @@ a{
 }
 
 .smallbtn{
-  min-height:40px;
   border:1px solid var(--line);
-  border-radius:10px;
   background:#fff;
-  color:#222;
+  padding:10px 6px;
+  border-radius:10px;
   font-size:12px;
   font-weight:800;
 }
 
-.smallbtn:hover{
-  border-color:#b9a77f;
-}
-
 .smallbtn.buy{
-  background:#171717;
   color:#fff;
-  border-color:#171717;
+  background:var(--black);
+  border-color:var(--black);
 }
 
-/* FILTERS */
-
-.filters{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-bottom:25px;
-}
-
-.filter{
-  border:1px solid var(--line);
-  background:#fff;
-  border-radius:999px;
-  padding:9px 14px;
-  font-size:12px;
-  font-weight:700;
-}
-
-.filter.active{
-  background:#171717;
-  color:#fff;
-  border-color:#171717;
-}
-
-/* EMPTY / LOADING */
-
-.loading,
-.empty{
-  grid-column:1/-1;
-  padding:55px 20px;
-  text-align:center;
-  color:#777;
-  border:1px dashed var(--line);
-  border-radius:18px;
-}
+/* LOADING */
 
 .loading{
-  background:#fcfbf9;
+  grid-column:1/-1;
+  padding:60px 20px;
+  text-align:center;
+  border:1px dashed var(--line);
+  border-radius:20px;
+  color:#888;
+}
+
+.empty{
+  grid-column:1/-1;
+  text-align:center;
+  padding:40px;
+  color:#888;
 }
 
 /* POLICIES */
 
-.policy-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px;
-}
-
-.policy{
-  border:1px solid var(--line);
-  border-radius:18px;
+.policy-card{
   padding:24px;
-  background:#fff;
 }
 
-.policy-icon{
-  font-size:26px;
+.policy-card h3{
+  margin-top:0;
 }
 
-.policy h3{
-  margin:12px 0 8px;
-}
-
-.policy p{
-  color:#777;
-  line-height:1.6;
-  font-size:14px;
+.policy-card p{
+  color:var(--muted);
+  line-height:1.7;
 }
 
 /* FOOTER */
 
 footer{
-  background:#111;
+  padding:50px 5vw 25px;
+  background:var(--black);
   color:#fff;
-  padding:55px 5vw 25px;
   display:grid;
   grid-template-columns:2fr 1fr 1fr;
   gap:35px;
 }
 
-.footer-brand img{
-  width:65px;
-  height:65px;
+.footer-logo{
+  width:62px;
+  height:62px;
   object-fit:contain;
   border-radius:50%;
 }
 
-.footer-brand h3{
-  margin:13px 0 8px;
-  font-size:20px;
-}
-
-.footer-brand p{
+footer p{
   color:#aaa;
-  max-width:400px;
   line-height:1.7;
 }
 
@@ -506,17 +462,13 @@ footer{
   display:grid;
   align-content:start;
   gap:10px;
-  font-size:13px;
   color:#ccc;
+  font-size:13px;
 }
 
 .footer-links b{
   color:#fff;
-  margin-bottom:4px;
-}
-
-.footer-links a:hover{
-  color:#fff;
+  margin-bottom:5px;
 }
 
 .copyright{
@@ -550,55 +502,43 @@ footer{
   position:absolute;
   right:0;
   top:0;
-  height:100%;
   width:min(450px,94vw);
-  background:#fff;
+  height:100%;
   padding:22px;
+  background:#fff;
   overflow:auto;
   box-shadow:-15px 0 50px rgba(0,0,0,.15);
 }
 
-.panel-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  border-bottom:1px solid var(--line);
-  padding-bottom:15px;
+.panel h2{
+  font-family:Georgia,serif;
+  font-size:32px;
 }
 
-.panel-header h2{
-  margin:0;
-  font-family:Georgia,serif;
+.close{
+  float:right;
 }
 
 .cart-item{
   display:flex;
   gap:12px;
-  border-bottom:1px solid var(--line);
   padding:14px 0;
+  border-bottom:1px solid var(--line);
 }
 
 .cart-item img{
-  width:78px;
-  height:88px;
-  border-radius:12px;
+  width:75px;
+  height:85px;
+  border-radius:10px;
   object-fit:cover;
-  background:#f5f2ed;
 }
 
-.cart-item-info{
+.cart-details{
   flex:1;
 }
 
-.cart-item-name{
+.cart-name{
   font-weight:800;
-  line-height:1.4;
-}
-
-.cart-price{
-  color:#666;
-  font-size:13px;
-  margin-top:4px;
 }
 
 .qty{
@@ -609,40 +549,30 @@ footer{
 }
 
 .qty button{
-  min-width:30px;
-  min-height:30px;
-  border:1px solid #ddd;
+  border:1px solid var(--line);
   background:#fff;
   border-radius:7px;
+  padding:5px 9px;
 }
 
 .remove{
-  border:0 !important;
-  color:#a51d2d;
-  background:#fff !important;
-  padding:0 4px;
+  color:#b00020;
+  border:0!important;
+  background:none!important;
 }
 
-.cart-summary{
-  border-top:1px solid var(--line);
-  margin-top:15px;
-  padding-top:15px;
-}
-
-.cart-total{
-  display:flex;
-  justify-content:space-between;
-  font-size:19px;
+.total{
+  margin:20px 0;
+  font-size:21px;
   font-weight:900;
-  margin-bottom:15px;
 }
 
-.checkout{
+.checkout-btn{
   width:100%;
-  min-height:48px;
+  padding:15px;
   border:0;
   border-radius:12px;
-  background:#171717;
+  background:var(--black);
   color:#fff;
   font-weight:900;
 }
@@ -653,11 +583,11 @@ footer{
   position:fixed;
   inset:0;
   z-index:600;
-  background:rgba(0,0,0,.5);
   display:none;
   align-items:center;
   justify-content:center;
   padding:18px;
+  background:rgba(0,0,0,.5);
 }
 
 .modal.open{
@@ -671,27 +601,15 @@ footer{
   background:#fff;
   border-radius:22px;
   padding:25px;
-  box-shadow:0 20px 80px rgba(0,0,0,.25);
 }
 
-.modal-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
-  margin-bottom:20px;
-}
-
-.modal-head h2{
-  margin:0;
+.modalbox h2{
   font-family:Georgia,serif;
+  font-size:32px;
 }
 
-.closebtn{
-  border:1px solid var(--line);
-  background:#fff;
-  border-radius:999px;
-  padding:8px 12px;
+.modal-close{
+  float:right;
 }
 
 .form{
@@ -699,94 +617,118 @@ footer{
   gap:12px;
 }
 
-.form label{
-  font-size:12px;
-  font-weight:800;
-}
-
 .form input,
 .form textarea{
   width:100%;
   padding:13px;
   border:1px solid var(--line);
-  border-radius:11px;
+  border-radius:10px;
   outline:none;
-  background:#fff;
 }
 
 .form input:focus,
 .form textarea:focus{
-  border-color:#b99a60;
+  border-color:var(--gold);
 }
 
 .qr-wrap{
   display:flex;
-  gap:14px;
   flex-wrap:wrap;
-  margin-top:4px;
+  gap:15px;
+  margin:10px 0;
 }
 
 .qr{
-  width:170px;
-  height:170px;
+  width:180px;
+  height:180px;
   object-fit:contain;
   border:1px solid var(--line);
-  border-radius:14px;
-  padding:5px;
-  background:#fff;
+  border-radius:12px;
 }
 
 .payment-note{
-  background:#faf8f4;
-  border:1px solid var(--line);
   padding:13px;
-  border-radius:12px;
+  border-radius:10px;
+  background:#faf8f3;
   color:#666;
   font-size:13px;
   line-height:1.6;
 }
 
 .success{
-  background:#f1f8f3;
-  color:#176b3a;
-  border:1px solid #cfe4d5;
+  padding:16px;
   border-radius:12px;
-  padding:14px;
-  margin-bottom:15px;
+  background:#eef8f0;
+  border:1px solid #cde5d1;
+  color:#245c32;
+}
+
+/* TOAST */
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:25px;
+  z-index:1000;
+  transform:translate(-50%,120px);
+  background:var(--black);
+  color:#fff;
+  padding:13px 18px;
+  border-radius:999px;
+  font-size:13px;
+  transition:.3s;
+}
+
+.toast.show{
+  transform:translate(-50%,0);
 }
 
 /* MOBILE */
 
 @media(max-width:1000px){
 
-  .grid{
-    grid-template-columns:repeat(3,1fr);
-  }
-
-  .policy-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
   .navlinks{
     display:none;
   }
 
+  .hero{
+    grid-template-columns:1fr;
+  }
+
+  .hero-card{
+    height:420px;
+  }
+
+  .grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .trust{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  footer{
+    grid-template-columns:1fr 1fr;
+  }
 }
 
-@media(max-width:760px){
+@media(max-width:650px){
+
+  .topbar{
+    font-size:9px;
+  }
 
   .nav{
     padding:9px 4vw;
   }
 
-  .brand{
-    font-size:16px;
-    gap:8px;
+  .brand img{
+    width:48px;
+    height:48px;
   }
 
-  .brand img{
-    width:45px;
-    height:45px;
+  .brand-name{
+    font-size:16px;
   }
 
   .pill{
@@ -795,67 +737,33 @@ footer{
   }
 
   .hero{
-    min-height:auto;
-    grid-template-columns:1fr;
     padding:45px 4vw;
-    gap:30px;
+    min-height:auto;
+  }
+
+  .hero h1{
+    font-size:56px;
+  }
+
+  .hero p{
+    font-size:15px;
   }
 
   .hero-card{
-    height:380px;
-  }
-
-  .trust{
-    grid-template-columns:repeat(2,1fr);
-    padding:15px 4vw;
+    height:360px;
   }
 
   .section{
-    padding:48px 4vw;
+    padding:50px 4vw;
+  }
+
+  .section-head h2{
+    font-size:42px;
   }
 
   .grid{
     grid-template-columns:repeat(2,1fr);
     gap:10px;
-  }
-
-  .policy-grid{
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-  }
-
-  footer{
-    grid-template-columns:1fr 1fr;
-    padding:40px 4vw 22px;
-  }
-
-}
-
-@media(max-width:520px){
-
-  .topbar{
-    font-size:9px;
-    letter-spacing:.08em;
-  }
-
-  .actions{
-    gap:5px;
-  }
-
-  .hero h1{
-    font-size:52px;
-  }
-
-  .hero p{
-    font-size:14px;
-  }
-
-  .hero-card{
-    height:330px;
-  }
-
-  .section h2{
-    font-size:40px;
   }
 
   .info{
@@ -864,39 +772,31 @@ footer{
 
   .name{
     font-size:13px;
-    min-height:38px;
   }
 
   .price strong{
     font-size:16px;
   }
 
-  .price del{
-    font-size:11px;
-  }
-
   .smallbtn{
     font-size:10px;
-    padding:7px 4px;
+    padding:9px 4px;
   }
 
-  .badge{
-    top:8px;
-    left:8px;
-    padding:6px 7px;
-    font-size:9px;
+  .trust{
+    padding:12px 4vw;
   }
 
-  .policy{
-    padding:15px;
+  .trust-box{
+    padding:10px 4px;
   }
 
-  .policy h3{
-    font-size:15px;
-  }
-
-  .policy p{
+  .trust-box b{
     font-size:12px;
+  }
+
+  .trust-box span{
+    font-size:10px;
   }
 
   footer{
@@ -904,9 +804,13 @@ footer{
   }
 
   .copyright{
-    grid-column:1;
+    grid-column:auto;
   }
 
+  .qr{
+    width:145px;
+    height:145px;
+  }
 }
 </style>
 </head>
@@ -914,487 +818,483 @@ footer{
 <body>
 
 <!-- TOP BAR -->
-
 <div class="topbar">
-LUXURY COLLECTION • ALL INDIA DELIVERY • 7-DAY RETURNS • ONLINE PAYMENT ONLY
+  LUXURY COLLECTION • 50% OFF • ALL INDIA DELIVERY • ONLINE PAYMENT ONLY
 </div>
 
 <!-- NAVIGATION -->
-
 <nav class="nav">
 
-<a class="brand" href="#">
-<img src="assets/logo.png" alt="Branded Bags Logo">
-<span>BRANDED BAGS</span>
-</a>
+  <a class="brand" href="#">
+    <img src="logo.png" alt="Branded Bags Logo"
+         onerror="this.src='assets/logo.png'">
+    <span class="brand-name">BRANDED BAGS</span>
+  </a>
 
-<div class="navlinks">
-<a href="#shop">Shop</a>
-<a href="#sale">50% OFF</a>
-<a href="#combos">Combos</a>
-<a href="#policy">Policies</a>
-</div>
+  <div class="navlinks">
+    <a href="#sale">50% OFF</a>
+    <a href="#combos">Combos</a>
+    <a href="#shop">Shop</a>
+    <a href="#policy">Policies</a>
+  </div>
 
-<div class="actions">
+  <div class="actions">
+    <button class="pill" onclick="openLogin()">
+      Account
+    </button>
 
-<button class="pill" onclick="openLogin()">
-Account
-</button>
-
-<button class="pill" onclick="openCart()">
-Cart <span id="cartCount">0</span>
-</button>
-
-</div>
+    <button class="pill" onclick="openCart()">
+      Cart <span id="cartCount">0</span>
+    </button>
+  </div>
 
 </nav>
 
 <!-- HERO -->
-
 <header class="hero">
 
-<div class="hero-content">
+  <div>
 
-<div class="eyebrow">
-FASHION • STYLE • ELEGANCE
-</div>
+    <div class="eyebrow">
+      FASHION • STYLE • ELEGANCE
+    </div>
 
-<h1>
-Carry Your<br>
-Style.
-</h1>
+    <h1>
+      Carry<br>
+      Your Style.
+    </h1>
 
-<p>
-Discover a curated collection of modern luxury-inspired handbags,
-tote bags, shoulder bags, crossbody bags and exclusive combo collections.
-</p>
+    <p>
+      Discover our curated collection of luxury-inspired handbags,
+      totes, shoulder bags, crossbody bags and exclusive combo bags.
+    </p>
 
-<div class="hero-buttons">
+    <a class="btn" href="#sale">
+      Shop 50% OFF
+    </a>
 
-<a class="btn" href="#shop">
-Shop Collection
-</a>
+    <a class="btn light" href="#combos">
+      View Combos
+    </a>
 
-<a class="btn light" href="#combos">
-Explore Combos
-</a>
+  </div>
 
-</div>
-
-</div>
-
-<div class="hero-card">
-
-<img
-src="assets/products/1639.jpg"
-alt="Featured Branded Bag"
-onerror="this.src='assets/logo.png'"
->
-
-</div>
+  <div class="hero-card">
+    <img
+      src="assets/products/1639.jpg"
+      alt="Featured Branded Bag"
+      onerror="this.src='assets/products/1636.jpg'"
+    >
+  </div>
 
 </header>
 
 <!-- TRUST -->
+<div class="trust">
 
-<section class="trust">
+  <div class="trust-box">
+    <div class="trust-icon">🚚</div>
+    <b>Fast Delivery</b>
+    <span>All India</span>
+  </div>
 
-<div class="trust-item">
-<div class="trust-icon">🚚</div>
-<b>Fast Delivery</b>
-<span>All India</span>
+  <div class="trust-box">
+    <div class="trust-icon">↩️</div>
+    <b>7-Day Returns</b>
+    <span>Easy return window</span>
+  </div>
+
+  <div class="trust-box">
+    <div class="trust-icon">🔒</div>
+    <b>Secure Payment</b>
+    <span>Online payment only</span>
+  </div>
+
+  <div class="trust-box">
+    <div class="trust-icon">💬</div>
+    <b>WhatsApp Support</b>
+    <span>Customer assistance</span>
+  </div>
+
 </div>
-
-<div class="trust-item">
-<div class="trust-icon">↩️</div>
-<b>7-Day Returns</b>
-<span>Easy return window</span>
-</div>
-
-<div class="trust-item">
-<div class="trust-icon">🔒</div>
-<b>Secure Checkout</b>
-<span>Online payment only</span>
-</div>
-
-<div class="trust-item">
-<div class="trust-icon">💬</div>
-<b>WhatsApp Support</b>
-<span>Customer assistance</span>
-</div>
-
-</section>
 
 <!-- SALE -->
-
 <section class="section" id="sale">
 
-<div class="section-head">
+  <div class="section-head">
 
-<div class="eyebrow">
-LIMITED COLLECTION
-</div>
+    <div class="eyebrow">
+      LIMITED COLLECTION
+    </div>
 
-<h2>
-50% OFF Bags
-</h2>
+    <h2>
+      50% OFF Bags
+    </h2>
 
-<p>
-Original price and discounted selling price are displayed clearly.
-</p>
+    <p>
+      Enjoy special prices on our selected bag collection.
+    </p>
 
-</div>
+  </div>
 
-<div id="saleGrid" class="grid">
-
-<div class="loading">
-Loading sale collection...
-</div>
-
-</div>
+  <div id="saleGrid" class="grid">
+    <div class="loading">
+      Loading sale collection...
+    </div>
+  </div>
 
 </section>
 
 <!-- COMBOS -->
-
 <section class="section cream" id="combos">
 
-<div class="section-head">
+  <div class="section-head">
 
-<div class="eyebrow">
-CURATED SETS
-</div>
+    <div class="eyebrow">
+      CURATED SETS
+    </div>
 
-<h2>
-Combo Bags
-</h2>
+    <h2>
+      Combo Bags
+    </h2>
 
-<p>
-Special combo pricing. Combo products are not automatically given the 50% OFF discount.
-</p>
+    <p>
+      Exclusive combo prices. Combo products are not included
+      in the 50% OFF sale.
+    </p>
 
-</div>
+  </div>
 
-<div id="comboGrid" class="grid">
-
-<div class="loading">
-Loading combo bags...
-</div>
-
-</div>
+  <div id="comboGrid" class="grid">
+    <div class="loading">
+      Loading combo collection...
+    </div>
+  </div>
 
 </section>
 
 <!-- ALL PRODUCTS -->
-
 <section class="section" id="shop">
 
-<div class="section-head">
+  <div class="section-head">
 
-<div class="eyebrow">
-SHOP BY STYLE
-</div>
+    <div class="eyebrow">
+      SHOP BY STYLE
+    </div>
 
-<h2>
-All Bags
-</h2>
+    <h2>
+      All Bags
+    </h2>
 
-<p>
-Choose your favourite style and add it to your cart.
-</p>
+    <p>
+      Choose your favourite style and add it to your cart.
+    </p>
 
-</div>
+  </div>
 
-<div id="filters" class="filters"></div>
+  <div id="filters" class="filters"></div>
 
-<div id="allGrid" class="grid">
-
-<div class="loading">
-Loading products...
-</div>
-
-</div>
+  <div id="allGrid" class="grid">
+    <div class="loading">
+      Loading products...
+    </div>
+  </div>
 
 </section>
 
 <!-- POLICIES -->
-
 <section class="section cream" id="policy">
 
-<div class="section-head">
+  <div class="section-head">
 
-<div class="eyebrow">
-SHOP WITH CONFIDENCE
-</div>
+    <div class="eyebrow">
+      SHOP WITH CONFIDENCE
+    </div>
 
-<h2>
-Our Policies
-</h2>
+    <h2>
+      Our Policies
+    </h2>
 
-<p>
-Simple and transparent shopping experience.
-</p>
+    <p>
+      Simple and transparent shopping experience.
+    </p>
 
-</div>
+  </div>
 
-<div class="policy-grid">
+  <div class="grid">
 
-<div class="policy">
-<div class="policy-icon">💳</div>
-<h3>Online Payment</h3>
-<p>
-COD is not available. Payment is accepted online only.
-</p>
-</div>
+    <div class="card policy-card">
+      <h3>🔒 Online Payment</h3>
+      <p>
+        COD is not available. Payment is accepted online only
+        through the provided payment QR codes.
+      </p>
+    </div>
 
-<div class="policy">
-<div class="policy-icon">↩️</div>
-<h3>7-Day Returns</h3>
-<p>
-Eligible products can be returned within 7 days of delivery.
-</p>
-</div>
+    <div class="card policy-card">
+      <h3>↩️ 7-Day Returns</h3>
+      <p>
+        Eligible products can be returned within 7 days of delivery,
+        subject to the applicable return conditions.
+      </p>
+    </div>
 
-<div class="policy">
-<div class="policy-icon">🚚</div>
-<h3>Fast Delivery</h3>
-<p>
-Delivery service is available across India.
-</p>
-</div>
+    <div class="card policy-card">
+      <h3>🚚 Delivery</h3>
+      <p>
+        We provide All India delivery. Delivery time may vary
+        depending on location and courier service.
+      </p>
+    </div>
 
-<div class="policy">
-<div class="policy-icon">💬</div>
-<h3>Customer Support</h3>
-<p>
-Need help with your order? Contact us on WhatsApp.
-</p>
+    <div class="card policy-card">
+      <h3>💬 Customer Support</h3>
+      <p>
+        Need help with an order? Contact our support team.
+      </p>
 
-<button class="btn" onclick="whatsapp()">
-Chat on WhatsApp
-</button>
+      <button class="btn" onclick="contactSupport()">
+        Contact Support
+      </button>
+    </div>
 
-</div>
-
-</div>
+  </div>
 
 </section>
 
 <!-- FOOTER -->
-
 <footer>
 
-<div class="footer-brand">
+  <div>
 
-<img src="assets/logo.png" alt="Branded Bags">
+    <img
+      class="footer-logo"
+      src="logo.png"
+      alt="Branded Bags"
+      onerror="this.src='assets/logo.png'"
+    >
 
-<h3>
-Branded Bags
-</h3>
+    <h3>
+      Branded Bags
+    </h3>
 
-<p>
-Luxury-inspired fashion, modern style and curated bag collections.
-</p>
+    <p>
+      Luxury-inspired fashion, modern style and curated
+      collections for everyday elegance.
+    </p>
 
-</div>
+  </div>
 
-<div class="footer-links">
+  <div class="footer-links">
 
-<b>Quick Links</b>
+    <b>Quick Links</b>
 
-<a href="#shop">All Bags</a>
-<a href="#sale">50% OFF</a>
-<a href="#combos">Combo Bags</a>
-<a href="#policy">Policies</a>
+    <a href="#sale">50% OFF</a>
+    <a href="#combos">Combo Bags</a>
+    <a href="#shop">All Bags</a>
+    <a href="#policy">Policies</a>
 
-</div>
+  </div>
 
-<div class="footer-links">
+  <div class="footer-links">
 
-<b>Customer Support</b>
+    <b>Customer Support</b>
 
-<span>Online Payment Only</span>
-<span>7-Day Returns</span>
-<span>All India Delivery</span>
+    <span>Online Payment Only</span>
+    <span>7-Day Returns</span>
+    <span>All India Delivery</span>
 
-<a href="admin.html">
-Admin Panel
-</a>
+    <button
+      class="btn"
+      onclick="whatsappSupport()"
+      style="margin-top:8px"
+    >
+      WhatsApp
+    </button>
 
-</div>
+  </div>
 
-<div class="copyright">
-© 2026 Branded Bags. All rights reserved.
-</div>
+  <div class="copyright">
+    © 2026 Branded Bags. All rights reserved.
+  </div>
 
 </footer>
 
 <!-- CART DRAWER -->
-
 <div class="drawer" id="cartDrawer">
 
-<div class="shade" onclick="closeCart()"></div>
+  <div class="shade" onclick="closeCart()"></div>
 
-<div class="panel">
+  <div class="panel">
 
-<div class="panel-header">
+    <button
+      class="pill close"
+      onclick="closeCart()"
+    >
+      Close
+    </button>
 
-<h2>Your Cart</h2>
+    <h2>Your Cart</h2>
 
-<button class="closebtn" onclick="closeCart()">
-Close
-</button>
+    <div id="cartItems"></div>
 
-</div>
+    <div
+      id="cartTotal"
+      class="total"
+    >
+      Total: ₹0
+    </div>
 
-<div id="cartItems"></div>
+    <button
+      class="checkout-btn"
+      onclick="openCheckout()"
+    >
+      Proceed to Checkout
+    </button>
 
-<div class="cart-summary">
-
-<div class="cart-total">
-<span>Total</span>
-<span id="cartTotal">₹0</span>
-</div>
-
-<button class="checkout" onclick="openCheckout()">
-Proceed to Checkout
-</button>
-
-</div>
-
-</div>
+  </div>
 
 </div>
 
 <!-- LOGIN MODAL -->
-
 <div class="modal" id="loginModal">
 
-<div class="modalbox">
+  <div class="modalbox">
 
-<div class="modal-head">
+    <button
+      class="pill modal-close"
+      onclick="closeLogin()"
+    >
+      Close
+    </button>
 
-<h2>Customer Account</h2>
+    <h2>Customer Account</h2>
 
-<button class="closebtn" onclick="closeLogin()">
-Close
-</button>
+    <p>
+      Save your details for faster checkout.
+    </p>
 
-</div>
+    <div class="form">
 
-<p style="color:#777">
-Save your details for faster checkout on this device.
-</p>
+      <input
+        id="loginName"
+        placeholder="Full Name"
+      >
 
-<div class="form">
+      <input
+        id="loginEmail"
+        type="email"
+        placeholder="Email Address"
+      >
 
-<div>
-<label>Full Name</label>
-<input id="loginName" placeholder="Full name">
-</div>
+      <input
+        id="loginPhone"
+        placeholder="Mobile Number"
+      >
 
-<div>
-<label>Email</label>
-<input id="loginEmail" type="email" placeholder="Email address">
-</div>
+      <button
+        class="checkout-btn"
+        onclick="saveAccount()"
+      >
+        Save Account
+      </button>
 
-<div>
-<label>Mobile Number</label>
-<input id="loginPhone" placeholder="Mobile number">
-</div>
+    </div>
 
-<button class="checkout" onclick="saveAccount()">
-Save Account
-</button>
-
-</div>
-
-</div>
+  </div>
 
 </div>
 
 <!-- CHECKOUT MODAL -->
-
 <div class="modal" id="checkoutModal">
 
-<div class="modalbox">
+  <div class="modalbox">
 
-<div class="modal-head">
+    <button
+      class="pill modal-close"
+      onclick="closeCheckout()"
+    >
+      Close
+    </button>
 
-<h2>Secure Checkout</h2>
+    <h2>Secure Checkout</h2>
 
-<button class="closebtn" onclick="closeCheckout()">
-Close
-</button>
+    <p>
+      Online payment only • No COD
+    </p>
+
+    <div class="form">
+
+      <input
+        id="cName"
+        placeholder="Full Name *"
+      >
+
+      <input
+        id="cPhone"
+        placeholder="Mobile Number *"
+        inputmode="numeric"
+      >
+
+      <textarea
+        id="cAddress"
+        rows="3"
+        placeholder="Complete Delivery Address *"
+      ></textarea>
+
+      <input
+        id="cPincode"
+        placeholder="Pincode *"
+        inputmode="numeric"
+      >
+
+      <div class="payment-note">
+
+        <b>Payment Instructions</b><br><br>
+
+        1. Scan either QR code below.<br>
+        2. Complete the payment.<br>
+        3. Place your order.<br>
+        4. Send payment proof on WhatsApp.
+
+      </div>
+
+      <div class="qr-wrap">
+
+        <img
+          class="qr"
+          src="qr1.jpg"
+          alt="Payment QR 1"
+          onerror="this.src='assets/qr1.jpg'"
+        >
+
+        <img
+          class="qr"
+          src="qr2.png"
+          alt="Payment QR 2"
+          onerror="this.src='assets/qr2.png'"
+        >
+
+      </div>
+
+      <button
+        class="checkout-btn"
+        onclick="placeOrder()"
+        id="placeOrderBtn"
+      >
+        Place Order & WhatsApp
+      </button>
+
+    </div>
+
+  </div>
 
 </div>
 
-<div class="payment-note">
-<strong>Online Payment Only</strong><br>
-COD is not available. Scan either QR code below and complete your payment.
-After payment, send payment proof on WhatsApp.
-</div>
-
-<br>
-
-<div class="form">
-
-<div>
-<label>Full Name *</label>
-<input id="cName" placeholder="Enter your full name">
-</div>
-
-<div>
-<label>Mobile Number *</label>
-<input id="cPhone" type="tel" placeholder="Enter mobile number">
-</div>
-
-<div>
-<label>Complete Address *</label>
-<textarea id="cAddress" rows="4" placeholder="House / Street / Area / City / State"></textarea>
-</div>
-
-<div>
-<label>Pincode *</label>
-<input id="cPincode" inputmode="numeric" maxlength="6" placeholder="6 digit pincode">
-</div>
-
-<div>
-
-<label>Payment QR</label>
-
-<div class="qr-wrap">
-
-<img
-class="qr"
-src="assets/qr1.jpg"
-alt="Payment QR 1"
-onerror="this.style.display='none'"
->
-
-<img
-class="qr"
-src="assets/qr2.png"
-alt="Payment QR 2"
-onerror="this.style.display='none'"
->
-
-</div>
-
-</div>
-
-<button class="checkout" onclick="placeOrder()">
-Place Order
-</button>
-
-</div>
-
-</div>
-
-</div>
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
 
 <!-- SUPABASE -->
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
@@ -1404,35 +1304,72 @@ Place Order
 ========================================================= */
 
 const SUPABASE_URL =
-"https://lkdwjqpjcitnchmibupa.supabase.co";
+  "https://lkdwjqpjcitnchmibupa.supabase.co";
 
 const SUPABASE_KEY =
-"sb_publishable_iM4hwDWoyBnhbAzEfWj5Uw_cQumbH5k";
+  "sb_publishable_iM4hwDWoyBnhbAzEfWj5Uw_cQumbH5k";
 
 const sb =
-window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
 
 
 /* =========================================================
-   DATA
+   CONTACT NUMBERS
+========================================================= */
+
+const WHATSAPP_NUMBER =
+  "917658868426";
+
+const SUPPORT_NUMBER =
+  "918764373020";
+
+
+/* =========================================================
+   VARIABLES
 ========================================================= */
 
 let products = [];
 
 let cart =
-JSON.parse(
-  localStorage.getItem("bb_cart") || "[]"
-);
+  JSON.parse(
+    localStorage.getItem("bb_cart") || "[]"
+  );
 
-const money = (n) => {
+
+/* =========================================================
+   MONEY
+========================================================= */
+
+function money(value){
 
   return "₹" +
-  Number(n || 0).toLocaleString("en-IN");
+    Number(value || 0)
+      .toLocaleString("en-IN");
 
-};
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+function toast(message){
+
+  const box =
+    document.getElementById("toast");
+
+  box.textContent = message;
+
+  box.classList.add("show");
+
+  setTimeout(() => {
+    box.classList.remove("show");
+  }, 2500);
+
+}
 
 
 /* =========================================================
@@ -1443,4 +1380,1027 @@ async function loadProducts(){
 
   try{
 
-   
+    const response =
+      await fetch(
+        "products.json?v=" + Date.now()
+      );
+
+    if(!response.ok){
+      throw new Error(
+        "products.json not found"
+      );
+    }
+
+    const data =
+      await response.json();
+
+    if(!Array.isArray(data)){
+      throw new Error(
+        "Invalid products.json"
+      );
+    }
+
+    products = data;
+
+    renderAll();
+
+  }catch(error){
+
+    console.error(
+      "Product loading error:",
+      error
+    );
+
+    document.getElementById(
+      "saleGrid"
+    ).innerHTML =
+      '<div class="empty">Products could not be loaded. Please check products.json.</div>';
+
+    document.getElementById(
+      "comboGrid"
+    ).innerHTML =
+      '<div class="empty">Products could not be loaded.</div>';
+
+    document.getElementById(
+      "allGrid"
+    ).innerHTML =
+      '<div class="empty">Products could not be loaded.</div>';
+
+  }
+
+}
+
+
+/* =========================================================
+   PRODUCT CARD
+========================================================= */
+
+function card(product){
+
+  const isCombo =
+    product.type === "combo";
+
+  const saving =
+    Number(product.originalPrice || 0) -
+    Number(product.price || 0);
+
+  return `
+
+    <article class="card">
+
+      <div class="photo">
+
+        <img
+          src="${escapeHtml(product.image)}"
+          alt="${escapeHtml(product.name)}"
+          loading="lazy"
+          onerror="this.style.display='none'"
+        >
+
+        <span class="badge ${isCombo ? "combo" : ""}">
+          ${escapeHtml(product.badge || (isCombo ? "COMBO" : "SALE"))}
+        </span>
+
+      </div>
+
+      <div class="info">
+
+        <div class="cat">
+          ${escapeHtml(product.category || "Bags")}
+        </div>
+
+        <div class="name">
+          ${escapeHtml(product.name)}
+        </div>
+
+        <div class="price">
+
+          <strong>
+            ${money(product.price)}
+          </strong>
+
+          <del>
+            ${money(product.originalPrice)}
+          </del>
+
+        </div>
+
+        ${
+          saving > 0
+          ?
+          `<div class="saving">
+             Save ${money(saving)}
+           </div>`
+          :
+          ""
+        }
+
+        <div class="card-actions">
+
+          <button
+            class="smallbtn"
+            onclick="addCart('${escapeJs(product.id)}')"
+          >
+            Add to Cart
+          </button>
+
+          <button
+            class="smallbtn buy"
+            onclick="buyNow('${escapeJs(product.id)}')"
+          >
+            Buy Now
+          </button>
+
+        </div>
+
+      </div>
+
+    </article>
+
+  `;
+
+}
+
+
+/* =========================================================
+   SECURITY HELPERS
+========================================================= */
+
+function escapeHtml(value){
+
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+function escapeJs(value){
+
+  return String(value ?? "")
+    .replace(/\\/g,"\\\\")
+    .replace(/'/g,"\\'");
+
+}
+
+
+/* =========================================================
+   RENDER
+========================================================= */
+
+function renderAll(){
+
+  const sale =
+    products.filter(
+      p => p.type === "sale"
+    );
+
+  const combos =
+    products.filter(
+      p => p.type === "combo"
+    );
+
+  document.getElementById(
+    "saleGrid"
+  ).innerHTML =
+    sale.length
+    ?
+    sale.map(card).join("")
+    :
+    '<div class="empty">No sale products available.</div>';
+
+  document.getElementById(
+    "comboGrid"
+  ).innerHTML =
+    combos.length
+    ?
+    combos.map(card).join("")
+    :
+    '<div class="empty">No combo products available.</div>';
+
+
+  const categories = [
+    "All",
+    ...new Set(
+      products.map(
+        p => p.category
+      )
+    )
+  ];
+
+  document.getElementById(
+    "filters"
+  ).innerHTML =
+    categories.map(
+      (category,index) => `
+
+        <button
+          class="filter ${index === 0 ? "active" : ""}"
+          onclick="filterCategory('${escapeJs(category)}',this)"
+        >
+          ${escapeHtml(category)}
+        </button>
+
+      `
+    ).join("");
+
+
+  renderGrid("All");
+
+  updateCart();
+
+}
+
+
+/* =========================================================
+   ALL PRODUCTS
+========================================================= */
+
+function renderGrid(category){
+
+  const filtered =
+    category === "All"
+    ?
+    products
+    :
+    products.filter(
+      p => p.category === category
+    );
+
+  document.getElementById(
+    "allGrid"
+  ).innerHTML =
+    filtered.length
+    ?
+    filtered.map(card).join("")
+    :
+    '<div class="empty">No products found.</div>';
+
+}
+
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+function filterCategory(category,button){
+
+  document
+    .querySelectorAll(".filter")
+    .forEach(
+      b => b.classList.remove("active")
+    );
+
+  button.classList.add("active");
+
+  renderGrid(category);
+
+}
+
+
+/* =========================================================
+   CART
+========================================================= */
+
+function addCart(id){
+
+  const product =
+    products.find(
+      p => String(p.id) === String(id)
+    );
+
+  if(!product){
+
+    toast("Product not found.");
+
+    return;
+  }
+
+  const existing =
+    cart.find(
+      item => String(item.id) === String(id)
+    );
+
+  if(existing){
+
+    existing.qty += 1;
+
+  }else{
+
+    cart.push({
+      id:id,
+      qty:1
+    });
+
+  }
+
+  saveCart();
+
+  toast(
+    product.name +
+    " added to cart."
+  );
+
+  openCart();
+
+}
+
+
+function buyNow(id){
+
+  addCart(id);
+
+  setTimeout(
+    () => openCheckout(),
+    150
+  );
+
+}
+
+
+function saveCart(){
+
+  localStorage.setItem(
+    "bb_cart",
+    JSON.stringify(cart)
+  );
+
+  updateCart();
+
+}
+
+
+function updateCart(){
+
+  const count =
+    cart.reduce(
+      (total,item) =>
+        total + Number(item.qty || 0),
+      0
+    );
+
+  document.getElementById(
+    "cartCount"
+  ).textContent = count;
+
+}
+
+
+/* =========================================================
+   OPEN CART
+========================================================= */
+
+function openCart(){
+
+  document
+    .getElementById("cartDrawer")
+    .classList.add("open");
+
+  renderCart();
+
+}
+
+
+function closeCart(){
+
+  document
+    .getElementById("cartDrawer")
+    .classList.remove("open");
+
+}
+
+
+/* =========================================================
+   RENDER CART
+========================================================= */
+
+function renderCart(){
+
+  const box =
+    document.getElementById(
+      "cartItems"
+    );
+
+  const totalBox =
+    document.getElementById(
+      "cartTotal"
+    );
+
+  if(!cart.length){
+
+    box.innerHTML =
+      '<div class="empty">Your cart is empty.</div>';
+
+    totalBox.textContent =
+      "Total: ₹0";
+
+    return;
+
+  }
+
+  let total = 0;
+
+  let html = "";
+
+  cart.forEach(item => {
+
+    const product =
+      products.find(
+        p => String(p.id) === String(item.id)
+      );
+
+    if(!product) return;
+
+    const qty =
+      Number(item.qty || 1);
+
+    total +=
+      Number(product.price) * qty;
+
+    html += `
+
+      <div class="cart-item">
+
+        <img
+          src="${escapeHtml(product.image)}"
+          alt="${escapeHtml(product.name)}"
+        >
+
+        <div class="cart-details">
+
+          <div class="cart-name">
+            ${escapeHtml(product.name)}
+          </div>
+
+          <div>
+            ${money(product.price)}
+            × ${qty}
+          </div>
+
+          <div class="qty">
+
+            <button
+              onclick="changeQty('${escapeJs(product.id)}',-1)"
+            >
+              −
+            </button>
+
+            <b>${qty}</b>
+
+            <button
+              onclick="changeQty('${escapeJs(product.id)}',1)"
+            >
+              +
+            </button>
+
+            <button
+              class="remove"
+              onclick="removeItem('${escapeJs(product.id)}')"
+            >
+              Remove
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    `;
+
+  });
+
+  box.innerHTML =
+    html ||
+    '<div class="empty">Your cart is empty.</div>';
+
+  totalBox.textContent =
+    "Total: " + money(total);
+
+}
+
+
+/* =========================================================
+   CHANGE QUANTITY
+========================================================= */
+
+function changeQty(id,difference){
+
+  const item =
+    cart.find(
+      x => String(x.id) === String(id)
+    );
+
+  if(!item) return;
+
+  item.qty += difference;
+
+  if(item.qty <= 0){
+
+    cart =
+      cart.filter(
+        x => String(x.id) !== String(id)
+      );
+
+  }
+
+  saveCart();
+
+  renderCart();
+
+}
+
+
+function removeItem(id){
+
+  cart =
+    cart.filter(
+      x => String(x.id) !== String(id)
+    );
+
+  saveCart();
+
+  renderCart();
+
+  toast("Product removed.");
+
+}
+
+
+/* =========================================================
+   ACCOUNT
+========================================================= */
+
+function openLogin(){
+
+  const account =
+    JSON.parse(
+      localStorage.getItem(
+        "bb_account"
+      ) || "null"
+    );
+
+  if(account){
+
+    document.getElementById(
+      "loginName"
+    ).value =
+      account.name || "";
+
+    document.getElementById(
+      "loginEmail"
+    ).value =
+      account.email || "";
+
+    document.getElementById(
+      "loginPhone"
+    ).value =
+      account.phone || "";
+
+  }
+
+  document
+    .getElementById("loginModal")
+    .classList.add("open");
+
+}
+
+
+function closeLogin(){
+
+  document
+    .getElementById("loginModal")
+    .classList.remove("open");
+
+}
+
+
+function saveAccount(){
+
+  const account = {
+
+    name:
+      document
+        .getElementById("loginName")
+        .value.trim(),
+
+    email:
+      document
+        .getElementById("loginEmail")
+        .value.trim(),
+
+    phone:
+      document
+        .getElementById("loginPhone")
+        .value.trim()
+
+  };
+
+  if(!account.name){
+
+    toast("Please enter your name.");
+
+    return;
+
+  }
+
+  localStorage.setItem(
+    "bb_account",
+    JSON.stringify(account)
+  );
+
+  document.getElementById(
+    "cName"
+  ).value = account.name;
+
+  document.getElementById(
+    "cPhone"
+  ).value = account.phone;
+
+  closeLogin();
+
+  toast("Account details saved.");
+
+}
+
+
+/* =========================================================
+   CHECKOUT
+========================================================= */
+
+function openCheckout(){
+
+  if(!cart.length){
+
+    toast(
+      "Please add a product first."
+    );
+
+    return;
+
+  }
+
+  closeCart();
+
+  const account =
+    JSON.parse(
+      localStorage.getItem(
+        "bb_account"
+      ) || "null"
+    );
+
+  if(account){
+
+    document.getElementById(
+      "cName"
+    ).value =
+      account.name || "";
+
+    document.getElementById(
+      "cPhone"
+    ).value =
+      account.phone || "";
+
+  }
+
+  document
+    .getElementById("checkoutModal")
+    .classList.add("open");
+
+}
+
+
+function closeCheckout(){
+
+  document
+    .getElementById("checkoutModal")
+    .classList.remove("open");
+
+}
+
+
+/* =========================================================
+   PLACE ORDER
+========================================================= */
+
+async function placeOrder(){
+
+  const name =
+    document
+      .getElementById("cName")
+      .value.trim();
+
+  const phone =
+    document
+      .getElementById("cPhone")
+      .value.trim();
+
+  const address =
+    document
+      .getElementById("cAddress")
+      .value.trim();
+
+  const pincode =
+    document
+      .getElementById("cPincode")
+      .value.trim();
+
+
+  if(!name || !phone || !address || !pincode){
+
+    toast(
+      "Please fill all delivery details."
+    );
+
+    return;
+
+  }
+
+
+  if(cart.length === 0){
+
+    toast(
+      "Your cart is empty."
+    );
+
+    return;
+
+  }
+
+
+  const button =
+    document.getElementById(
+      "placeOrderBtn"
+    );
+
+  button.disabled = true;
+
+  button.textContent =
+    "Saving Order...";
+
+
+  try{
+
+    let total = 0;
+
+    const orderItems = [];
+
+    cart.forEach(item => {
+
+      const product =
+        products.find(
+          p =>
+            String(p.id) ===
+            String(item.id)
+        );
+
+      if(!product) return;
+
+      const qty =
+        Number(item.qty || 1);
+
+      total +=
+        Number(product.price) * qty;
+
+      orderItems.push({
+
+        id:product.id,
+
+        name:product.name,
+
+        price:Number(product.price),
+
+        quantity:qty
+
+      });
+
+    });
+
+
+    if(orderItems.length === 0){
+
+      throw new Error(
+        "No valid products in cart."
+      );
+
+    }
+
+
+    const fullAddress =
+      address +
+      ", Pincode: " +
+      pincode;
+
+
+    /*
+      IMPORTANT:
+      Supabase will generate the UUID
+      automatically because the id column
+      has DEFAULT gen_random_uuid().
+    */
+
+    const { data, error } =
+      await sb
+        .from("orders")
+        .insert({
+
+          customer_name:name,
+
+          mobile:phone,
+
+          address:fullAddress,
+
+          items:orderItems,
+
+          total_amount:total,
+
+          payment_status:"pending",
+
+          order_status:"new"
+
+        })
+        .select("id")
+        .single();
+
+
+    if(error){
+
+      console.error(
+        "Supabase error:",
+        error
+      );
+
+      throw new Error(
+        error.message ||
+        "Order could not be saved."
+      );
+
+    }
+
+
+    const orderId =
+      data && data.id
+      ?
+      data.id
+      :
+      "BB-" +
+      Date.now();
+
+
+    const itemsText =
+      orderItems
+        .map(
+          item =>
+            item.name +
+            " x" +
+            item.quantity
+        )
+        .join(", ");
+
+
+    const whatsappMessage =
+      "Hello Branded Bags,%0A%0A" +
+
+      "Order ID: " +
+      encodeURIComponent(orderId) +
+      "%0A" +
+
+      "Name: " +
+      encodeURIComponent(name) +
+      "%0A" +
+
+      "Phone: " +
+      encodeURIComponent(phone) +
+      "%0A" +
+
+      "Address: " +
+      encodeURIComponent(fullAddress) +
+      "%0A" +
+
+      "Items: " +
+      encodeURIComponent(itemsText) +
+      "%0A" +
+
+      "Total: " +
+      encodeURIComponent(
+        money(total)
+      ) +
+      "%0A" +
+
+      "Payment Status: Pending";
+
+
+    /* Clear cart */
+
+    cart = [];
+
+    saveCart();
+
+
+    /* Close checkout */
+
+    closeCheckout();
+
+
+    /* WhatsApp */
+
+    const whatsappUrl =
+      "https://wa.me/" +
+      WHATSAPP_NUMBER +
+      "?text=" +
+      whatsappMessage;
+
+
+    window.open(
+      whatsappUrl,
+      "_blank"
+    );
+
+
+    alert(
+      "Order successfully saved!%0A%0A" +
+      "Order ID: " +
+      orderId +
+      "%0A%0A" +
+      "Please complete payment and send payment proof on WhatsApp."
+    );
+
+
+  }catch(error){
+
+    console.error(
+      "Order error:",
+      error
+    );
+
+    alert(
+      "Order save nahi hua.\n\n" +
+      "Error: " +
+      error.message
+    );
+
+  }finally{
+
+    button.disabled = false;
+
+    button.textContent =
+      "Place Order & WhatsApp";
+
+  }
+
+}
+
+
+/* =========================================================
+   WHATSAPP
+========================================================= */
+
+function whatsappSupport(){
+
+  const url =
+    "https://wa.me/" +
+    WHATSAPP_NUMBER +
+    "?text=" +
+    encodeURIComponent(
+      "Hello Branded Bags, I need help with my order."
+    );
+
+  window.open(
+    url,
+    "_blank"
+  );
+
+}
+
+
+function contactSupport(){
+
+  window.open(
+    "tel:8764373020",
+    "_self"
+  );
+
+}
+
+
+/* =========================================================
+   START
+========================================================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
+
+    updateCart();
+
+    loadProducts();
+
+  }
+);
+
+</script>
+
+</body>
+</html>
