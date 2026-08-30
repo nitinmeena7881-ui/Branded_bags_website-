@@ -918,7 +918,149 @@ After payment, contact support with your order details.
 </small>
 
 <button class="checkout" onclick="placeOrder()">
-Place Order
+async function placeOrder(){
+
+  const n =
+    document.getElementById('cName').value.trim();
+
+  const p =
+    document.getElementById('cPhone').value.trim();
+
+  const a =
+    document.getElementById('cAddress').value.trim();
+
+  const z =
+    document.getElementById('cPincode').value.trim();
+
+
+  if(!n || !p || !a || !z){
+
+    alert('Please fill all delivery details.');
+
+    return;
+  }
+
+
+  if(cart.length === 0){
+
+    alert('Your cart is empty.');
+
+    return;
+  }
+
+
+  let total = 0;
+
+
+  const orderItems =
+    cart.map(i => {
+
+      const product =
+        products.find(p => p.id === i.id);
+
+      if(!product) return null;
+
+      total +=
+        product.price * i.qty;
+
+      return {
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        quantity: i.qty
+      };
+
+    }).filter(Boolean);
+
+
+  const fullAddress =
+    a + ', Pincode: ' + z;
+
+
+  // Generate Order ID in the browser
+  const orderId = crypto.randomUUID();
+
+
+  // Save order to Supabase
+  const { error } = await sb
+    .from('orders')
+    .insert([{
+
+      id: orderId,
+
+      customer_name: n,
+
+      mobile: p,
+
+      address: fullAddress,
+
+      items: orderItems,
+
+      total_amount: total,
+
+      payment_status: 'pending',
+
+      order_status: 'new'
+
+    }]);
+
+
+  if(error){
+
+    console.error(
+      'Supabase order error:',
+      error
+    );
+
+    alert(
+      'Order save nahi hua. Please try again.'
+    );
+
+    return;
+  }
+
+
+  // WhatsApp message
+  const itemsText =
+    orderItems
+      .map(x => `${x.name} x${x.quantity}`)
+      .join(', ');
+
+
+  const msg =
+    `Hello Branded Bags,%0A` +
+    `Order ID: ${encodeURIComponent(orderId)}%0A` +
+    `Name: ${encodeURIComponent(n)}%0A` +
+    `Phone: ${encodeURIComponent(p)}%0A` +
+    `Address: ${encodeURIComponent(fullAddress)}%0A` +
+    `Items: ${encodeURIComponent(itemsText)}%0A` +
+    `Total: ${encodeURIComponent(money(total))}%0A` +
+    `Payment Status: Pending`;
+
+
+  // Clear cart
+  cart = [];
+
+  saveCart();
+
+
+  // Open WhatsApp
+  window.open(
+    'https://wa.me/917658868426?text=' + msg,
+    '_blank'
+  );
+
+
+  closeCheckout();
+
+
+  alert(
+    'Order successfully saved! Order ID: ' +
+    orderId +
+    '. Please complete payment and send payment proof on WhatsApp.'
+  );
+
+}
 </button>
 
 </div>
@@ -1521,28 +1663,6 @@ address: fullAddress,
 items: orderItems,
 
 total_amount: total,
-
-payment_status: 'pending',
-
-order_status: 'new'
-
-}])
-
-.select()
-
-.single();
-
-
-if(error){
-
-console.error(
-'Supabase order error:',
-error
-);
-
-alert(
-'Order save nahi hua. Please try again.'
-);
 
 return;
 
